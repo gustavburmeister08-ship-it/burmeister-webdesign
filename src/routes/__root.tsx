@@ -94,9 +94,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-leipzig.webp" },
     ],
     links: [
-      { rel: "icon", href: "/favicon.ico", sizes: "any" },
-      { rel: "icon", href: "/images/gb-webdesign-logo.webp", type: "image/webp" },
-      { rel: "apple-touch-icon", href: "/images/gb-webdesign-logo.webp" },
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       {
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
