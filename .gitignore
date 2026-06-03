@@ -42,5 +42,8 @@ Thumbs.db
 # Alte PNGs (WebP-Versionen sind vorhanden)
 # public/images/*.png  ← auskommentiert, falls PNGs als Backup behalten werden sollen
 
+# Wrangler
+.wrangler/
+
 # TypeScript
 *.tsbuildinfo
