@@ -1,0 +1,47 @@
+/**
+ * scripts/generate-sitemap.mjs
+ *
+ * Erzeugt zur Build-Zeit eine statische public/sitemap.xml.
+ * Statische Dateien werden von Cloudflare Pages direkt vom CDN ausgeliefert
+ * (kein Worker-Umweg) – garantiert erreichbar fuer Google Search Console.
+ */
+
+import { writeFileSync } from "fs";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root      = resolve(__dirname, "..");
+
+const BASE_URL = "https://burmeister-webdesign.com";
+const TODAY    = new Date().toISOString().split("T")[0];
+
+const ENTRIES = [
+  { path: "/",           changefreq: "monthly", priority: "1.0" },
+  { path: "/leistungen", changefreq: "monthly", priority: "0.9" },
+  { path: "/preise",     changefreq: "monthly", priority: "0.9" },
+  { path: "/kontakt",    changefreq: "yearly",  priority: "0.8" },
+  { path: "/referenzen", changefreq: "monthly", priority: "0.7" },
+  { path: "/ablauf",     changefreq: "monthly", priority: "0.7" },
+  { path: "/ueber-mich", changefreq: "yearly",  priority: "0.6" },
+];
+
+const urls = ENTRIES.map(e => [
+  `  <url>`,
+  `    <loc>${BASE_URL}${e.path}</loc>`,
+  `    <lastmod>${TODAY}</lastmod>`,
+  `    <changefreq>${e.changefreq}</changefreq>`,
+  `    <priority>${e.priority}</priority>`,
+  `  </url>`,
+].join("\n")).join("\n");
+
+const xml = [
+  `<?xml version="1.0" encoding="UTF-8"?>`,
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+  urls,
+  `</urlset>`,
+].join("\n") + "\n";
+
+const outPath = resolve(root, "public/sitemap.xml");
+writeFileSync(outPath, xml, "utf8");
+console.log(`[generate-sitemap] ✓  public/sitemap.xml (${ENTRIES.length} URLs, Stand ${TODAY})`);
