@@ -12,4 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Aktiviert den Nitro-Deploy-Plugin auch ausserhalb der Lovable-Umgebung.
+  // Produziert ein korrekt gebuendeltes Cloudflare-Worker-Paket.
+  nitro: true,
 });

@@ -1,52 +1,64 @@
 /**
  * scripts/prepare-cf-pages.mjs
  *
- * Laeuft nach `vite build` und bereitet den dist/-Ordner
- * fuer Cloudflare Pages vor:
+ * Bereitet den Nitro-Build-Output fuer Cloudflare Pages vor.
  *
- *   1. dist/server/server.js      → dist/client/_worker.js
- *   2. dist/server/assets/**      → dist/client/assets/**
- *      (_worker.js referenziert seine Chunks per "./assets/..." –
- *       sie muessen also neben _worker.js im Output-Verzeichnis liegen.)
+ * Nitro erzeugt:
+ *   .output/public/   → statische Client-Assets
+ *   .output/server/   → SSR-Worker (index.mjs + _libs/ + _ssr/ + ...)
+ *
+ * Cloudflare Pages erwartet alles in einem Verzeichnis:
+ *   .output/public/_worker.js   ← .output/server/index.mjs
+ *   .output/public/_libs/       ← .output/server/_libs/
+ *   .output/public/_ssr/        ← .output/server/_ssr/
+ *   .output/public/_chunks/     ← .output/server/_chunks/  (falls vorhanden)
+ *   .output/public/*.mjs        ← .output/server/*.mjs     (Manifest etc.)
  */
 
-import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from "fs";
+import { existsSync, cpSync, copyFileSync, readdirSync, mkdirSync, statSync } from "fs";
 import { resolve, dirname, join } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const root      = resolve(__dirname, "..");
+const root       = resolve(__dirname, "..");
+const serverDir  = resolve(root, ".output/server");
+const publicDir  = resolve(root, ".output/public");
 
-function requireDir(path, label) {
-  if (!existsSync(path)) {
-    console.error(`[prepare-cf-pages] FEHLER: ${label} nicht gefunden (${path})`);
-    console.error("  → Stellen Sie sicher, dass 'npm run build' erfolgreich war.");
-    process.exit(1);
-  }
+function bail(msg) {
+  console.error(`[prepare-cf-pages] FEHLER: ${msg}`);
+  process.exit(1);
 }
 
-// ── 1. server.js → _worker.js ────────────────────────────────────────────────
-const workerSrc  = resolve(root, "dist/server/server.js");
-const workerDest = resolve(root, "dist/client/_worker.js");
-requireDir(workerSrc, "dist/server/server.js");
-copyFileSync(workerSrc, workerDest);
-console.log("[prepare-cf-pages] ✓  _worker.js  (SSR-Worker)");
+if (!existsSync(serverDir)) bail(".output/server nicht gefunden – war 'vite build' erfolgreich?");
+if (!existsSync(publicDir)) bail(".output/public nicht gefunden – war 'vite build' erfolgreich?");
 
-// ── 2. dist/server/assets/** → dist/client/assets/** ────────────────────────
-const serverAssets = resolve(root, "dist/server/assets");
-const clientAssets = resolve(root, "dist/client/assets");
+const serverIndex = join(serverDir, "index.mjs");
+if (!existsSync(serverIndex)) bail(".output/server/index.mjs nicht gefunden.");
 
-requireDir(serverAssets, "dist/server/assets");
-mkdirSync(clientAssets, { recursive: true });
+// 1. index.mjs → _worker.js
+copyFileSync(serverIndex, join(publicDir, "_worker.js"));
+console.log("[prepare-cf-pages] ✓  index.mjs  →  _worker.js");
 
+// 2. Unterordner und .mjs-Dateien aus server/ nach public/ kopieren
 let copied = 0;
-for (const file of readdirSync(serverAssets)) {
-  const src  = join(serverAssets, file);
-  const dest = join(clientAssets, file);
-  if (statSync(src).isFile()) {
+for (const entry of readdirSync(serverDir)) {
+  if (entry === "index.mjs" || entry === "wrangler.json") continue; // bereits behandelt / nicht noetig
+
+  const src  = join(serverDir, entry);
+  const dest = join(publicDir, entry);
+  const stat = statSync(src);
+
+  if (stat.isDirectory()) {
+    cpSync(src, dest, { recursive: true });
+    const count = readdirSync(dest).length;
+    console.log(`[prepare-cf-pages] ✓  ${entry}/  (${count} Dateien)`);
+    copied += count;
+  } else if (entry.endsWith(".mjs")) {
     copyFileSync(src, dest);
+    console.log(`[prepare-cf-pages] ✓  ${entry}`);
     copied++;
   }
 }
-console.log(`[prepare-cf-pages] ✓  ${copied} Server-Assets → dist/client/assets/`);
-console.log("[prepare-cf-pages] ✓  Bereit für Cloudflare Pages.");
+
+console.log(`[prepare-cf-pages] ✓  ${copied} Eintraege kopiert`);
+console.log("[prepare-cf-pages] ✓  .output/public/ bereit fuer Cloudflare Pages");

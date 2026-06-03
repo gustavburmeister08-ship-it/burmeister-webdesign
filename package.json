@@ -7,6 +7,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "build:cf": "vite build && node scripts/prepare-cf-pages.mjs",
+    "build:cf:preview": "vite build && node scripts/prepare-cf-pages.mjs && vite preview",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
