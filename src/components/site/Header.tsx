@@ -32,16 +32,14 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-8">
-        <Link to="/" className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary font-serif text-base font-semibold text-primary-foreground">
-            B
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-serif text-[15px] font-semibold text-foreground">Burmeister</span>
-            <span className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-              Webdesign Leipzig
-            </span>
-          </span>
+        <Link to="/" className="group flex items-center" onClick={() => setOpen(false)}>
+          <img
+            src="/images/gb-webdesign-logo-lang-schwarz.webp"
+            alt="Burmeister Webdesign Leipzig"
+            width={220}
+            height={56}
+            className="h-10 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">

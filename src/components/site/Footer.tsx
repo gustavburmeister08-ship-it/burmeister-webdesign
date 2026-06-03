@@ -6,11 +6,14 @@ export function Footer() {
     <footer className="border-t border-border bg-foreground text-background">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2.5">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-[var(--brand-gold)] font-serif text-base font-semibold text-foreground">
-              B
-            </span>
-            <span className="font-serif text-lg">Burmeister Webdesign Leipzig</span>
+          <div className="flex items-center">
+            <img
+              src="/images/gb-webdesign-logo-lang-weiss.webp"
+              alt="Burmeister Webdesign Leipzig"
+              width={220}
+              height={56}
+              className="h-10 w-auto"
+            />
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-background/70">
             Moderne Websites für kleine Unternehmen in Leipzig und Umgebung. Persönlich
