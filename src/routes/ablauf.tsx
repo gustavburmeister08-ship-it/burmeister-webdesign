@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { CtaRow } from "@/components/site/CtaRow";
 
@@ -9,10 +9,10 @@ export const Route = createFileRoute("/ablauf")({
       { name: "description", content: "So entsteht Ihre Website in Leipzig: Erstgespräch, Angebot, Design-Entwurf, Umsetzung und Veröffentlichung – in fünf klaren Schritten, transparent und schnell." },
       { property: "og:title", content: "Website-Ablauf in 5 Schritten – Burmeister Webdesign Leipzig" },
       { property: "og:description", content: "In fünf klaren Schritten zur fertigen Website – transparent, schnell, persönlich betreut." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/ablauf" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-prozess.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/ablauf" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-prozess.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/ablauf" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/ablauf" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -20,8 +20,8 @@ export const Route = createFileRoute("/ablauf")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.de/" },
-            { "@type": "ListItem", position: 2, name: "Ablauf", item: "https://burmeister-webdesign.de/ablauf" },
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
+            { "@type": "ListItem", position: 2, name: "Ablauf", item: "https://burmeister-webdesign.com/ablauf" },
           ],
         }),
       },

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/Section";
 
 export const Route = createFileRoute("/impressum")({
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/impressum")({
       { name: "description", content: "Impressum von Burmeister Webdesign Leipzig gemäß § 5 DDG." },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/impressum" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/impressum" }],
   }),
   component: ImpressumPage,
 });

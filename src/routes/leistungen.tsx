@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   Layers, Sparkles, Zap, Search, MapPin, PenLine,
   ImageIcon, ServerCog, ShoppingBag, Workflow,
@@ -13,10 +13,10 @@ export const Route = createFileRoute("/leistungen")({
       { name: "description", content: "Webdesigner Leipzig: Website-Erstellung, Relaunch, Landingpages, SEO, Google Business, Hosting. Alles aus einer Hand – persönlich betreut ab 500 €." },
       { property: "og:title", content: "Webdesign-Leistungen Leipzig – Burmeister Webdesign" },
       { property: "og:description", content: "Website-Erstellung, Relaunch, SEO, Hosting & mehr – alles aus einer Hand in Leipzig ab 500 €." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/leistungen" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-website-mockup.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/leistungen" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-website-mockup.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/leistungen" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/leistungen" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -24,8 +24,8 @@ export const Route = createFileRoute("/leistungen")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.de/" },
-            { "@type": "ListItem", position: 2, name: "Leistungen", item: "https://burmeister-webdesign.de/leistungen" },
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
+            { "@type": "ListItem", position: 2, name: "Leistungen", item: "https://burmeister-webdesign.com/leistungen" },
           ],
         }),
       },
@@ -36,12 +36,12 @@ export const Route = createFileRoute("/leistungen")({
           "@type": "ItemList",
           name: "Webdesign-Leistungen Leipzig",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Website-Erstellung Leipzig", url: "https://burmeister-webdesign.de/leistungen" },
-            { "@type": "ListItem", position: 2, name: "Website-Relaunch Leipzig", url: "https://burmeister-webdesign.de/leistungen" },
-            { "@type": "ListItem", position: 3, name: "Landingpages", url: "https://burmeister-webdesign.de/leistungen" },
-            { "@type": "ListItem", position: 4, name: "SEO-Grundoptimierung Leipzig", url: "https://burmeister-webdesign.de/leistungen" },
-            { "@type": "ListItem", position: 5, name: "Google Business Profil einrichten", url: "https://burmeister-webdesign.de/leistungen" },
-            { "@type": "ListItem", position: 6, name: "Hosting & Wartung", url: "https://burmeister-webdesign.de/leistungen" },
+            { "@type": "ListItem", position: 1, name: "Website-Erstellung Leipzig", url: "https://burmeister-webdesign.com/leistungen" },
+            { "@type": "ListItem", position: 2, name: "Website-Relaunch Leipzig", url: "https://burmeister-webdesign.com/leistungen" },
+            { "@type": "ListItem", position: 3, name: "Landingpages", url: "https://burmeister-webdesign.com/leistungen" },
+            { "@type": "ListItem", position: 4, name: "SEO-Grundoptimierung Leipzig", url: "https://burmeister-webdesign.com/leistungen" },
+            { "@type": "ListItem", position: 5, name: "Google Business Profil einrichten", url: "https://burmeister-webdesign.com/leistungen" },
+            { "@type": "ListItem", position: 6, name: "Hosting & Wartung", url: "https://burmeister-webdesign.com/leistungen" },
           ],
         }),
       },

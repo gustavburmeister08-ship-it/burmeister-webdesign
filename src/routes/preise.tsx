@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { CtaRow } from "@/components/site/CtaRow";
@@ -10,10 +10,10 @@ export const Route = createFileRoute("/preise")({
       { name: "description", content: "Webdesign-Preise aus Leipzig: Websites ab 500 €. Keine starren Pakete, transparente Kalkulation, individuelles Angebot nach kostenlosem Erstgespräch." },
       { property: "og:title", content: "Webdesign-Preise Leipzig – Website ab 500 €" },
       { property: "og:description", content: "Transparente Webdesign-Preise aus Leipzig: ab 500 €, individuelles Angebot nach kostenlosem Erstgespräch." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/preise" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-arbeitsfoto.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/preise" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/preise" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/preise" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -21,8 +21,8 @@ export const Route = createFileRoute("/preise")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.de/" },
-            { "@type": "ListItem", position: 2, name: "Preise", item: "https://burmeister-webdesign.de/preise" },
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
+            { "@type": "ListItem", position: 2, name: "Preise", item: "https://burmeister-webdesign.com/preise" },
           ],
         }),
       },

@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -88,10 +88,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Websites für kleine Unternehmen in Leipzig – ab 500 €." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-leipzig.webp" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { name: "twitter:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-leipzig.webp" },
+      { name: "twitter:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp" },
     ],
     links: [
       {
@@ -118,12 +118,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          "@id": "https://burmeister-webdesign.de/#business",
+          "@id": "https://burmeister-webdesign.com/#business",
           name: "Burmeister Webdesign Leipzig",
           description: "Webdesign-Angebot für kleine Unternehmen in Leipzig: Websites, Relaunches, Landingpages, SEO-Grundlagen, Hosting und Wartung.",
-          url: "https://burmeister-webdesign.de",
-          logo: "https://burmeister-webdesign.de/images/gb-webdesign-logo.webp",
-          image: "https://burmeister-webdesign.de/images/gb-webdesign-leipzig.webp",
+          url: "https://burmeister-webdesign.com",
+          logo: "https://burmeister-webdesign.com/images/gb-webdesign-logo.webp",
+          image: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp",
           telephone: "+4916099627317",
           email: "gustav.burmeister08@gmail.com",
           founder: { "@type": "Person", name: "Gustav Burmeister" },

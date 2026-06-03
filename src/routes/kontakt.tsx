@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -11,10 +11,10 @@ export const Route = createFileRoute("/kontakt")({
       { name: "description", content: "Website in Leipzig erstellen lassen? Kostenloses Erstgespräch per Telefon, WhatsApp oder E-Mail. Burmeister Webdesign – persönlich, unverbindlich, schnell." },
       { property: "og:title", content: "Kostenloses Erstgespräch | Burmeister Webdesign Leipzig" },
       { property: "og:description", content: "Jetzt Erstgespräch anfragen – kostenlos, unverbindlich, persönlich. Telefon, WhatsApp oder E-Mail." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/kontakt" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-kontakt-hero.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/kontakt" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-kontakt-hero.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/kontakt" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/kontakt" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -22,8 +22,8 @@ export const Route = createFileRoute("/kontakt")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.de/" },
-            { "@type": "ListItem", position: 2, name: "Kontakt", item: "https://burmeister-webdesign.de/kontakt" },
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
+            { "@type": "ListItem", position: 2, name: "Kontakt", item: "https://burmeister-webdesign.com/kontakt" },
           ],
         }),
       },

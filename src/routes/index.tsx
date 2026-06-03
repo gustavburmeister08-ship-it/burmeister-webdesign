@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:title", content: "Webdesign Leipzig – Website erstellen lassen ab 500 €" },
       { property: "og:description", content: "Websites ab 500 € – schnell, verständlich, persönlich betreut. Jetzt Erstgespräch anfragen." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-leipzig-cafe.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig-cafe.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/" }],
     scripts: [
       {
         type: "application/ld+json",

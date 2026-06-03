@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { CtaRow } from "@/components/site/CtaRow";
@@ -10,10 +10,10 @@ export const Route = createFileRoute("/referenzen")({
       { name: "description", content: "Webdesign-Referenzen aus Leipzig: echte Projekte von Burmeister Webdesign. Aktuelle Referenz: geyerliner.de – sehen Sie selbst, was alles möglich ist." },
       { property: "og:title", content: "Webdesign-Referenzen aus Leipzig – Echte Projekte" },
       { property: "og:description", content: "Echte Webdesign-Projekte aus Leipzig. Aktuelle Referenz: geyerliner.de – kein Stockfoto, kein Fake." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/referenzen" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-referenz-geyerliner.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/referenzen" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-referenz-geyerliner.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/referenzen" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/referenzen" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -21,8 +21,8 @@ export const Route = createFileRoute("/referenzen")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.de/" },
-            { "@type": "ListItem", position: 2, name: "Referenzen", item: "https://burmeister-webdesign.de/referenzen" },
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
+            { "@type": "ListItem", position: 2, name: "Referenzen", item: "https://burmeister-webdesign.com/referenzen" },
           ],
         }),
       },

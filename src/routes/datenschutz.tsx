@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/Section";
 
 export const Route = createFileRoute("/datenschutz")({
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/datenschutz")({
       { name: "description", content: "Datenschutzerklärung von Burmeister Webdesign Leipzig gemäß DSGVO." },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/datenschutz" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/datenschutz" }],
   }),
   component: DatenschutzPage,
 });
@@ -18,7 +18,7 @@ function DatenschutzPage() {
     <Section>
       <h1 className="font-serif text-4xl text-foreground md:text-5xl">Datenschutzerklärung</h1>
       <p className="mt-4 max-w-3xl text-foreground/70">
-        Stand: Juni 2025 · Gültig für burmeister-webdesign.de
+        Stand: Juni 2025 · Gültig für burmeister-webdesign.com
       </p>
 
       <div className="mt-10 max-w-3xl space-y-10 text-[15px] leading-relaxed text-foreground/85">
@@ -258,7 +258,7 @@ function DatenschutzPage() {
             die Weiterentwicklung dieser Website oder aufgrund geänderter gesetzlicher oder
             behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu
             ändern. Die jeweils aktuelle Version ist stets unter
-            burmeister-webdesign.de/datenschutz abrufbar.
+            burmeister-webdesign.com/datenschutz abrufbar.
           </p>
         </div>
 

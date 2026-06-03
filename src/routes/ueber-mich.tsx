@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { CtaRow } from "@/components/site/CtaRow";
 
@@ -9,10 +9,10 @@ export const Route = createFileRoute("/ueber-mich")({
       { name: "description", content: "Gustav Burmeister – freiberuflicher Webdesigner aus Leipzig. Persönlich, fair und direkt: Websites für kleine Unternehmen ab 500 €. Lernen Sie mich kennen." },
       { property: "og:title", content: "Gustav Burmeister – Webdesigner aus Leipzig" },
       { property: "og:description", content: "Freiberuflicher Webdesigner aus Leipzig. Persönlich erreichbar, faire Preise, Websites ab 500 €." },
-      { property: "og:url", content: "https://burmeister-webdesign.de/ueber-mich" },
-      { property: "og:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-arbeitsfoto.webp" },
+      { property: "og:url", content: "https://burmeister-webdesign.com/ueber-mich" },
+      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp" },
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.de/ueber-mich" }],
+    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/ueber-mich" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -20,8 +20,8 @@ export const Route = createFileRoute("/ueber-mich")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.de/" },
-            { "@type": "ListItem", position: 2, name: "Über mich", item: "https://burmeister-webdesign.de/ueber-mich" },
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
+            { "@type": "ListItem", position: 2, name: "Über mich", item: "https://burmeister-webdesign.com/ueber-mich" },
           ],
         }),
       },
@@ -30,17 +30,17 @@ export const Route = createFileRoute("/ueber-mich")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "@id": "https://burmeister-webdesign.de/#person",
+          "@id": "https://burmeister-webdesign.com/#person",
           name: "Gustav Burmeister",
           jobTitle: "Webdesigner",
           description: "Freiberuflicher Webdesigner aus Leipzig, spezialisiert auf moderne, bezahlbare Websites für kleine lokale Unternehmen.",
-          url: "https://burmeister-webdesign.de/ueber-mich",
-          image: "https://burmeister-webdesign.de/images/gb-webdesign-arbeitsfoto.webp",
+          url: "https://burmeister-webdesign.com/ueber-mich",
+          image: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp",
           email: "gustav.burmeister08@gmail.com",
           telephone: "+4916099627317",
           worksFor: {
             "@type": "Organization",
-            "@id": "https://burmeister-webdesign.de/#business",
+            "@id": "https://burmeister-webdesign.com/#business",
             name: "Burmeister Webdesign Leipzig",
           },
           address: {
