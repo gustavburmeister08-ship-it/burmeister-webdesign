@@ -15,7 +15,7 @@
  *   .output/public/*.mjs        ← .output/server/*.mjs     (Manifest etc.)
  */
 
-import { existsSync, cpSync, copyFileSync, readdirSync, mkdirSync, statSync } from "fs";
+import { existsSync, cpSync, copyFileSync, readdirSync, mkdirSync, statSync, rmSync } from "fs";
 import { resolve, dirname, join } from "path";
 import { fileURLToPath } from "url";
 
@@ -61,4 +61,18 @@ for (const entry of readdirSync(serverDir)) {
 }
 
 console.log(`[prepare-cf-pages] ✓  ${copied} Eintraege kopiert`);
+
+// Nitro-generierte Wrangler-Configs entfernen, damit CF Pages unsere wrangler.toml liest.
+// Nitro's wrangler.json hat ein ASSETS-Binding das in CF Pages reserviert ist.
+const toDelete = [
+  join(root, ".output/server/wrangler.json"),
+  join(root, ".wrangler/deploy/config.json"),
+];
+for (const f of toDelete) {
+  if (existsSync(f)) {
+    rmSync(f);
+    console.log(`[prepare-cf-pages] ✓  geloescht: ${f.replace(root + "/", "")}`);
+  }
+}
+
 console.log("[prepare-cf-pages] ✓  .output/public/ bereit fuer Cloudflare Pages");
