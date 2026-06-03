@@ -45,7 +45,7 @@ export const Route = createFileRoute("/preise")({
             {
               "@type": "Question",
               name: "Gibt es monatliche Folgekosten?",
-              acceptedAnswer: { "@type": "Answer", text: "Hosting und Wartung sind optional und starten bei 15 €/Monat – inklusive Backups, Updates und kleiner Änderungen." },
+              acceptedAnswer: { "@type": "Answer", text: "Hosting und Wartung sind optional und starten bei 30 €/Monat – inklusive Backups, Updates und kleiner Änderungen." },
             },
             {
               "@type": "Question",
@@ -98,7 +98,7 @@ const ROWS: { title: string; price: string; inkl: string[] }[] = [
   },
   {
     title: "Hosting & Wartung",
-    price: "ab 15 €/Monat",
+    price: "ab 30 €/Monat",
     inkl: [
       "Schnelles, sicheres Hosting",
       "Regelmäßige Sicherungen & Updates",

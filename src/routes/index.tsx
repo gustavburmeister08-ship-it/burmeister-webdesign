@@ -66,7 +66,7 @@ export const Route = createFileRoute("/")({
             {
               "@type": "Question",
               name: "Bieten Sie auch Hosting und Wartung an?",
-              acceptedAnswer: { "@type": "Answer", text: "Ja. Schnelles, sicheres Hosting inkl. täglicher Backups und laufender Pflege ab 15 €/Monat." },
+              acceptedAnswer: { "@type": "Answer", text: "Ja. Schnelles, sicheres Hosting inkl. täglicher Backups und laufender Pflege ab 30 €/Monat." },
             },
           ],
         }),
@@ -356,7 +356,7 @@ function Index() {
                 ["Einseitige Website", "ab 500 €"],
                 ["Mehrseitige Website", "ab 1.200 €"],
                 ["Website-Relaunch", "ab 1.500 €"],
-                ["Hosting & Wartung", "ab 15 €/Monat"],
+                ["Hosting & Wartung", "ab 30 €/Monat"],
               ].map(([k, v]) => (
                 <li key={k} className="flex items-center justify-between py-3">
                   <span className="text-foreground/80">{k}</span>

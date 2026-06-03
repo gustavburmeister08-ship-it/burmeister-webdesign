@@ -94,8 +94,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://burmeister-webdesign.de/images/gb-webdesign-leipzig.webp" },
     ],
     links: [
-      { rel: "icon", href: "/favicon.ico" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       {
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
@@ -151,7 +149,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landingpages", description: "Fokussierte Einzelseiten für Kampagnen." } },
               { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO-Grundoptimierung", description: "Technische und inhaltliche SEO für lokale Sichtbarkeit." } },
               { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google Business Profil", description: "Einrichtung und Pflege des Google-Business-Eintrags." } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hosting & Wartung", description: "Sicheres Hosting und laufende Website-Pflege ab 15 €/Monat." } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hosting & Wartung", description: "Sicheres Hosting und laufende Website-Pflege ab 30 €/Monat." } },
             ],
           },
         }),
@@ -168,6 +166,11 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="de">
       <head>
+        {/* Favicon – hardcoded so they always appear before HeadContent */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <HeadContent />
       </head>
       <body>
