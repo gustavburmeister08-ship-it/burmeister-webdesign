@@ -4,8 +4,8 @@ import { Section } from "@/components/site/Section";
 export const Route = createFileRoute("/impressum")({
   head: () => ({
     meta: [
-      { title: "Impressum – Burmeister Webdesign Leipzig" },
-      { name: "description", content: "Impressum von Burmeister Webdesign Leipzig gemäß § 5 DDG." },
+      { title: "Impressum – Gustav Burmeister Webdesign Leipzig" },
+      { name: "description", content: "Impressum von Gustav Burmeister Webdesign Leipzig gemäß § 5 DDG." },
       { name: "robots", content: "noindex, nofollow" },
     ],
     links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/impressum" }],

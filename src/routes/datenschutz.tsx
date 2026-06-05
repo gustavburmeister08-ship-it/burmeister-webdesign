@@ -4,8 +4,8 @@ import { Section } from "@/components/site/Section";
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
     meta: [
-      { title: "Datenschutzerklärung – Burmeister Webdesign Leipzig" },
-      { name: "description", content: "Datenschutzerklärung von Burmeister Webdesign Leipzig gemäß DSGVO." },
+      { title: "Datenschutzerklärung – Gustav Burmeister Webdesign Leipzig" },
+      { name: "description", content: "Datenschutzerklärung von Gustav Burmeister Webdesign Leipzig gemäß DSGVO." },
       { name: "robots", content: "noindex, nofollow" },
     ],
     links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/datenschutz" }],

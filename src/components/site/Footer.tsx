@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+﻿import { Link } from "@tanstack/react-router";
 import { CONTACT } from "@/lib/contact";
 
 export function Footer() {
@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex items-center">
             <img
               src="/images/gb-webdesign-logo-lang-weiss.webp"
-              alt="Burmeister Webdesign Leipzig"
+              alt="Gustav Burmeister Webdesign Leipzig"
               width={220}
               height={56}
               className="h-10 w-auto"

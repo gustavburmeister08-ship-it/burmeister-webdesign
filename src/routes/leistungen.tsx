@@ -9,9 +9,9 @@ import { CtaRow } from "@/components/site/CtaRow";
 export const Route = createFileRoute("/leistungen")({
   head: () => ({
     meta: [
-      { title: "Leistungen – Webdesigner Leipzig | Burmeister Webdesign" },
+      { title: "Leistungen – Webdesigner Leipzig | Gustav Burmeister Webdesign" },
       { name: "description", content: "Webdesigner Leipzig: Website-Erstellung, Relaunch, Landingpages, SEO, Google Business, Hosting. Alles aus einer Hand – persönlich betreut ab 1.000 €." },
-      { property: "og:title", content: "Webdesign-Leistungen Leipzig – Burmeister Webdesign" },
+      { property: "og:title", content: "Webdesign-Leistungen Leipzig – Gustav Burmeister Webdesign" },
       { property: "og:description", content: "Website-Erstellung, Relaunch, SEO, Hosting & mehr – alles aus einer Hand in Leipzig ab 1.000 €." },
       { property: "og:url", content: "https://burmeister-webdesign.com/leistungen" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-website-mockup.webp" },

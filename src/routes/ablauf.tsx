@@ -7,7 +7,7 @@ export const Route = createFileRoute("/ablauf")({
     meta: [
       { title: "Website erstellen lassen – Ablauf | Burmeister Leipzig" },
       { name: "description", content: "So entsteht Ihre Website in Leipzig: Erstgespräch, Angebot, Design-Entwurf, Umsetzung und Veröffentlichung – in fünf klaren Schritten, transparent und schnell." },
-      { property: "og:title", content: "Website-Ablauf in 5 Schritten – Burmeister Webdesign Leipzig" },
+      { property: "og:title", content: "Website-Ablauf in 5 Schritten – Gustav Burmeister Webdesign Leipzig" },
       { property: "og:description", content: "In fünf klaren Schritten zur fertigen Website – transparent, schnell, persönlich betreut." },
       { property: "og:url", content: "https://burmeister-webdesign.com/ablauf" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-prozess.webp" },
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/ablauf")({
           "@context": "https://schema.org",
           "@type": "HowTo",
           name: "So entsteht Ihre Website – in fünf einfachen Schritten",
-          description: "Von der ersten Idee bis zur fertigen Website: Burmeister Webdesign Leipzig begleitet Sie in fünf klaren Schritten.",
+          description: "Von der ersten Idee bis zur fertigen Website: Gustav Burmeister Webdesign Leipzig begleitet Sie in fünf klaren Schritten.",
           step: [
             { "@type": "HowToStep", position: 1, name: "Kostenloses Erstgespräch", text: "Telefonisch, per WhatsApp oder vor Ort in Leipzig. Wir klären, was Sie brauchen und was sinnvoll ist." },
             { "@type": "HowToStep", position: 2, name: "Festes Angebot", text: "Sie erhalten ein verständliches Angebot mit klarem Preis – keine Stundenfallen, keine Überraschungen." },

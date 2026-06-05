@@ -8,8 +8,8 @@ export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
       { title: "Webdesign Leipzig anfragen – Kostenloses Erstgespräch" },
-      { name: "description", content: "Website in Leipzig erstellen lassen? Kostenloses Erstgespräch per Telefon, WhatsApp oder E-Mail. Burmeister Webdesign – persönlich, unverbindlich, schnell." },
-      { property: "og:title", content: "Kostenloses Erstgespräch | Burmeister Webdesign Leipzig" },
+      { name: "description", content: "Website in Leipzig erstellen lassen? Kostenloses Erstgespräch per Telefon, WhatsApp oder E-Mail. Gustav Burmeister Webdesign – persönlich, unverbindlich, schnell." },
+      { property: "og:title", content: "Kostenloses Erstgespräch | Gustav Burmeister Webdesign Leipzig" },
       { property: "og:description", content: "Jetzt Erstgespräch anfragen – kostenlos, unverbindlich, persönlich. Telefon, WhatsApp oder E-Mail." },
       { property: "og:url", content: "https://burmeister-webdesign.com/kontakt" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-kontakt-hero.webp" },

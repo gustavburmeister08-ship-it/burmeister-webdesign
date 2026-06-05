@@ -6,8 +6,8 @@ import { CtaRow } from "@/components/site/CtaRow";
 export const Route = createFileRoute("/referenzen")({
   head: () => ({
     meta: [
-      { title: "Webdesign-Referenzen Leipzig – Burmeister Webdesign" },
-      { name: "description", content: "Webdesign-Referenzen aus Leipzig: echte Projekte von Burmeister Webdesign. Aktuelle Referenz: geyerliner.de – sehen Sie selbst, was alles möglich ist." },
+      { title: "Webdesign-Referenzen Leipzig – Gustav Burmeister Webdesign" },
+      { name: "description", content: "Webdesign-Referenzen aus Leipzig: echte Projekte von Gustav Burmeister Webdesign. Aktuelle Referenz: geyerliner.de – sehen Sie selbst, was alles möglich ist." },
       { property: "og:title", content: "Webdesign-Referenzen aus Leipzig – Echte Projekte" },
       { property: "og:description", content: "Echte Webdesign-Projekte aus Leipzig. Aktuelle Referenz: geyerliner.de – kein Stockfoto, kein Fake." },
       { property: "og:url", content: "https://burmeister-webdesign.com/referenzen" },

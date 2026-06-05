@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 
@@ -35,7 +35,7 @@ export function Header() {
         <Link to="/" className="group flex items-center" onClick={() => setOpen(false)}>
           <img
             src="/images/gb-webdesign-logo-lang-schwarz.webp"
-            alt="Burmeister Webdesign Leipzig"
+            alt="Gustav Burmeister Webdesign Leipzig"
             width={220}
             height={56}
             className="h-10 w-auto"

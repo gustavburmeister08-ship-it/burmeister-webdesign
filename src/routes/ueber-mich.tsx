@@ -41,7 +41,7 @@ export const Route = createFileRoute("/ueber-mich")({
           worksFor: {
             "@type": "Organization",
             "@id": "https://burmeister-webdesign.com/#business",
-            name: "Burmeister Webdesign Leipzig",
+            name: "Gustav Burmeister Webdesign Leipzig",
           },
           address: {
             "@type": "PostalAddress",
