@@ -37,7 +37,7 @@ function ReferenzenPage() {
       <Section className="pb-10">
         <Eyebrow>Referenzen</Eyebrow>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          Echte Projekte. Keine erfundenen Vorzeigekunden.
+          Echte Projekte – Keine erfundenen Vorzeigekunden
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-foreground/75">
           Hier sehen Sie ausschließlich Projekte, die tatsächlich von mir umgesetzt

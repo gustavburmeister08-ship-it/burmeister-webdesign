@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+﻿﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   Layers, Sparkles, Zap, Search, MapPin, PenLine,
   ImageIcon, ServerCog, ShoppingBag, Workflow,
@@ -10,9 +10,9 @@ export const Route = createFileRoute("/leistungen")({
   head: () => ({
     meta: [
       { title: "Leistungen – Webdesigner Leipzig | Gustav Burmeister Webdesign" },
-      { name: "description", content: "Webdesigner Leipzig: Website-Erstellung, Relaunch, Landingpages, SEO, Google Business, Hosting. Alles aus einer Hand – persönlich betreut ab 1.000 €." },
+      { name: "description", content: "Webdesigner Leipzig: Website-Erstellung, Relaunch, Landingpages, SEO, Google Business, Hosting. Alles aus einer Hand – persönlich betreut ab 790 €." },
       { property: "og:title", content: "Webdesign-Leistungen Leipzig – Gustav Burmeister Webdesign" },
-      { property: "og:description", content: "Website-Erstellung, Relaunch, SEO, Hosting & mehr – alles aus einer Hand in Leipzig ab 1.000 €." },
+      { property: "og:description", content: "Website-Erstellung, Relaunch, SEO, Hosting & mehr – alles aus einer Hand in Leipzig ab 790 €." },
       { property: "og:url", content: "https://burmeister-webdesign.com/leistungen" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-website-mockup.webp" },
     ],
@@ -69,7 +69,7 @@ function LeistungenPage() {
       <Section className="pb-10">
         <Eyebrow>Leistungen</Eyebrow>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          Alles für Ihre neue Website – aus einer Hand in Leipzig.
+          Alles für Ihre neue Website – aus einer Hand in Leipzig
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-foreground/75">
           Von der ersten Idee bis zum laufenden Betrieb. Sie haben einen festen

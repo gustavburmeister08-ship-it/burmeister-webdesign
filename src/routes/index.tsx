@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+﻿﻿import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -25,13 +25,13 @@ import { Section, Eyebrow } from "@/components/site/Section";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Webdesign Leipzig – Website erstellen lassen ab 1.000 €" },
+      { title: "Webdesign Leipzig – Website erstellen lassen ab 790 €" },
       {
         name: "description",
-        content: "Webdesigner aus Leipzig für kleine Unternehmen. Website ab 1.000 € – schnell umgesetzt, verständlich erklärt. Jetzt kostenloses Erstgespräch anfragen.",
+        content: "Webdesigner aus Leipzig für kleine Unternehmen. Website ab 790 € – schnell umgesetzt, verständlich erklärt. Jetzt kostenloses Erstgespräch anfragen.",
       },
-      { property: "og:title", content: "Webdesign Leipzig – Website erstellen lassen ab 1.000 €" },
-      { property: "og:description", content: "Websites ab 1.000 € – schnell, verständlich, persönlich betreut. Jetzt Erstgespräch anfragen." },
+      { property: "og:title", content: "Webdesign Leipzig – Website erstellen lassen ab 790 €" },
+      { property: "og:description", content: "Websites ab 790 € – schnell, verständlich, persönlich betreut. Jetzt Erstgespräch anfragen." },
       { property: "og:url", content: "https://burmeister-webdesign.com/" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig-cafe.webp" },
     ],
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
             {
               "@type": "Question",
               name: "Was kostet eine Website in Leipzig?",
-              acceptedAnswer: { "@type": "Answer", text: "Einfache Websites starten bei 1.000 €. Der genaue Preis hängt vom Umfang ab – mehrseitige Websites beginnen bei ca. 2.000 €, Relaunches ab 3.000 €. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot." },
+              acceptedAnswer: { "@type": "Answer", text: "Einfache Websites starten bei 790 €. Der genaue Preis hängt vom Umfang ab – mehrseitige Websites beginnen bei ca. 1.390 €, Relaunches ab 1.590 €. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot." },
             },
             {
               "@type": "Question",
@@ -77,7 +77,7 @@ export const Route = createFileRoute("/")({
 });
 
 const TRUST = [
-  { icon: Wallet, label: "Websites ab 1.000 €" },
+  { icon: Wallet, label: "Websites ab 790 €" },
   { icon: Clock3, label: "Schnelle Umsetzung" },
   { icon: ShieldCheck, label: "Persönlicher Ansprechpartner" },
   { icon: ServerCog, label: "Hosting & Wartung möglich" },
@@ -113,7 +113,7 @@ function Index() {
           <div className="lg:col-span-7">
             <Eyebrow>Webdesign aus Leipzig · Persönlich betreut</Eyebrow>
             <h1 className="mt-5 font-serif text-[40px] leading-[1.05] tracking-tight text-foreground md:text-[58px] lg:text-[64px]">
-              Professionelle Websites für kleine Unternehmen in Leipzig.
+              Professionelle Websites für kleine Unternehmen in Leipzig
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
               Moderne Websites, Landingpages und Relaunches – schnell umgesetzt,
@@ -336,11 +336,11 @@ function Index() {
           <div className="md:col-span-7">
             <Eyebrow>Preisorientierung</Eyebrow>
             <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-              Websites ab 1.000 €.
+              Websites ab 790 €.
             </h2>
             <p className="mt-4 text-foreground/75">
               Keine starren Pakete, keine versteckten Kosten. Der genaue Preis hängt
-              vom Umfang ab – einseitige Websites starten bei <strong>1.000 €</strong>,
+              vom Umfang ab – einseitige Websites starten bei <strong>790 €</strong>,
               umfangreichere Projekte und Relaunches werden individuell kalkuliert.
             </p>
             <p className="mt-3 text-foreground/75">
@@ -353,9 +353,9 @@ function Index() {
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Beispielhafte Orientierung</p>
             <ul className="mt-4 divide-y divide-border text-sm">
               {[
-                ["Einseitige Website", "ab 1.000 €"],
-                ["Mehrseitige Website", "ab 2.000 €"],
-                ["Website-Relaunch", "ab 3.000 €"],
+                ["Einseitige Website", "ab 790 €"],
+                ["Mehrseitige Website", "ab 1.390 €"],
+                ["Website-Relaunch", "ab 1.590 €"],
                 ["Hosting & Wartung", "ab 30 €/Monat"],
               ].map(([k, v]) => (
                 <li key={k} className="flex items-center justify-between py-3">

@@ -38,7 +38,7 @@ function KontaktPage() {
       <Section className="pb-10">
         <Eyebrow>Kontakt</Eyebrow>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          Kostenloses Erstgespräch – persönlich, unverbindlich, in unter 15 Minuten.
+          Kostenloses Erstgespräch – persönlich, unverbindlich, in unter 15 Minuten
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-foreground/75">
           Schreiben Sie kurz, was Sie vorhaben. Ich melde mich innerhalb eines

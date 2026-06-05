@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+﻿﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { CtaRow } from "@/components/site/CtaRow";
 
@@ -6,9 +6,9 @@ export const Route = createFileRoute("/ueber-mich")({
   head: () => ({
     meta: [
       { title: "Über mich – Gustav Burmeister | Webdesigner Leipzig" },
-      { name: "description", content: "Gustav Burmeister – freiberuflicher Webdesigner aus Leipzig. Persönlich, fair und direkt: Websites für kleine Unternehmen ab 1.000 €. Lernen Sie mich kennen." },
+      { name: "description", content: "Gustav Burmeister – freiberuflicher Webdesigner aus Leipzig. Persönlich, fair und direkt: Websites für kleine Unternehmen ab 790 €. Lernen Sie mich kennen." },
       { property: "og:title", content: "Gustav Burmeister – Webdesigner aus Leipzig" },
-      { property: "og:description", content: "Freiberuflicher Webdesigner aus Leipzig. Persönlich erreichbar, faire Preise, Websites ab 1.000 €." },
+      { property: "og:description", content: "Freiberuflicher Webdesigner aus Leipzig. Persönlich erreichbar, faire Preise, Websites ab 790 €." },
       { property: "og:url", content: "https://burmeister-webdesign.com/ueber-mich" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp" },
     ],
@@ -63,7 +63,7 @@ function UeberMichPage() {
       <Section className="pb-10">
         <Eyebrow>Über mich</Eyebrow>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          Gustav Burmeister – Ihr Webdesigner aus Leipzig.
+          Gustav Burmeister – Ihr Webdesigner aus Leipzig
         </h1>
       </Section>
 

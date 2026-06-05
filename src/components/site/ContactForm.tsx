@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+﻿import { useState, type FormEvent } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { z } from "zod";
 
@@ -31,8 +31,8 @@ const LEISTUNGEN = [
 ];
 
 const BUDGETS = [
-  "ab 1.000 €",
-  "1.000 – 2.000 €",
+  "ab 790 €",
+  "1.000 – 1.390 €",
   "2.000 – 4.000 €",
   "4.000 – 8.000 €",
   "über 8.000 €",

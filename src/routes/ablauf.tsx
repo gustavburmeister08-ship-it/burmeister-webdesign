@@ -60,7 +60,7 @@ function AblaufPage() {
       <Section className="pb-10">
         <Eyebrow>Ablauf</Eyebrow>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          So entsteht Ihre Website – in fünf einfachen Schritten.
+          So entsteht Ihre Website – in fünf einfachen Schritten
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-foreground/75">
           Klar strukturiert, ohne unnötige Meetings, ohne Wartezeiten. Sie wissen jederzeit, wo Ihr Projekt steht.

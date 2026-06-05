@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+﻿﻿import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { CtaRow } from "@/components/site/CtaRow";
@@ -7,9 +7,9 @@ export const Route = createFileRoute("/preise")({
   head: () => ({
     meta: [
       { title: "Preise – Website-Kosten | Gustav Burmeister Webdesign Leipzig" },
-      { name: "description", content: "Webdesign-Preise aus Leipzig: Websites ab 1.000 €. Keine starren Pakete, transparente Kalkulation, individuelles Angebot nach kostenlosem Erstgespräch." },
-      { property: "og:title", content: "Webdesign-Preise Leipzig – Website ab 1.000 €" },
-      { property: "og:description", content: "Transparente Webdesign-Preise aus Leipzig: ab 1.000 €, individuelles Angebot nach kostenlosem Erstgespräch." },
+      { name: "description", content: "Webdesign-Preise aus Leipzig: Websites ab 790 €. Keine starren Pakete, transparente Kalkulation, individuelles Angebot nach kostenlosem Erstgespräch." },
+      { property: "og:title", content: "Webdesign-Preise Leipzig – Website ab 790 €" },
+      { property: "og:description", content: "Transparente Webdesign-Preise aus Leipzig: ab 790 €, individuelles Angebot nach kostenlosem Erstgespräch." },
       { property: "og:url", content: "https://burmeister-webdesign.com/preise" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp" },
     ],
@@ -35,12 +35,12 @@ export const Route = createFileRoute("/preise")({
             {
               "@type": "Question",
               name: "Was kostet eine einfache Website in Leipzig?",
-              acceptedAnswer: { "@type": "Answer", text: "Eine einseitige Website (One-Pager) startet bei 1.000 €, inklusive Design, Texten und mobiler Optimierung." },
+              acceptedAnswer: { "@type": "Answer", text: "Eine einseitige Website (One-Pager) startet bei 790 €, inklusive Design, Texten und mobiler Optimierung." },
             },
             {
               "@type": "Question",
               name: "Was kostet ein Website-Relaunch?",
-              acceptedAnswer: { "@type": "Answer", text: "Ein Website-Relaunch beginnt bei 3.000 €. Der Preis hängt vom Umfang der bestehenden Website und den gewünschten Änderungen ab." },
+              acceptedAnswer: { "@type": "Answer", text: "Ein Website-Relaunch beginnt bei 1.590 €. Der Preis hängt vom Umfang der bestehenden Website und den gewünschten Änderungen ab." },
             },
             {
               "@type": "Question",
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/preise")({
 const ROWS: { title: string; price: string; inkl: string[] }[] = [
   {
     title: "Einseitige Website",
-    price: "ab 1.000 €",
+    price: "ab 790 €",
     inkl: [
       "Eine ausführliche Seite (One-Pager)",
       "Mobiles, modernes Design",
@@ -78,7 +78,7 @@ const ROWS: { title: string; price: string; inkl: string[] }[] = [
   },
   {
     title: "Mehrseitige Website",
-    price: "ab 2.000 €",
+    price: "ab 1.390 €",
     inkl: [
       "Mehrere Unterseiten (z. B. Leistungen, Über uns, Kontakt)",
       "Individuelles Design auf Ihre Branche zugeschnitten",
@@ -88,7 +88,7 @@ const ROWS: { title: string; price: string; inkl: string[] }[] = [
   },
   {
     title: "Website-Relaunch",
-    price: "ab 3.000 €",
+    price: "ab 1.590 €",
     inkl: [
       "Neuaufbau einer bestehenden Website",
       "Übernahme & Verbesserung vorhandener Inhalte",
@@ -114,10 +114,10 @@ function PreisePage() {
       <Section className="pb-10">
         <Eyebrow>Preise</Eyebrow>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          Website-Kosten in Leipzig: Preise ab 1.000 €.
+          Website-Kosten in Leipzig: Preise ab 790 €
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-foreground/75">
-          Websites bei Gustav Burmeister Webdesign starten bei <strong>1.000 €</strong>. Der
+          Websites bei Gustav Burmeister Webdesign starten bei <strong>790 €</strong>. Der
           tatsächliche Preis hängt vom Umfang ab – Sie erhalten nach einem kurzen,
           kostenlosen Gespräch ein verständliches, schriftliches Angebot.
         </p>
