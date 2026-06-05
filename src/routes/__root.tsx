@@ -77,15 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Burmeister Webdesign Leipzig – Website ab 500 €" },
+      { title: "Burmeister Webdesign Leipzig – Website ab 1.000 €" },
       {
         name: "description",
-        content: "Webdesigner in Leipzig für kleine Unternehmen. Websites ab 500 € – schnell umgesetzt, verständlich erklärt. Jetzt kostenloses Erstgespräch anfragen.",
+        content: "Webdesigner in Leipzig für kleine Unternehmen. Websites ab 1.000 € – schnell umgesetzt, verständlich erklärt. Jetzt kostenloses Erstgespräch anfragen.",
       },
       { name: "author", content: "Gustav Burmeister" },
       { property: "og:site_name", content: "Burmeister Webdesign Leipzig" },
       { property: "og:title", content: "Burmeister Webdesign Leipzig" },
-      { property: "og:description", content: "Websites für kleine Unternehmen in Leipzig – ab 500 €." },
+      { property: "og:description", content: "Websites für kleine Unternehmen in Leipzig – ab 1.000 €." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp" },

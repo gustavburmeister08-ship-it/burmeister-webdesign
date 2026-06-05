@@ -6,9 +6,9 @@ export const Route = createFileRoute("/ueber-mich")({
   head: () => ({
     meta: [
       { title: "Über mich – Gustav Burmeister | Webdesigner Leipzig" },
-      { name: "description", content: "Gustav Burmeister – freiberuflicher Webdesigner aus Leipzig. Persönlich, fair und direkt: Websites für kleine Unternehmen ab 500 €. Lernen Sie mich kennen." },
+      { name: "description", content: "Gustav Burmeister – freiberuflicher Webdesigner aus Leipzig. Persönlich, fair und direkt: Websites für kleine Unternehmen ab 1.000 €. Lernen Sie mich kennen." },
       { property: "og:title", content: "Gustav Burmeister – Webdesigner aus Leipzig" },
-      { property: "og:description", content: "Freiberuflicher Webdesigner aus Leipzig. Persönlich erreichbar, faire Preise, Websites ab 500 €." },
+      { property: "og:description", content: "Freiberuflicher Webdesigner aus Leipzig. Persönlich erreichbar, faire Preise, Websites ab 1.000 €." },
       { property: "og:url", content: "https://burmeister-webdesign.com/ueber-mich" },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp" },
     ],
