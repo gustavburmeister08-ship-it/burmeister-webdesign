@@ -264,16 +264,18 @@ function Index() {
 
       {/* REFERENZ */}
       <Section>
-        <Eyebrow>Referenz</Eyebrow>
+        <Eyebrow>Projekte</Eyebrow>
         <h2 className="mt-4 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
-          Echte Projekte aus Leipzig – keine erfundenen Vorzeigekunden.
+          Echte Projekte – und Beispiele, was möglich ist.
         </h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-12">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          {/* geyerliner.de */}
           <a
             href="https://geyerliner.de"
             target="_blank"
             rel="noopener noreferrer"
-            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)] md:col-span-7"
+            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
           >
             <img
               src="/images/gb-webdesign-referenz-geyerliner.webp"
@@ -281,28 +283,63 @@ function Index() {
               width={900}
               height={500}
               loading="lazy"
-              className="w-full object-cover"
+              className="w-full object-cover aspect-video"
             />
-            <div className="p-8">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">Aktuelles Projekt</p>
-              <h3 className="mt-2 font-serif text-2xl text-foreground">geyerliner.de</h3>
-              <p className="mt-3 text-sm text-foreground/75">
-                Website für ein lokales Unternehmen – moderne Darstellung, klarer Aufbau
-                und gute Auffindbarkeit. Live unter geyerliner.de.
-              </p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary">
-                Projekt ansehen <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+            <div className="p-6">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">Kundenprojekt</p>
+              <h3 className="mt-2 font-serif text-xl text-foreground">geyerliner.de</h3>
+              <p className="mt-2 text-sm text-foreground/75">Lokale Unternehmenswebsite – klar, modern, gut auffindbar.</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                Ansehen <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
               </span>
             </div>
           </a>
-          <div className="rounded-2xl border border-dashed border-border bg-card/60 p-8 text-sm text-foreground/70 md:col-span-5">
-            <p className="font-medium text-foreground">Weitere Referenzen folgen.</p>
-            <p className="mt-3">
-              Ich zeige nur Projekte, die wirklich von mir umgesetzt wurden – ohne
-              Stockfotos oder erfundene Logos. Wenn Sie eine konkrete Branche sehen
-              möchten, melden Sie sich gern.
-            </p>
-          </div>
+
+          {/* Salon Bernstein */}
+          <a
+            href="https://salon-bernstein.pages.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
+          >
+            <div className="aspect-video w-full bg-[linear-gradient(135deg,var(--brand-stone),oklch(0.88_0.04_85))] flex items-center justify-center">
+              <span className="font-serif text-2xl text-foreground/25">Salon Bernstein</span>
+            </div>
+            <div className="p-6">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
+              <h3 className="mt-2 font-serif text-xl text-foreground">Salon Bernstein</h3>
+              <p className="mt-2 text-sm text-foreground/75">Demo-Website für einen Friseursalon – mobil, modern, mit Buchung.</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                Demo ansehen <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </a>
+
+          {/* Goldener Stier */}
+          <a
+            href="https://goldener-stier.pages.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
+          >
+            <div className="aspect-video w-full bg-[linear-gradient(135deg,oklch(0.76_0.08_60),oklch(0.88_0.06_75))] flex items-center justify-center">
+              <span className="font-serif text-2xl text-foreground/25">Goldener Stier</span>
+            </div>
+            <div className="p-6">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
+              <h3 className="mt-2 font-serif text-xl text-foreground">Goldener Stier</h3>
+              <p className="mt-2 text-sm text-foreground/75">Demo-Website für ein Restaurant – Speisekarte, Atmosphäre, Öffnungszeiten.</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                Demo ansehen <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </a>
+
+        </div>
+        <div className="mt-6 text-right">
+          <Link to="/referenzen" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+            Alle Projekte ansehen <ArrowRight size={16} />
+          </Link>
         </div>
       </Section>
 
