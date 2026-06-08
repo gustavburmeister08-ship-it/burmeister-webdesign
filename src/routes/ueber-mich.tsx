@@ -37,7 +37,7 @@ export const Route = createFileRoute("/ueber-mich")({
           url: "https://burmeister-webdesign.com/ueber-mich",
           image: "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp",
           email: "gustav.burmeister08@gmail.com",
-          telephone: "+4916099627317",
+          telephone: "+493418605648",
           worksFor: {
             "@type": "Organization",
             "@id": "https://burmeister-webdesign.com/#business",

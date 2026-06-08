@@ -2,9 +2,9 @@
   name: "Gustav Burmeister",
   brand: "Gustav Burmeister Webdesign Leipzig",
   email: "gustav.burmeister08@gmail.com",
-  phoneDisplay: "+49 160 99627317",
-  phoneHref: "tel:+4916099627317",
+  phoneDisplay: "0341 8605648",
+  phoneHref: "tel:+493418605648",
   whatsappDisplay: "WhatsApp",
-  whatsappHref: "https://wa.me/4916099627317",
+  whatsappHref: "https://wa.me/493418605648",
   city: "Leipzig",
 } as const;

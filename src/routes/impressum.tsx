@@ -36,8 +36,8 @@ function ImpressumPage() {
           <h2 className="mb-3 font-serif text-xl text-foreground">Kontakt</h2>
           <p>
             Telefon:{" "}
-            <a href="tel:+4916099627317" className="underline underline-offset-2">
-              +49 160 99627317
+            <a href="tel:+493418605648" className="underline underline-offset-2">
+              0341 8605648
             </a>
             <br />
             E-Mail:{" "}

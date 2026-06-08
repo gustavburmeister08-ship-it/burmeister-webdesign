@@ -124,7 +124,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           url: "https://burmeister-webdesign.com",
           logo: "https://burmeister-webdesign.com/images/gb-webdesign-logo.webp",
           image: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp",
-          telephone: "+4916099627317",
+          telephone: "+493418605648",
           email: "gustav.burmeister08@gmail.com",
           founder: { "@type": "Person", name: "Gustav Burmeister" },
           address: {
