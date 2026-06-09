@@ -88,6 +88,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Websites für kleine Unternehmen in Leipzig – ab 790 €." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Gustav Burmeister Webdesign Leipzig – Website ab 790 €" },
+      { name: "twitter:description", content: "Webdesigner in Leipzig für kleine Unternehmen. Websites ab 790 € – schnell umgesetzt, verständlich erklärt." },
       { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -117,6 +119,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://burmeister-webdesign.com/#website",
+          url: "https://burmeister-webdesign.com",
+          name: "Gustav Burmeister Webdesign Leipzig",
+          description: "Webdesign für kleine Unternehmen in Leipzig – Websites ab 790 €",
+          inLanguage: "de-DE",
+          publisher: { "@id": "https://burmeister-webdesign.com/#business" },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "ProfessionalService",
           "@id": "https://burmeister-webdesign.com/#business",
           name: "Gustav Burmeister Webdesign Leipzig",
@@ -129,9 +144,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           founder: { "@type": "Person", name: "Gustav Burmeister" },
           address: {
             "@type": "PostalAddress",
+            streetAddress: "An der Märchenwiese 40",
             addressLocality: "Leipzig",
             addressRegion: "Sachsen",
-            postalCode: "04XXX",
+            postalCode: "04277",
             addressCountry: "DE",
           },
           areaServed: [

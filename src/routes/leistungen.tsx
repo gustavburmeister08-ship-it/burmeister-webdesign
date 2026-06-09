@@ -33,6 +33,35 @@ export const Route = createFileRoute("/leistungen")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Was ist im Webdesign-Paket enthalten?",
+              acceptedAnswer: { "@type": "Answer", text: "Struktur, Design, Texte, Bildaufbereitung und technische Umsetzung sind inklusive. Auf Wunsch auch SEO-Grundoptimierung, Hosting und Wartung." },
+            },
+            {
+              "@type": "Question",
+              name: "Muss ich selbst Texte schreiben?",
+              acceptedAnswer: { "@type": "Answer", text: "Nein. Ich übernehme die Texte für Ihre Website. Sie liefern die Informationen zu Ihrem Unternehmen – ich formuliere verständlich und zielgruppengerecht." },
+            },
+            {
+              "@type": "Question",
+              name: "Hilft Webdesign bei der Google-Auffindbarkeit?",
+              acceptedAnswer: { "@type": "Answer", text: "Ja. Jede Website enthält eine SEO-Grundoptimierung: saubere Technik, lokale Bezüge und Inhalte, die zu echten Suchanfragen passen. Für mehr Sichtbarkeit empfehle ich zusätzlich ein Google Business Profil." },
+            },
+            {
+              "@type": "Question",
+              name: "Bieten Sie auch Wartung nach dem Launch an?",
+              acceptedAnswer: { "@type": "Answer", text: "Ja. Optionales Hosting & Wartungspaket ab 30 €/Monat – inklusive täglicher Backups, regelmäßiger Updates und kleiner Änderungen auf Zuruf." },
+            },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "ItemList",
           name: "Webdesign-Leistungen Leipzig",
           itemListElement: [
@@ -226,6 +255,39 @@ function LeistungenPage() {
               className="w-full rounded-2xl object-cover"
             />
           </div>
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Section>
+        <Eyebrow>Häufige Fragen</Eyebrow>
+        <h2 className="mt-4 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Was Kunden vor dem Start häufig fragen
+        </h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {[
+            {
+              q: "Was ist im Webdesign-Paket enthalten?",
+              a: "Struktur, Design, Texte, Bildaufbereitung und technische Umsetzung sind inklusive. Auf Wunsch auch SEO-Grundoptimierung, Hosting und Wartung.",
+            },
+            {
+              q: "Muss ich selbst Texte schreiben?",
+              a: "Nein. Ich übernehme die Texte für Ihre Website. Sie liefern die Informationen zu Ihrem Unternehmen – ich formuliere verständlich und zielgruppengerecht.",
+            },
+            {
+              q: "Hilft Webdesign bei der Google-Auffindbarkeit?",
+              a: "Ja. Jede Website enthält eine SEO-Grundoptimierung: saubere Technik, lokale Bezüge und Inhalte, die zu echten Suchanfragen passen. Für mehr Sichtbarkeit empfehle ich zusätzlich ein Google Business Profil.",
+            },
+            {
+              q: "Bieten Sie auch Wartung nach dem Launch an?",
+              a: "Ja. Optionales Hosting & Wartungspaket ab 30 €/Monat – inklusive täglicher Backups, regelmäßiger Updates und kleiner Änderungen auf Zuruf.",
+            },
+          ].map(({ q, a }) => (
+            <div key={q} className="rounded-2xl border border-border bg-card p-6">
+              <h3 className="font-serif text-lg text-foreground">{q}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/75">{a}</p>
+            </div>
+          ))}
         </div>
       </Section>
 

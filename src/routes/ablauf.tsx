@@ -5,7 +5,7 @@ import { CtaRow } from "@/components/site/CtaRow";
 export const Route = createFileRoute("/ablauf")({
   head: () => ({
     meta: [
-      { title: "Website erstellen lassen – Ablauf | Burmeister Leipzig" },
+      { title: "Website erstellen lassen Leipzig – Ablauf in 5 Schritten | Gustav Burmeister Webdesign" },
       { name: "description", content: "So entsteht Ihre Website in Leipzig: Erstgespräch, Angebot, Design-Entwurf, Umsetzung und Veröffentlichung – in fünf klaren Schritten, transparent und schnell." },
       { property: "og:title", content: "Website-Ablauf in 5 Schritten – Gustav Burmeister Webdesign Leipzig" },
       { property: "og:description", content: "In fünf klaren Schritten zur fertigen Website – transparent, schnell, persönlich betreut." },

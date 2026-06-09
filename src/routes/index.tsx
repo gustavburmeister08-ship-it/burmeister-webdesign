@@ -365,6 +365,14 @@ function Index() {
             </li>
           ))}
         </ol>
+        <div className="mt-8 text-center">
+          <Link
+            to="/ablauf"
+            className="inline-flex items-center gap-2 rounded-full border border-background/20 px-5 py-2.5 text-sm font-medium text-background/80 hover:border-background/40 hover:text-background"
+          >
+            Ablauf im Detail ansehen <ArrowRight size={15} />
+          </Link>
+        </div>
       </Section>
 
       {/* PREIS */}
@@ -404,6 +412,9 @@ function Index() {
             <p className="mt-4 text-xs text-muted-foreground">
               Richtwerte. Konkretes Angebot nach Erstgespräch.
             </p>
+            <Link to="/preise" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
+              Alle Preise im Detail <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </Section>

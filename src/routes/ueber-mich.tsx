@@ -117,7 +117,7 @@ function UeberMichPage() {
 
       <Section className="bg-secondary/60">
         <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-          Lust auf ein unverbindliches Gespräch?
+          Ihr Webdesigner in Leipzig – persönlich erreichbar
         </h2>
         <CtaRow />
       </Section>

@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "check:meta": "node scripts/check-meta.mjs",
-    "check:meta:live": "node scripts/check-meta.mjs https://burmeister-webdesign.de"
+    "check:meta:live": "node scripts/check-meta.mjs https://burmeister-webdesign.com"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",

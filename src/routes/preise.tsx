@@ -144,7 +144,7 @@ function PreisePage() {
         </div>
         <p className="mt-6 text-xs text-muted-foreground">
           Preise sind Richtwerte zur ersten Orientierung. Endgültige Konditionen werden
-          individuell vereinbart. Alle Preise zzgl. gesetzlicher Umsatzsteuer.
+          individuell vereinbart. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
         </p>
       </Section>
 
