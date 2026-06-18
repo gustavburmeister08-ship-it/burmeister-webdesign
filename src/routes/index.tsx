@@ -1,4 +1,4 @@
-﻿﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -18,6 +18,7 @@ import {
   ShoppingBag,
   Zap,
   MapPin,
+  ArrowUpRight,
 } from "lucide-react";
 import { CtaRow } from "@/components/site/CtaRow";
 import { Section, Eyebrow } from "@/components/site/Section";
@@ -76,23 +77,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const TRUST = [
-  { icon: Wallet, label: "Websites ab 790 €" },
-  { icon: Clock3, label: "Schnelle Umsetzung" },
-  { icon: ShieldCheck, label: "Persönlicher Ansprechpartner" },
-  { icon: ServerCog, label: "Hosting & Wartung möglich" },
-];
-
 const LEISTUNGEN = [
   { icon: Layers, title: "Neue Website", text: "Modern, mobil optimiert und auf Ihre Kunden zugeschnitten – inklusive Texten, Bildern und klarer Struktur." },
   { icon: Sparkles, title: "Website-Relaunch", text: "Bestehende Seiten bekommen ein zeitgemäßes Design, eine bessere Struktur und mehr Anfragen." },
   { icon: Zap, title: "Landingpages", text: "Fokussierte Einzelseiten für Aktionen, neue Leistungen oder Google-Anzeigen." },
   { icon: Search, title: "SEO-Grundoptimierung", text: "Damit Ihre Firma in Leipzig und Umgebung gefunden wird – mit sauberer Technik und passenden Texten." },
   { icon: MapPin, title: "Google Business Profil", text: "Einrichtung und Pflege Ihres Profils, damit Kunden Sie in Google Maps sofort finden." },
-  { icon: PenLine, title: "Texte & Struktur", text: "Verständliche Texte, die Kunden ansprechen – ohne leere Floskeln, ohne Fachchinesisch." },
-  { icon: ImageIcon, title: "Bildbearbeitung", text: "Vorhandene Fotos werden optimiert. KI-gestützte Bildaufbereitung sorgt für ein hochwertiges Ergebnis." },
   { icon: ServerCog, title: "Hosting & Wartung", text: "Schnelles, sicheres Hosting und laufende Pflege – Sie müssen sich um nichts kümmern." },
-  { icon: ShoppingBag, title: "Online-Shops & Web-Apps", text: "Wenn Sie mehr brauchen als eine Website: kleine Shops, Buchungssysteme und Automatisierungen." },
 ];
 
 const STEPS = [
@@ -106,99 +97,107 @@ const STEPS = [
 function Index() {
   return (
     <>
-      {/* HERO */}
+      {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_20%_0%,oklch(0.95_0.04_85)_0%,transparent_70%)]" />
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-7">
-            <Eyebrow>Webdesign aus Leipzig · Persönlich betreut</Eyebrow>
-            <h1 className="mt-5 font-serif text-[40px] leading-[1.05] tracking-tight text-foreground md:text-[58px] lg:text-[64px]">
-              Professionelle Websites für kleine Unternehmen in Leipzig
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
-              Moderne Websites, Landingpages und Relaunches – schnell umgesetzt,
-              verständlich erklärt und preiswert realisiert. Persönlicher
-              Ansprechpartner statt anonymer Agentur.
-            </p>
-            <CtaRow />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(65%_55%_at_0%_100%,oklch(0.93_0.01_82),transparent_70%)]" />
+        <div className="pointer-events-none absolute right-0 top-0 -z-10 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,oklch(0.93_0.009_82),transparent_70%)] opacity-60" />
 
-            <ul className="mt-10 grid gap-3 sm:grid-cols-2">
-              {TRUST.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-3 text-sm text-foreground/80">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-primary">
-                    <Icon size={16} />
+        <div className="mx-auto max-w-6xl px-5 pb-20 pt-16 md:px-8 md:pb-28 md:pt-24">
+          <Eyebrow>Webdesign aus Leipzig · Persönlich betreut</Eyebrow>
+
+          <div className="mt-8 grid items-center gap-14 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <h1 className="font-serif text-[clamp(2.6rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+                Professionelle Websites für{" "}
+                <em className="font-serif not-italic text-primary">kleine Unternehmen</em>{" "}
+                in Leipzig
+              </h1>
+              <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-foreground/70">
+                Moderne Websites, Landingpages und Relaunches – schnell umgesetzt,
+                verständlich erklärt, preiswert realisiert. Persönlicher
+                Ansprechpartner statt anonymer Agentur.
+              </p>
+              <CtaRow />
+
+              {/* Trust row */}
+              <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+                {[
+                  { icon: Wallet, label: "ab 790 €" },
+                  { icon: Clock3, label: "Schnelle Umsetzung" },
+                  { icon: ShieldCheck, label: "Persönlicher Kontakt" },
+                ].map(({ icon: Icon, label }) => (
+                  <span key={label} className="flex items-center gap-2 text-sm text-foreground/60">
+                    <Icon size={15} className="text-primary" />
+                    {label}
                   </span>
-                  {label}
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="lg:col-span-5">
-            <div className="relative">
-              <div className="absolute -inset-4 -z-10 rounded-3xl bg-[var(--brand-stone)]" />
-              <img
-                src="/images/gb-webdesign-leipzig-cafe.webp"
-                alt="Webdesigner arbeitet in einem Café in Leipzig – Laptop mit Website auf dem Tisch, Straßenbahn und Leipzig-Schild im Hintergrund"
-                width={1280}
-                height={960}
-                fetchPriority="high"
-                loading="eager"
-                className="w-full rounded-2xl object-cover shadow-[0_30px_80px_-30px_rgba(24,32,38,0.35)]"
-              />
-              <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-border bg-card p-4 shadow-lg md:block">
-                <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Aktuell</p>
-                <p className="mt-1 font-serif text-base text-foreground">Freie Kapazität für 2 Projekte</p>
+            <div className="lg:col-span-6">
+              <div className="relative">
+                <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-[var(--brand-stone)]" />
+                <img
+                  src="/images/gb-webdesign-leipzig-cafe.webp"
+                  alt="Webdesigner arbeitet in einem Café in Leipzig – Laptop mit Website auf dem Tisch"
+                  width={1280}
+                  height={960}
+                  fetchPriority="high"
+                  loading="eager"
+                  className="w-full rounded-[1.5rem] object-cover shadow-[0_40px_80px_-30px_rgba(24,32,38,0.25)]"
+                />
+                <div className="absolute -bottom-5 -left-4 hidden rounded-xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur-sm md:block">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Aktuell</p>
+                  <p className="mt-0.5 font-serif text-sm text-foreground">Freie Kapazität für 2 Projekte</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PROBLEM */}
-      <Section className="bg-card">
-        <div className="grid gap-10 md:grid-cols-12">
+      {/* ── PROBLEM ──────────────────────────────────────────────── */}
+      <Section className="bg-foreground text-background">
+        <div className="grid gap-12 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
-            <Eyebrow>Das Problem</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+            <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background/50">
+              <span className="h-px w-6 bg-[var(--brand-gold)]" />
+              Das Problem
+            </span>
+            <h2 className="mt-5 font-serif text-3xl text-background md:text-4xl">
               Eine veraltete Website kostet Sie jeden Monat Kunden.
             </h2>
           </div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-foreground/80 md:col-span-7">
+          <div className="space-y-5 text-[15px] leading-relaxed text-background/70 md:col-span-7">
             <p>
               Viele kleine Unternehmen in Leipzig haben eine Website, die seit Jahren
               nicht mehr angefasst wurde. Sie wirkt altbacken, lädt langsam, sieht
               auf dem Handy schlecht aus – und Anfragen bleiben aus.
             </p>
-            <p>
-              Andere haben gar keine Website und verlieren täglich Kunden an die
-              Konkurrenz, weil sie bei Google nicht gefunden werden. Für eine neue
-              Website fehlt schlicht die Zeit oder das technische Wissen.
-            </p>
-            <ul className="grid gap-3 pt-2 sm:grid-cols-2">
+            <div className="grid gap-3 pt-2 sm:grid-cols-2">
               {[
                 "Schlecht auffindbar bei Google",
                 "Auf dem Handy unbrauchbar",
                 "Wirkt unprofessionell",
                 "Kein klarer Weg zur Anfrage",
               ].map((t) => (
-                <li key={t} className="flex items-start gap-2 text-sm text-foreground/85">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" />
+                <div key={t} className="flex items-center gap-3 rounded-xl border border-background/10 bg-background/5 px-4 py-3 text-sm text-background/80">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-gold)]" />
                   {t}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </Section>
 
-      {/* LÖSUNG */}
+      {/* ── LÖSUNG ───────────────────────────────────────────────── */}
       <Section>
-        <div className="grid items-center gap-12 md:grid-cols-12">
+        <div className="grid items-center gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
             <img
               src="/images/gb-webdesign-zielgruppen-collage.webp"
-              alt="Vier Zielgruppen: Handwerker, Restaurantmitarbeiterin, Friseurin und Reinigungsmann – jeweils mit moderner Website auf dem Laptop"
+              alt="Vier Zielgruppen: Handwerker, Restaurantmitarbeiterin, Friseurin und Reinigungsmann – jeweils mit moderner Website"
               width={1024}
               height={768}
               loading="lazy"
@@ -207,23 +206,24 @@ function Index() {
           </div>
           <div className="md:col-span-7">
             <Eyebrow>Die Lösung</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-              Eine Website, die für Sie arbeitet – ohne dass Sie sich darum kümmern müssen.
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Eine Website, die für Sie arbeitet –{" "}
+              <em className="italic text-primary">ohne dass Sie sich darum kümmern müssen.</em>
             </h2>
-            <p className="mt-5 text-[15px] leading-relaxed text-foreground/80">
+            <p className="mt-5 text-[15px] leading-relaxed text-foreground/70">
               Ich übernehme alles: Struktur, Design, Texte, Bilder, SEO-Grundlagen und
               die technische Umsetzung. Sie liefern, was nur Sie wissen – ich kümmere
-              mich um den Rest. Klar verständlich, ohne Fachbegriffe.
+              mich um den Rest.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-7 space-y-3">
               {[
                 "Komplette Umsetzung aus einer Hand",
                 "Persönlicher Ansprechpartner in Leipzig",
                 "Texte und Bilder, die zu Ihnen passen",
                 "Faire Preise, transparent kommuniziert",
               ].map((t) => (
-                <li key={t} className="flex items-start gap-3 text-sm text-foreground/85">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-primary" />
+                <li key={t} className="flex items-center gap-3 text-sm text-foreground/80">
+                  <CheckCircle2 size={17} className="shrink-0 text-primary" />
                   {t}
                 </li>
               ))}
@@ -232,65 +232,78 @@ function Index() {
         </div>
       </Section>
 
-      {/* LEISTUNGEN */}
-      <Section className="bg-secondary/60">
+      {/* ── LEISTUNGEN ───────────────────────────────────────────── */}
+      <Section className="bg-secondary/50">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
+          <div>
             <Eyebrow>Leistungen</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-              Alles, was eine kleine Firma in Leipzig wirklich braucht.
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Alles, was Ihre Firma<br className="hidden md:block" /> wirklich braucht.
             </h2>
           </div>
-          <Link to="/leistungen" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
-            Alle Leistungen ansehen <ArrowRight size={16} />
+          <Link to="/leistungen" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground">
+            Alle Leistungen <ArrowRight size={15} />
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {LEISTUNGEN.map(({ icon: Icon, title, text }) => (
+        <div className="mt-10 grid gap-px rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {LEISTUNGEN.map(({ icon: Icon, title, text }, i) => (
             <div
               key={title}
-              className="group rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
+              className={`group bg-card p-7 transition-colors hover:bg-secondary/60 ${
+                i === 0 ? "rounded-tl-2xl" : ""
+              } ${i === 2 ? "rounded-tr-2xl" : ""} ${
+                i === 3 ? "rounded-bl-2xl" : ""
+              } ${i === 5 ? "rounded-br-2xl" : ""}`}
             >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-primary">
-                <Icon size={20} />
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary transition-colors group-hover:bg-card">
+                <Icon size={18} />
               </span>
-              <h3 className="mt-5 font-serif text-xl text-foreground">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-foreground/75">{text}</p>
+              <h3 className="mt-4 font-serif text-lg text-foreground">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/65">{text}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* REFERENZ */}
+      {/* ── REFERENZEN ───────────────────────────────────────────── */}
       <Section>
-        <Eyebrow>Projekte</Eyebrow>
-        <h2 className="mt-4 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
-          Echte Projekte – und Beispiele, was möglich ist.
-        </h2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Projekte</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Echte Projekte –<br className="hidden md:block" /> und Beispiele, was möglich ist.
+            </h2>
+          </div>
+          <Link to="/referenzen" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground">
+            Alle Projekte <ArrowRight size={15} />
+          </Link>
+        </div>
 
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {/* geyerliner.de */}
           <a
             href="https://geyerliner.de"
             target="_blank"
             rel="noopener noreferrer"
-            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(24,32,38,0.2)]"
           >
-            <img
-              src="/images/gb-webdesign-referenz-geyerliner.webp"
-              alt="geyerliner.de auf Laptop, Tablet und Smartphone – responsives Design für ein lokales Unternehmen in Leipzig"
-              width={900}
-              height={500}
-              loading="lazy"
-              className="w-full object-cover aspect-video"
-            />
-            <div className="p-6">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">Kundenprojekt</p>
-              <h3 className="mt-2 font-serif text-xl text-foreground">geyerliner.de</h3>
-              <p className="mt-2 text-sm text-foreground/75">Lokale Unternehmenswebsite – klar, modern, gut auffindbar.</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                Ansehen <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+            <div className="overflow-hidden">
+              <img
+                src="/images/gb-webdesign-referenz-geyerliner.webp"
+                alt="geyerliner.de – responsives Design für ein lokales Unternehmen in Leipzig"
+                width={900}
+                height={500}
+                loading="lazy"
+                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="flex flex-1 flex-col p-6">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Kundenprojekt</p>
+              <h3 className="mt-2 font-serif text-lg text-foreground">geyerliner.de</h3>
+              <p className="mt-1.5 text-sm text-foreground/60">Lokale Unternehmenswebsite – klar, modern, gut auffindbar.</p>
+              <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
+                Ansehen <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </div>
           </a>
@@ -300,17 +313,17 @@ function Index() {
             href="https://salon-bernstein.pages.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(24,32,38,0.2)]"
           >
-            <div className="aspect-video w-full bg-[linear-gradient(135deg,var(--brand-stone),oklch(0.88_0.04_85))] flex items-center justify-center">
-              <span className="font-serif text-2xl text-foreground/25">Salon Bernstein</span>
+            <div className="flex aspect-video items-center justify-center bg-[linear-gradient(135deg,oklch(0.93_0.01_82),oklch(0.88_0.04_85))]">
+              <span className="font-serif text-xl text-foreground/25">Salon Bernstein</span>
             </div>
-            <div className="p-6">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
-              <h3 className="mt-2 font-serif text-xl text-foreground">Salon Bernstein</h3>
-              <p className="mt-2 text-sm text-foreground/75">Demo-Website für einen Friseursalon – mobil, modern, mit Buchung.</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                Demo ansehen <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+            <div className="flex flex-1 flex-col p-6">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
+              <h3 className="mt-2 font-serif text-lg text-foreground">Salon Bernstein</h3>
+              <p className="mt-1.5 text-sm text-foreground/60">Demo-Website für einen Friseursalon – mobil, modern, mit Buchung.</p>
+              <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
+                Demo ansehen <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </div>
           </a>
@@ -320,143 +333,149 @@ function Index() {
             href="https://goldener-stier.pages.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[0_20px_50px_-25px_rgba(24,32,38,0.3)]"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(24,32,38,0.2)]"
           >
-            <div className="aspect-video w-full bg-[linear-gradient(135deg,oklch(0.76_0.08_60),oklch(0.88_0.06_75))] flex items-center justify-center">
-              <span className="font-serif text-2xl text-foreground/25">Goldener Stier</span>
+            <div className="flex aspect-video items-center justify-center bg-[linear-gradient(135deg,oklch(0.76_0.08_60),oklch(0.88_0.06_75))]">
+              <span className="font-serif text-xl text-foreground/25">Goldener Stier</span>
             </div>
-            <div className="p-6">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
-              <h3 className="mt-2 font-serif text-xl text-foreground">Goldener Stier</h3>
-              <p className="mt-2 text-sm text-foreground/75">Demo-Website für ein Restaurant – Speisekarte, Atmosphäre, Öffnungszeiten.</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                Demo ansehen <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+            <div className="flex flex-1 flex-col p-6">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
+              <h3 className="mt-2 font-serif text-lg text-foreground">Goldener Stier</h3>
+              <p className="mt-1.5 text-sm text-foreground/60">Demo-Website für ein Restaurant – Speisekarte, Atmosphäre, Öffnungszeiten.</p>
+              <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
+                Demo ansehen <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </div>
           </a>
-
-        </div>
-        <div className="mt-6 text-right">
-          <Link to="/referenzen" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
-            Alle Projekte ansehen <ArrowRight size={16} />
-          </Link>
         </div>
       </Section>
 
-      {/* ABLAUF */}
+      {/* ── ABLAUF ───────────────────────────────────────────────── */}
       <Section className="bg-foreground text-background">
-        <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background/60">
-            <span className="h-px w-6 shrink-0 bg-[var(--brand-gold)]" aria-hidden="true" /> Ablauf
-          </span>
-          <h2 className="mt-4 font-serif text-3xl md:text-4xl">
-            In fünf einfachen Schritten zur neuen Website.
-          </h2>
-          <p className="mt-4 text-background/70">
-            Klar strukturiert, ohne unnötige Meetings und ohne Wartezeiten.
-          </p>
-        </div>
-        <ol className="mt-12 grid gap-4 md:grid-cols-5">
-          {STEPS.map((s) => (
-            <li key={s.n} className="rounded-2xl border border-background/10 bg-background/[0.04] p-6">
-              <span className="font-serif text-2xl text-[var(--brand-gold)]">{s.n}</span>
-              <h3 className="mt-3 font-serif text-lg text-background">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-background/70">{s.text}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-8 text-center">
-          <Link
-            to="/ablauf"
-            className="inline-flex items-center gap-2 rounded-full border border-background/20 px-5 py-2.5 text-sm font-medium text-background/80 hover:border-background/40 hover:text-background"
-          >
-            Ablauf im Detail ansehen <ArrowRight size={15} />
-          </Link>
+        <div className="grid gap-14 md:grid-cols-12 md:items-start">
+          <div className="md:col-span-4">
+            <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background/50">
+              <span className="h-px w-6 bg-[var(--brand-gold)]" />
+              Ablauf
+            </span>
+            <h2 className="mt-5 font-serif text-3xl text-background md:text-4xl">
+              In fünf Schritten zur neuen Website.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-background/60">
+              Klar strukturiert, ohne unnötige Meetings. Sie wissen jederzeit, wo Ihr Projekt steht.
+            </p>
+            <Link
+              to="/ablauf"
+              className="mt-7 inline-flex cursor-pointer items-center gap-2 rounded-full border border-background/20 px-5 py-2.5 text-sm font-medium text-background/70 transition-all duration-200 hover:border-background/40 hover:text-background"
+            >
+              Ablauf im Detail <ArrowRight size={14} />
+            </Link>
+          </div>
+          <ol className="space-y-3 md:col-span-8">
+            {STEPS.map((s) => (
+              <li
+                key={s.n}
+                className="flex items-start gap-5 rounded-xl border border-background/8 bg-background/[0.04] px-6 py-5"
+              >
+                <span className="mt-0.5 shrink-0 font-serif text-2xl leading-none text-[var(--brand-gold)]">{s.n}</span>
+                <div>
+                  <p className="font-medium text-background">{s.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-background/60">{s.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </Section>
 
-      {/* PREIS */}
+      {/* ── PREIS ────────────────────────────────────────────────── */}
       <Section>
-        <div className="grid items-center gap-10 rounded-3xl border border-border bg-card p-8 md:grid-cols-12 md:p-14">
-          <div className="md:col-span-7">
+        <div className="grid items-center gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
             <Eyebrow>Preisorientierung</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
               Websites ab 790 €.
             </h2>
-            <p className="mt-4 text-foreground/75">
-              Keine starren Pakete, keine versteckten Kosten. Der genaue Preis hängt
-              vom Umfang ab – einseitige Websites starten bei <strong>790 €</strong>,
-              umfangreichere Projekte und Relaunches werden individuell kalkuliert.
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground/70">
+              Keine starren Pakete, keine versteckten Kosten. Der genaue Preis hängt vom Umfang ab.
+              Nach einem kurzen, kostenlosen Erstgespräch erhalten Sie ein klares, schriftliches Angebot.
             </p>
-            <p className="mt-3 text-foreground/75">
-              Nach einem kurzen, kostenlosen Erstgespräch erhalten Sie ein klares,
-              schriftliches Angebot. Erst dann entscheiden Sie.
-            </p>
-            <CtaRow compact />
-          </div>
-          <div className="rounded-2xl bg-secondary p-8 md:col-span-5">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">Beispielhafte Orientierung</p>
-            <ul className="mt-4 divide-y divide-border text-sm">
+            <div className="mt-8 space-y-3">
               {[
                 ["Einseitige Website", "ab 790 €"],
                 ["Mehrseitige Website", "ab 1.390 €"],
                 ["Website-Relaunch", "ab 1.590 €"],
                 ["Hosting & Wartung", "ab 30 €/Monat"],
               ].map(([k, v]) => (
-                <li key={k} className="flex items-center justify-between py-3">
-                  <span className="text-foreground/80">{k}</span>
-                  <span className="font-medium text-foreground">{v}</span>
-                </li>
+                <div key={k} className="flex items-center justify-between rounded-xl border border-border bg-card px-5 py-3.5 text-sm">
+                  <span className="text-foreground/75">{k}</span>
+                  <span className="font-semibold text-foreground">{v}</span>
+                </div>
               ))}
-            </ul>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Richtwerte. Konkretes Angebot nach Erstgespräch.
-            </p>
-            <Link to="/preise" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
+            </div>
+            <p className="mt-3 text-xs text-muted-foreground">Richtwerte. Konkretes Angebot nach Erstgespräch. Gemäß § 19 UStG keine Umsatzsteuer.</p>
+            <Link to="/preise" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
               Alle Preise im Detail <ArrowRight size={14} />
             </Link>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl md:col-span-6">
+            <img
+              src="/images/gb-webdesign-arbeitsfoto.webp"
+              alt="Gustav Burmeister – Webdesigner aus Leipzig bei der Arbeit"
+              width={800}
+              height={1000}
+              loading="lazy"
+              className="w-full object-cover"
+            />
           </div>
         </div>
       </Section>
 
-      {/* ZIELGRUPPE */}
-      <Section className="bg-secondary/50">
-        <div className="grid gap-6 md:grid-cols-3">
+      {/* ── ZIELGRUPPE ───────────────────────────────────────────── */}
+      <Section className="bg-secondary/40">
+        <Eyebrow>Für wen</Eyebrow>
+        <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+          Gemacht für lokale Unternehmen.
+        </h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
             { icon: Wrench, t: "Handwerksbetriebe", d: "Damit potenzielle Kunden Sie online finden und direkt anfragen können." },
             { icon: Utensils, t: "Restaurants & Cafés", d: "Speisekarte, Öffnungszeiten und Reservierung – klar und mobil optimiert." },
             { icon: Briefcase, t: "Lokale Dienstleister", d: "Vom Steuerberater bis zur Physiopraxis – seriös, verständlich, vertrauenswürdig." },
           ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="rounded-2xl border border-border bg-card p-6">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-primary">
-                <Icon size={20} />
+            <div key={t} className="rounded-2xl bg-card p-7 border border-border">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary">
+                <Icon size={18} />
               </span>
               <h3 className="mt-5 font-serif text-xl text-foreground">{t}</h3>
-              <p className="mt-2 text-sm text-foreground/75">{d}</p>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/65">{d}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* KONTAKT CTA */}
+      {/* ── KONTAKT CTA ──────────────────────────────────────────── */}
       <Section>
-        <div className="overflow-hidden rounded-3xl bg-primary p-10 text-primary-foreground md:p-16">
-          <div className="grid gap-8 md:grid-cols-12 md:items-center">
+        <div className="relative overflow-hidden rounded-3xl bg-primary px-10 py-16 text-primary-foreground md:px-16">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/5" />
+          <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-white/5" />
+          <div className="relative grid gap-8 md:grid-cols-12 md:items-center">
             <div className="md:col-span-8">
               <h2 className="font-serif text-3xl md:text-4xl">
-                Lassen Sie uns 15 Minuten sprechen – unverbindlich und kostenlos.
+                15 Minuten – unverbindlich und kostenlos.
               </h2>
-              <p className="mt-4 max-w-2xl text-primary-foreground/85">
+              <p className="mt-4 text-primary-foreground/75">
                 Sie sagen mir, was Sie vorhaben. Ich sage Ihnen ehrlich, ob und wie ich
-                Ihnen helfen kann – und was es ungefähr kostet.
+                helfen kann – und was es ungefähr kostet.
               </p>
             </div>
             <div className="md:col-span-4 md:justify-self-end">
               <Link
                 to="/kontakt"
-                className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3.5 text-sm font-medium text-foreground hover:-translate-y-0.5"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-background px-6 py-3.5 text-sm font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
-                Erstgespräch anfragen <ArrowRight size={16} />
+                Erstgespräch anfragen <ArrowRight size={15} />
               </Link>
             </div>
           </div>
