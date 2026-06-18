@@ -18,8 +18,8 @@ export function Section({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-      <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" />
+    <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+      <span className="h-px w-6 shrink-0 bg-[var(--brand-gold)]" aria-hidden="true" />
       {children}
     </span>
   );

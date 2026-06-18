@@ -10,28 +10,28 @@ export function CtaRow({ compact = false }: { compact?: boolean }) {
     >
       <Link
         to="/kontakt"
-        className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm"
       >
         Kostenloses Erstgespräch
-        <ArrowRight size={16} />
+        <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
       </Link>
       <a
         href={CONTACT.whatsappHref}
-        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm"
       >
-        <MessageCircle size={16} /> Per WhatsApp schreiben
+        <MessageCircle size={15} /> Per WhatsApp schreiben
       </a>
       <a
         href={CONTACT.phoneHref}
-        className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground/25 hover:bg-secondary hover:shadow-sm"
       >
-        <Phone size={16} /> {CONTACT.phoneDisplay}
+        <Phone size={15} /> {CONTACT.phoneDisplay}
       </a>
       <a
         href={`mailto:${CONTACT.email}`}
-        className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground/25 hover:bg-secondary hover:shadow-sm"
       >
-        <Mail size={16} /> E-Mail
+        <Mail size={15} /> E-Mail
       </a>
     </div>
   );

@@ -346,8 +346,8 @@ function Index() {
       {/* ABLAUF */}
       <Section className="bg-foreground text-background">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-background/20 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-background/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" /> Ablauf
+          <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background/60">
+            <span className="h-px w-6 shrink-0 bg-[var(--brand-gold)]" aria-hidden="true" /> Ablauf
           </span>
           <h2 className="mt-4 font-serif text-3xl md:text-4xl">
             In fünf einfachen Schritten zur neuen Website.
