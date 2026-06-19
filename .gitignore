@@ -39,6 +39,12 @@ Thumbs.db
 # Lovable
 .lovable/
 
+# Claude Code skill cache
+.claude/
+
+# Ungenutzte Logo-PNG (WebP-Version wird verwendet)
+public/gb-webdesign-logo-lang-schwarz.png
+
 # Alte PNGs (WebP-Versionen sind vorhanden)
 # public/images/*.png  ← auskommentiert, falls PNGs als Backup behalten werden sollen
 
