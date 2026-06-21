@@ -157,30 +157,13 @@ function DatenschutzPage() {
         {/* 4 */}
         <div>
           <h2 className="mb-3 font-serif text-xl text-foreground">
-            4. Webfonts (Google Fonts)
+            4. Schriftarten
           </h2>
           <p>
-            Diese Website lädt Schriftarten (Manrope) von Google Fonts, einem
-            Dienst der Google Ireland Limited, Gordon House, Barrow Street,
-            Dublin 4, Irland.
-          </p>
-          <p className="mt-3">
-            Beim Laden der Schriftarten wird Ihre IP-Adresse an Server von
-            Google übertragen. Rechtsgrundlage ist mein berechtigtes Interesse
-            an einer technisch einwandfreien und optisch konsistenten
-            Darstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Google ist
-            zertifiziert unter dem EU-U.S. Data Privacy Framework.
-          </p>
-          <p className="mt-3">
-            Datenschutzrichtlinie Google:{" "}
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2"
-            >
-              policies.google.com/privacy
-            </a>
+            Diese Website nutzt Systemschriftarten, die bereits auf Ihrem Gerät
+            oder in Ihrem Browser vorhanden sind. Es werden keine externen
+            Schriftarten von Google Fonts oder vergleichbaren Drittanbietern
+            geladen.
           </p>
         </div>
 

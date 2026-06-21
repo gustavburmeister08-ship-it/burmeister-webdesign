@@ -216,7 +216,9 @@ function Index() {
               <div className="relative">
                 <div className="absolute -inset-3 -z-10 rounded-2xl bg-[var(--brand-stone)]" />
                 <img
-                  src="/images/gb-webdesign-leipzig-cafe.webp"
+                  src="/images/gb-webdesign-leipzig-cafe-960.webp"
+                  srcSet="/images/gb-webdesign-leipzig-cafe-640.webp 640w, /images/gb-webdesign-leipzig-cafe-960.webp 960w, /images/gb-webdesign-leipzig-cafe-1280.webp 1280w"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   alt="Webdesigner aus Leipzig arbeitet an einer Website auf einem Laptop"
                   width={1280}
                   height={960}
@@ -281,7 +283,9 @@ function Index() {
         <div className="grid items-center gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <img
-              src="/images/gb-webdesign-zielgruppen-collage.webp"
+              src="/images/gb-webdesign-zielgruppen-collage-768.webp"
+              srcSet="/images/gb-webdesign-zielgruppen-collage-480.webp 480w, /images/gb-webdesign-zielgruppen-collage-768.webp 768w, /images/gb-webdesign-zielgruppen-collage-1024.webp 1024w"
+              sizes="(min-width: 768px) 42vw, 100vw"
               alt="Lokale Zielgruppen wie Handwerk, Gastronomie und Dienstleistung mit moderner Website"
               width={1024}
               height={768}
@@ -518,7 +522,7 @@ function Index() {
               key={number}
               className="rounded-xl border border-border bg-card p-6"
             >
-              <p className="font-serif text-3xl leading-none text-[var(--brand-gold)]">
+              <p className="font-serif text-3xl leading-none text-primary">
                 {number}
               </p>
               <h3 className="mt-5 font-serif text-xl text-foreground">

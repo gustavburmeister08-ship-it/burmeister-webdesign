@@ -132,7 +132,7 @@ function AblaufPage() {
               className="grid gap-4 rounded-xl border border-border bg-card p-6 md:grid-cols-12 md:items-start"
             >
               <div className="md:col-span-2">
-                <p className="font-serif text-4xl leading-none text-[var(--brand-gold)]">
+                <p className="font-serif text-4xl leading-none text-primary">
                   {step.n}
                 </p>
               </div>

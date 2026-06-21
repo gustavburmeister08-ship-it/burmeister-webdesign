@@ -48,10 +48,13 @@ export function Header() {
           onClick={() => setOpen(false)}
         >
           <img
-            src="/images/gb-webdesign-logo-lang-schwarz.webp"
+            src="/images/gb-webdesign-logo-lang-schwarz-320.webp"
+            srcSet="/images/gb-webdesign-logo-lang-schwarz-320.webp 320w, /images/gb-webdesign-logo-lang-schwarz-640.webp 640w"
+            sizes="(min-width: 1024px) 220px, 180px"
             alt="Gustav Burmeister Webdesign Leipzig"
             width={220}
             height={56}
+            fetchPriority="high"
             className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-80"
           />
         </Link>

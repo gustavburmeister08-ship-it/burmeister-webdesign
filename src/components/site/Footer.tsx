@@ -40,12 +40,12 @@ export function Footer() {
               loading="lazy"
               className="h-10 w-auto"
             />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-background/65">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-background/78">
               Premium wirkende Websites fuer lokale Unternehmen, die schnell
               starten wollen: Festpreis nach Erstgespraech, persoenliche
               Betreuung und erste Vorschau nach 7 Tagen.
             </p>
-            <p className="mt-3 text-xs text-background/40">
+            <p className="mt-3 text-xs text-background/68">
               Webdesigner Leipzig · Websites ab 790 EUR · Lighthouse 95+ · SEO
               Grundlage inklusive
             </p>
@@ -75,7 +75,7 @@ export function Footer() {
           <div className="hidden md:col-span-1 md:block" />
 
           <div className="md:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-wider text-background/40">
+            <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
               Seiten
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-wider text-background/40">
+            <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
               Vertrauen
             </p>
             <div className="mt-4 space-y-2.5 text-sm text-background/65">
@@ -120,7 +120,7 @@ export function Footer() {
 
         <div className="mt-12 grid gap-8 border-t border-background/10 pt-8 md:grid-cols-2">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-background/40">
+            <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
               Fachliche Grundlagen
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
@@ -139,7 +139,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-background/40">
+            <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
               Rechtliches
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
@@ -166,11 +166,11 @@ export function Footer() {
 
       <div className="border-t border-background/8">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 md:px-8">
-          <p className="text-xs text-background/40">
+          <p className="text-xs text-background/68">
             © {new Date().getFullYear()} {CONTACT.brand}. Alle Rechte
             vorbehalten.
           </p>
-          <p className="text-xs text-background/30">
+          <p className="text-xs text-background/62">
             Gemaess § 19 UStG keine Umsatzsteuer.
           </p>
         </div>
