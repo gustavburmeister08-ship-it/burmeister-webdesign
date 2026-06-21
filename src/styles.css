@@ -61,19 +61,19 @@
   --radius: 0.625rem;
   /* Brand palette: #FAF7F0 off-white, #182026 anthrazit, #2F6F62 grün,
      #D8A85F gold, #FFFFFF weiß, #E8E3D8 helles grau */
-  --background: oklch(0.976 0.007 80);           /* slightly crisper warm white */
-  --foreground: oklch(0.19 0.014 228);            /* #182026 anthrazit */
+  --background: oklch(0.976 0.007 80); /* slightly crisper warm white */
+  --foreground: oklch(0.19 0.014 228); /* #182026 anthrazit */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.19 0.014 228);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.19 0.014 228);
-  --primary: oklch(0.44 0.084 170);               /* richer teal-green */
+  --primary: oklch(0.44 0.084 170); /* richer teal-green */
   --primary-foreground: oklch(0.985 0.006 80);
-  --secondary: oklch(0.935 0.009 82);             /* refined stone */
+  --secondary: oklch(0.935 0.009 82); /* refined stone */
   --secondary-foreground: oklch(0.19 0.014 228);
   --muted: oklch(0.935 0.009 82);
   --muted-foreground: oklch(0.46 0.011 228);
-  --accent: oklch(0.76 0.108 78);                 /* #D8A85F gold */
+  --accent: oklch(0.76 0.108 78); /* #D8A85F gold */
   --accent-foreground: oklch(0.19 0.014 228);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
@@ -161,10 +161,13 @@
   }
 
   /* DM Serif Display as heading font — weight 400 is the only weight available */
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-serif);
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     line-height: 1.1;
   }
 
@@ -172,5 +175,16 @@
   ::selection {
     background-color: oklch(0.76 0.108 78 / 0.25);
     color: oklch(0.19 0.014 228);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

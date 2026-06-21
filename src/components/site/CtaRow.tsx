@@ -10,10 +10,13 @@ export function CtaRow({ compact = false }: { compact?: boolean }) {
     >
       <Link
         to="/kontakt"
-        className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm"
+        className="group inline-flex cursor-pointer items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm"
       >
         Kostenloses Erstgespräch
-        <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-200 group-hover:translate-x-0.5"
+        />
       </Link>
       <a
         href={CONTACT.whatsappHref}

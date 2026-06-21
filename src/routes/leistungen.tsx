@@ -1,62 +1,99 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Layers, Sparkles, Zap, Search, MapPin, PenLine,
-  ImageIcon, ServerCog, ShoppingBag, Workflow, ArrowRight,
+  ArrowRight,
+  CheckCircle2,
+  FileText,
+  Gauge,
+  ImageIcon,
+  MapPin,
+  PenLine,
+  Search,
+  ServerCog,
+  Smartphone,
+  Wrench,
 } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Section, Eyebrow } from "@/components/site/Section";
-import { CtaRow } from "@/components/site/CtaRow";
+import {
+  FaqAccordion,
+  FinalCta,
+  PageIntro,
+  TrustMetricGrid,
+  type FaqItem,
+} from "@/components/site/RefreshBlocks";
+import { breadcrumbJsonLd, serviceJsonLd, socialMeta } from "@/lib/seo";
+
+const LEISTUNGEN_FAQ: FaqItem[] = [
+  {
+    question: "Was ist bei einer Website immer enthalten?",
+    answer:
+      "Struktur, Design, Texte, Bildaufbereitung, mobile Optimierung, SEO-Grundlagen sowie Meta-Titel und Beschreibungen fuer alle Seiten.",
+  },
+  {
+    question: "Muss ich selbst Texte schreiben?",
+    answer:
+      "Nein. Sie liefern die Informationen zu Ihrem Unternehmen, ich formuliere daraus klare, verstaendliche Website-Texte.",
+  },
+  {
+    question: "Ist lokale SEO inklusive?",
+    answer:
+      "Ja. Ich recherchiere 30+ lokale Suchbegriffe und setze die SEO-Grundlagen fuer Ihre Seiten um. Erweiterungen wie Google Business Profil sind optional moeglich.",
+  },
+  {
+    question: "Bieten Sie auch Hosting und Wartung an?",
+    answer:
+      "Ja. Hosting und Wartung sind optional ab 30 EUR pro Monat moeglich, inklusive Backups, Updates und kleiner Aenderungen.",
+  },
+];
 
 export const Route = createFileRoute("/leistungen")({
   head: () => ({
     meta: [
-      { title: "Leistungen – Webdesigner Leipzig | Gustav Burmeister Webdesign" },
-      { name: "description", content: "Webdesigner Leipzig: Website-Erstellung, Relaunch, Landingpages, SEO, Google Business, Hosting. Alles aus einer Hand – persönlich betreut ab 790 €." },
-      { property: "og:title", content: "Webdesign-Leistungen Leipzig – Gustav Burmeister Webdesign" },
-      { property: "og:description", content: "Website-Erstellung, Relaunch, SEO, Hosting & mehr – alles aus einer Hand in Leipzig ab 790 €." },
-      { property: "og:url", content: "https://burmeister-webdesign.com/leistungen" },
-      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-website-mockup.webp" },
+      { title: "Leistungen - Webdesign Leipzig fuer lokale Unternehmen" },
+      {
+        name: "description",
+        content:
+          "Webdesign-Leistungen in Leipzig: Website-Erstellung, Relaunch, Texte, lokale SEO, Google Business Profil, Hosting und Wartung fuer kleine Unternehmen.",
+      },
+      ...socialMeta({
+        title: "Webdesign-Leistungen Leipzig - alles aus einer Hand",
+        description:
+          "Website, Relaunch, Texte, SEO-Grundlagen und Wartung fuer lokale Unternehmen in Leipzig.",
+        path: "/leistungen",
+        image:
+          "https://burmeister-webdesign.com/images/gb-webdesign-website-mockup.webp",
+      }),
     ],
-    links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/leistungen" }],
+    links: [
+      { rel: "canonical", href: "https://burmeister-webdesign.com/leistungen" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://burmeister-webdesign.com/" },
-            { "@type": "ListItem", position: 2, name: "Leistungen", item: "https://burmeister-webdesign.com/leistungen" },
-          ],
-        }),
+        children: JSON.stringify(breadcrumbJsonLd("/leistungen", "Leistungen")),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceJsonLd({
+            name: "Webdesign-Leistungen fuer lokale Unternehmen in Leipzig",
+            description:
+              "Website-Erstellung, Relaunch, Texte, lokale SEO, Google Business Profil, Hosting und Wartung fuer kleine Unternehmen.",
+            path: "/leistungen",
+          }),
+        ),
       },
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Was ist im Webdesign-Paket enthalten?",
-              acceptedAnswer: { "@type": "Answer", text: "Struktur, Design, Texte, Bildaufbereitung und technische Umsetzung sind inklusive. Auf Wunsch auch SEO-Grundoptimierung, Hosting und Wartung." },
-            },
-            {
-              "@type": "Question",
-              name: "Muss ich selbst Texte schreiben?",
-              acceptedAnswer: { "@type": "Answer", text: "Nein. Ich übernehme die Texte für Ihre Website. Sie liefern die Informationen zu Ihrem Unternehmen – ich formuliere verständlich und zielgruppengerecht." },
-            },
-            {
-              "@type": "Question",
-              name: "Hilft Webdesign bei der Google-Auffindbarkeit?",
-              acceptedAnswer: { "@type": "Answer", text: "Ja. Jede Website enthält eine SEO-Grundoptimierung: saubere Technik, lokale Bezüge und Inhalte, die zu echten Suchanfragen passen. Für mehr Sichtbarkeit empfehle ich zusätzlich ein Google Business Profil." },
-            },
-            {
-              "@type": "Question",
-              name: "Bieten Sie auch Wartung nach dem Launch an?",
-              acceptedAnswer: { "@type": "Answer", text: "Ja. Optionales Hosting & Wartungspaket ab 30 €/Monat – inklusive täglicher Backups, regelmäßiger Updates und kleiner Änderungen auf Zuruf." },
-            },
-          ],
+          mainEntity: LEISTUNGEN_FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
         }),
       },
       {
@@ -66,13 +103,18 @@ export const Route = createFileRoute("/leistungen")({
           "@type": "ItemList",
           name: "Webdesign-Leistungen Leipzig",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Website-Erstellung Leipzig", url: "https://burmeister-webdesign.com/leistungen" },
-            { "@type": "ListItem", position: 2, name: "Website-Relaunch Leipzig", url: "https://burmeister-webdesign.com/leistungen" },
-            { "@type": "ListItem", position: 3, name: "Landingpages", url: "https://burmeister-webdesign.com/leistungen" },
-            { "@type": "ListItem", position: 4, name: "SEO-Grundoptimierung Leipzig", url: "https://burmeister-webdesign.com/leistungen" },
-            { "@type": "ListItem", position: 5, name: "Google Business Profil einrichten", url: "https://burmeister-webdesign.com/leistungen" },
-            { "@type": "ListItem", position: 6, name: "Hosting & Wartung", url: "https://burmeister-webdesign.com/leistungen" },
-          ],
+            "Website-Erstellung Leipzig",
+            "Website-Relaunch Leipzig",
+            "Texte und Struktur",
+            "Lokale SEO Leipzig",
+            "Google Business Profil",
+            "Hosting und Wartung",
+          ].map((name, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name,
+            url: "https://burmeister-webdesign.com/leistungen",
+          })),
         }),
       },
     ],
@@ -80,213 +122,206 @@ export const Route = createFileRoute("/leistungen")({
   component: LeistungenPage,
 });
 
-const ITEMS = [
-  { icon: Layers, title: "Website-Erstellung", text: "Neue Websites für kleine Unternehmen in Leipzig – komplett aus einer Hand: Struktur, Design, Texte, Bilder und Technik." },
-  { icon: Sparkles, title: "Website-Relaunch", text: "Veraltete Seiten werden ersetzt durch ein modernes, mobil optimiertes Design mit klarer Nutzerführung und besseren Anfragen." },
-  { icon: Zap, title: "Landingpages", text: "Fokussierte Einzelseiten für eine Leistung, eine Kampagne oder eine Google-Anzeige. Schnell live, schnell wirksam." },
-  { icon: Search, title: "SEO-Grundoptimierung", text: "Saubere Technik, sinnvolle Inhalte und lokale Bezüge – damit Sie für Suchanfragen wie 'Webdesign Leipzig' oder Ihre Branche gefunden werden." },
-  { icon: MapPin, title: "Google Business Profil", text: "Einrichtung, Pflege und Optimierung Ihres Eintrags in Google Maps inklusive Kategorien, Bildern und Beschreibung." },
-  { icon: PenLine, title: "Texte & Struktur", text: "Verständliche Texte, die Kunden überzeugen, statt leere Werbefloskeln. Klare Struktur, die Besucher zum Ziel führt." },
-  { icon: ImageIcon, title: "Bildbearbeitung", text: "Ihre vorhandenen Fotos werden professionell aufbereitet. Wo sinnvoll, helfen KI-Werkzeuge bei Freistellung, Schärfe und Bildqualität." },
-  { icon: ServerCog, title: "Hosting & Wartung", text: "Schnelles, sicheres Hosting, regelmäßige Updates, Sicherungen und kleine Änderungen – ohne dass Sie sich kümmern müssen." },
-  { icon: Workflow, title: "Automatisierungen", text: "Wiederkehrende Aufgaben (Anfragen, Formulare, Datenpflege) lassen sich oft mit kleinen Automatisierungen vereinfachen." },
-  { icon: ShoppingBag, title: "Shops & Web-Apps", text: "Wenn eine Website nicht reicht: kleine Shops, Buchungssysteme oder individuelle Web-Anwendungen – pragmatisch umgesetzt." },
-];
+const INCLUDED = [
+  {
+    icon: Wrench,
+    title: "Struktur & Design",
+    text: "Eine klare Seite, die Besucher sofort verstehen und die zu Ihrem Betrieb passt.",
+  },
+  {
+    icon: PenLine,
+    title: "Texte inklusive",
+    text: "Sie liefern die Infos, ich formuliere verstaendlich und anfrageorientiert.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobil optimiert",
+    text: "Die Website funktioniert zuerst auf dem Smartphone, nicht nur am Desktop.",
+  },
+  {
+    icon: Search,
+    title: "SEO-Grundlagen",
+    text: "30+ lokale Suchbegriffe, Meta-Daten und saubere Seitenstruktur.",
+  },
+  {
+    icon: ImageIcon,
+    title: "Bildaufbereitung",
+    text: "Vorhandene Fotos werden passend zugeschnitten, optimiert und eingebunden.",
+  },
+  {
+    icon: Gauge,
+    title: "Performance",
+    text: "Zielwert: Lighthouse Performance 95+ bei jeder Website.",
+  },
+] as const;
+
+const ADDONS = [
+  {
+    icon: ServerCog,
+    title: "Hosting & Wartung",
+    text: "Backups, Updates, kleine Aenderungen und laufende Pflege ab 30 EUR/Monat.",
+  },
+  {
+    icon: MapPin,
+    title: "Google Business Profil",
+    text: "Einrichtung mit passenden Kategorien, Bildern und Beschreibung fuer Google Maps.",
+  },
+  {
+    icon: FileText,
+    title: "Landingpages",
+    text: "Fokussierte Seiten fuer Aktionen, einzelne Leistungen oder Google-Anzeigen.",
+  },
+] as const;
 
 function LeistungenPage() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────── */}
-      <Section className="pb-12">
-        <Eyebrow>Leistungen</Eyebrow>
-        <h1 className="mt-5 max-w-3xl font-serif text-4xl text-foreground md:text-5xl">
-          Alles für Ihre Website –{" "}
-          <em className="italic text-primary">aus einer Hand in Leipzig</em>
-        </h1>
-        <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-foreground/70">
-          Von der ersten Idee bis zum laufenden Betrieb. Sie haben einen festen
-          Ansprechpartner – keine Weiterleitung, keine anonyme Agentur.
-        </p>
-
-        {/* Stats */}
-        <div className="mt-10 flex flex-wrap gap-10">
+      <PageIntro
+        eyebrow="Leistungen"
+        title="Eine Website fuer lokale Unternehmen - mit allem, was wirklich wichtig ist."
+        text="Das Kernangebot ist klar: Website oder Relaunch fuer kleine Unternehmen in Leipzig. Texte, Struktur, Design, Technik und SEO-Grundlagen kommen aus einer Hand."
+      >
+        <div className="mt-8 flex flex-wrap gap-2">
           {[
-            { n: "ab 790 €", l: "Einstiegspreis" },
-            { n: "2–4 Wo.", l: "Typische Umsetzungszeit" },
-            { n: "1", l: "Fester Ansprechpartner" },
-          ].map(({ n, l }) => (
-            <div key={l}>
-              <p className="font-serif text-3xl text-foreground">{n}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{l}</p>
+            "Website ab 790 EUR",
+            "Erste Vorschau nach 7 Tagen",
+            "Direkter Kontakt mit Gustav",
+          ].map((item) => (
+            <Badge
+              key={item}
+              variant="outline"
+              className="border-border bg-card text-foreground/70"
+            >
+              {item}
+            </Badge>
+          ))}
+        </div>
+      </PageIntro>
+
+      <Section className="pt-0">
+        <TrustMetricGrid />
+      </Section>
+
+      <Section>
+        <div className="grid gap-12 md:grid-cols-12 md:items-start">
+          <div className="md:col-span-5">
+            <Eyebrow>Kernangebot</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Website-Erstellung und Relaunch ohne Technikstress.
+            </h2>
+            <p className="mt-4 leading-relaxed text-foreground/70">
+              Sie bekommen keine komplizierte Agenturleistung, sondern ein
+              klares Ergebnis: eine professionelle Website, die Vertrauen
+              schafft, lokal gefunden wird und Anfragen einfacher macht.
+            </p>
+            <Button
+              asChild
+              className="mt-7 rounded-full bg-foreground text-background hover:bg-foreground/90"
+            >
+              <Link to="/kontakt">
+                Angebot einholen
+                <ArrowRight size={15} />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border md:col-span-7 sm:grid-cols-2">
+            {INCLUDED.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="bg-card p-6">
+                <Icon size={21} className="text-primary" />
+                <h3 className="mt-4 font-serif text-xl text-foreground">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section className="bg-secondary/45">
+        <Eyebrow>Optionale Erweiterungen</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Wenn Sie mehr brauchen, bleibt es trotzdem aus einer Hand.
+        </h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {ADDONS.map(({ icon: Icon, title, text }) => (
+            <div
+              key={title}
+              className="rounded-xl border border-border bg-card p-7"
+            >
+              <Icon size={22} className="text-primary" />
+              <h3 className="mt-5 font-serif text-xl text-foreground">
+                {title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                {text}
+              </p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ── LEISTUNGS-GRID ───────────────────── */}
-      <Section className="pt-0">
-        <div className="grid gap-px rounded-3xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-          {ITEMS.map(({ icon: Icon, title, text }, i) => {
-            const corners = [
-              i === 0 && "rounded-tl-3xl",
-              i === 1 && "md:rounded-tr-3xl lg:rounded-none",
-              i === 2 && "lg:rounded-tr-3xl",
-              i === ITEMS.length - 3 && "lg:rounded-bl-3xl",
-              i === ITEMS.length - 2 && "md:rounded-bl-3xl lg:rounded-none",
-              i === ITEMS.length - 1 && "rounded-br-3xl",
-            ]
-              .filter(Boolean)
-              .join(" ");
-            return (
-              <div key={title} className={`group bg-card p-7 transition-colors duration-150 hover:bg-secondary/60 ${corners}`}>
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-primary transition-colors duration-150 group-hover:bg-card">
-                  <Icon size={18} />
-                </span>
-                <h2 className="mt-5 font-serif text-xl text-foreground">{title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/65">{text}</p>
-              </div>
-            );
-          })}
-        </div>
-      </Section>
-
-      {/* ── SEO ─────────────────────────────── */}
-      <Section className="bg-secondary/40">
+      <Section>
         <div className="grid items-center gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
-            <Eyebrow>Lokale SEO Leipzig</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-              Damit Kunden Sie bei Google finden – nicht die Konkurrenz.
+            <Eyebrow>Lokale Sichtbarkeit</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Damit Kunden Sie in Leipzig finden.
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/70">
-              Ich optimiere Ihre Website für Suchanfragen wie „Handwerker Leipzig" oder
-              „Friseur in meiner Nähe". Saubere Technik, passende Texte und lokale
-              Bezüge sorgen für bessere Auffindbarkeit – ohne Tricks, die Google abstraft.
+              Lokale SEO heisst nicht, einfach ein paar Keywords einzubauen. Ich
+              recherchiere Suchbegriffe, die zu Ihrer Branche und Region passen,
+              und strukturiere Ihre Inhalte so, dass Kunden schneller verstehen,
+              warum sie bei Ihnen richtig sind.
             </p>
+            <ul className="mt-7 space-y-3">
+              {[
+                "30+ lokale Suchbegriffe recherchiert",
+                "Meta-Titel und Beschreibungen fuer alle Seiten",
+                "Google Business Profil optional mit Kategorien und Bildern",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-foreground/75"
+                >
+                  <CheckCircle2
+                    size={17}
+                    className="mt-0.5 shrink-0 text-primary"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="md:col-span-6">
             <img
               src="/images/gb-webdesign-lokale-seo-leipzig.webp"
-              alt="Google Maps und lokale Suchergebnisse auf Laptop und Smartphone – bessere Sichtbarkeit in Leipzig"
+              alt="Lokale SEO und Google Maps Sichtbarkeit fuer Unternehmen in Leipzig"
               width={900}
               height={600}
               loading="lazy"
-              className="w-full rounded-2xl object-cover"
+              className="w-full rounded-xl object-cover"
             />
           </div>
         </div>
       </Section>
 
-      {/* ── Google Business ───────────────── */}
-      <Section>
-        <div className="grid items-center gap-12 md:grid-cols-12">
-          <div className="md:col-span-6">
-            <img
-              src="/images/gb-webdesign-google-business-profil.webp"
-              alt="Google Business Profil auf einem Smartphone – Bewertungen, Öffnungszeiten und Standort"
-              width={900}
-              height={600}
-              loading="lazy"
-              className="w-full rounded-2xl object-cover"
-            />
-          </div>
-          <div className="md:col-span-6">
-            <Eyebrow>Google Business Profil</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-              In Google Maps sofort sichtbar sein.
-            </h2>
-            <p className="mt-4 leading-relaxed text-foreground/70">
-              Ich richte Ihr Google Business Profil vollständig ein: Kategorie,
-              Öffnungszeiten, Fotos, Beschreibung und Kontaktdaten. So erscheinen
-              Sie bei lokalen Suchen auf der Karte – direkt dort, wo Ihre Kunden suchen.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* ── Hosting & Wartung ─────────────── */}
-      <Section className="bg-secondary/40">
-        <div className="grid items-center gap-12 md:grid-cols-12">
-          <div className="md:col-span-6">
-            <Eyebrow>Hosting & Wartung</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-              Ihre Website läuft. Immer. Ohne Ihr Zutun.
-            </h2>
-            <p className="mt-4 leading-relaxed text-foreground/70">
-              Regelmäßige Updates, tägliche Backups, Sicherheitsüberwachung und
-              schnelles Hosting – alles aus einer Hand. Kleine Änderungen werden
-              auf Zuruf erledigt. Sie kümmern sich um Ihr Geschäft, ich um Ihre Website.
-            </p>
-          </div>
-          <div className="md:col-span-6">
-            <img
-              src="/images/gb-webdesign-hosting-wartung.webp"
-              alt="Laptop mit Hosting-Dashboard zeigt Updates, Backups, Sicherheit und Monitoring"
-              width={900}
-              height={600}
-              loading="lazy"
-              className="w-full rounded-2xl object-cover"
-            />
-          </div>
-        </div>
-      </Section>
-
-      {/* ── FAQ ─────────────────────────────── */}
-      <Section>
+      <Section className="bg-secondary/45">
         <Eyebrow>Häufige Fragen</Eyebrow>
-        <h2 className="mt-4 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
-          Was Kunden vor dem Start fragen
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Was vor dem Start wichtig ist.
         </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {[
-            {
-              q: "Was ist im Webdesign-Paket enthalten?",
-              a: "Struktur, Design, Texte, Bildaufbereitung und technische Umsetzung sind inklusive. Auf Wunsch auch SEO-Grundoptimierung, Hosting und Wartung.",
-            },
-            {
-              q: "Muss ich selbst Texte schreiben?",
-              a: "Nein. Ich übernehme die Texte für Ihre Website. Sie liefern die Informationen – ich formuliere verständlich und zielgruppengerecht.",
-            },
-            {
-              q: "Hilft Webdesign bei der Google-Auffindbarkeit?",
-              a: "Ja. Jede Website enthält eine SEO-Grundoptimierung: saubere Technik, lokale Bezüge und passende Inhalte. Für mehr Sichtbarkeit empfehle ich zusätzlich ein Google Business Profil.",
-            },
-            {
-              q: "Bieten Sie auch Wartung nach dem Launch an?",
-              a: "Ja. Optionales Hosting & Wartungspaket ab 30 €/Monat – inklusive täglicher Backups, regelmäßiger Updates und kleiner Änderungen auf Zuruf.",
-            },
-          ].map(({ q, a }) => (
-            <div key={q} className="rounded-2xl border border-border bg-card p-7">
-              <h3 className="font-serif text-lg text-foreground">{q}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/70">{a}</p>
-            </div>
-          ))}
+        <div className="mt-10 max-w-3xl">
+          <FaqAccordion items={LEISTUNGEN_FAQ} />
         </div>
       </Section>
 
-      {/* ── CTA ─────────────────────────────── */}
-      <Section className="bg-foreground text-background">
-        <div className="grid items-center gap-8 md:grid-cols-12">
-          <div className="md:col-span-8">
-            <h2 className="font-serif text-3xl text-background md:text-4xl">
-              Nicht sicher, was Sie genau brauchen?
-            </h2>
-            <p className="mt-4 text-background/70">
-              Das ist völlig in Ordnung. Im kostenlosen Erstgespräch klären wir
-              gemeinsam, welche Leistungen für Ihre Situation sinnvoll sind – und
-              welche nicht.
-            </p>
-          </div>
-          <div className="md:col-span-4 md:justify-self-end">
-            <Link
-              to="/kontakt"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-background px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
-            >
-              Erstgespräch anfragen <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </Section>
+      <FinalCta
+        title="Nicht sicher, welche Leistung Sie brauchen?"
+        text="Das klaeren wir im kostenlosen Erstgespraech. Ich sage Ihnen ehrlich, was sinnvoll ist und was Sie sich sparen koennen."
+      />
     </>
   );
 }

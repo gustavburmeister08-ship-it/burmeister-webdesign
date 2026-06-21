@@ -1,75 +1,64 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  CheckCircle2,
-  Wrench,
-  Utensils,
-  Briefcase,
-  Sparkles,
-  Clock3,
-  Wallet,
-  Search,
-  Layers,
-  ShieldCheck,
-  PenLine,
-  ImageIcon,
-  ServerCog,
-  ShoppingBag,
-  Zap,
-  MapPin,
   ArrowUpRight,
+  BadgeCheck,
+  CheckCircle2,
+  Clock3,
+  Gauge,
+  MapPin,
+  MessageSquareQuote,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
 } from "lucide-react";
-import { CtaRow } from "@/components/site/CtaRow";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Section, Eyebrow } from "@/components/site/Section";
+import {
+  FaqAccordion,
+  FinalCta,
+  TrustMetricGrid,
+  TrustPointList,
+  type FaqItem,
+} from "@/components/site/RefreshBlocks";
+import { breadcrumbJsonLd, socialMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Webdesign Leipzig – Website erstellen lassen ab 790 €" },
+      { title: "Webdesign Leipzig - Website erstellen lassen ab 790 EUR" },
       {
         name: "description",
-        content: "Webdesigner aus Leipzig für kleine Unternehmen. Website ab 790 € – schnell umgesetzt, verständlich erklärt. Jetzt kostenloses Erstgespräch anfragen.",
+        content:
+          "Webdesigner aus Leipzig fuer kleine Unternehmen: Websites ab 790 EUR, erste Vorschau nach 7 Tagen, Festpreis nach Erstgespraech und Performance 95+.",
       },
-      { property: "og:title", content: "Webdesign Leipzig – Website erstellen lassen ab 790 €" },
-      { property: "og:description", content: "Websites ab 790 € – schnell, verständlich, persönlich betreut. Jetzt Erstgespräch anfragen." },
-      { property: "og:url", content: "https://burmeister-webdesign.com/" },
-      { property: "og:image", content: "https://burmeister-webdesign.com/images/gb-webdesign-leipzig-cafe.webp" },
+      ...socialMeta({
+        title: "Webdesign Leipzig - Website ab 790 EUR",
+        description:
+          "Websites fuer lokale Unternehmen in Leipzig: persoenlich, schnell, bezahlbar und ohne Technikstress.",
+        path: "/",
+        image:
+          "https://burmeister-webdesign.com/images/gb-webdesign-leipzig-cafe.webp",
+      }),
     ],
     links: [{ rel: "canonical", href: "https://burmeister-webdesign.com/" }],
     scripts: [
       {
         type: "application/ld+json",
+        children: JSON.stringify(breadcrumbJsonLd("/", "Startseite")),
+      },
+      {
+        type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Was kostet eine Website in Leipzig?",
-              acceptedAnswer: { "@type": "Answer", text: "Einfache Websites starten bei 790 €. Der genaue Preis hängt vom Umfang ab – mehrseitige Websites beginnen bei ca. 1.390 €, Relaunches ab 1.590 €. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot." },
-            },
-            {
-              "@type": "Question",
-              name: "Wie lange dauert die Erstellung einer Website?",
-              acceptedAnswer: { "@type": "Answer", text: "Einfache Websites sind oft in 2–3 Wochen fertig. Komplexere Projekte dauern 4–8 Wochen, abhängig von Umfang und Ihren Feedbackzeiten." },
-            },
-            {
-              "@type": "Question",
-              name: "Was ist im Preis enthalten?",
-              acceptedAnswer: { "@type": "Answer", text: "Struktur, Design, Texte, Bildaufbereitung und technische Umsetzung sind inklusive. Optional: Hosting, Wartung und SEO-Grundoptimierung." },
-            },
-            {
-              "@type": "Question",
-              name: "Muss ich selbst Texte und Bilder liefern?",
-              acceptedAnswer: { "@type": "Answer", text: "Nein. Ich übernehme Texte und Bildaufbereitung. Sie liefern nur die Informationen zu Ihrer Firma – ich schreibe die Texte für Sie." },
-            },
-            {
-              "@type": "Question",
-              name: "Bieten Sie auch Hosting und Wartung an?",
-              acceptedAnswer: { "@type": "Answer", text: "Ja. Schnelles, sicheres Hosting inkl. täglicher Backups und laufender Pflege ab 30 €/Monat." },
-            },
-          ],
+          mainEntity: HOME_FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
         }),
       },
     ],
@@ -77,86 +66,181 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const LEISTUNGEN = [
-  { icon: Layers, title: "Neue Website", text: "Modern, mobil optimiert und auf Ihre Kunden zugeschnitten – inklusive Texten, Bildern und klarer Struktur." },
-  { icon: Sparkles, title: "Website-Relaunch", text: "Bestehende Seiten bekommen ein zeitgemäßes Design, eine bessere Struktur und mehr Anfragen." },
-  { icon: Zap, title: "Landingpages", text: "Fokussierte Einzelseiten für Aktionen, neue Leistungen oder Google-Anzeigen." },
-  { icon: Search, title: "SEO-Grundoptimierung", text: "Damit Ihre Firma in Leipzig und Umgebung gefunden wird – mit sauberer Technik und passenden Texten." },
-  { icon: MapPin, title: "Google Business Profil", text: "Einrichtung und Pflege Ihres Profils, damit Kunden Sie in Google Maps sofort finden." },
-  { icon: ServerCog, title: "Hosting & Wartung", text: "Schnelles, sicheres Hosting und laufende Pflege – Sie müssen sich um nichts kümmern." },
+const HOME_FAQ: FaqItem[] = [
+  {
+    question: "Was kostet eine Website in Leipzig?",
+    answer:
+      "Einfache One-Pager starten bei 790 EUR. Mehrseitige Websites beginnen bei 1.390 EUR, Relaunches ab 1.590 EUR. Nach dem kostenlosen Erstgespraech erhalten Sie ein klares Festpreisangebot.",
+  },
+  {
+    question: "Wie schnell sehe ich einen ersten Entwurf?",
+    answer:
+      "Die erste Vorschau erhalten Sie nach 7 Tagen. Ein One-Pager ist typischerweise in 1 Woche fertig, mehrseitige Websites meist in 2-4 Wochen.",
+  },
+  {
+    question: "Muss ich Texte und Technik selbst vorbereiten?",
+    answer:
+      "Nein. Sie liefern die Informationen zu Ihrem Unternehmen. Struktur, Texte, Design, Bildaufbereitung und technische Umsetzung uebernehme ich.",
+  },
+  {
+    question: "Was passiert nach dem Launch?",
+    answer:
+      "Veroeffentlichung und Einweisung sind inklusive. Optional uebernehme ich Hosting, Wartung, Backups, Updates und kleine Aenderungen.",
+  },
 ];
 
-const STEPS = [
-  { n: "01", title: "Kostenloses Erstgespräch", text: "Telefon, WhatsApp oder vor Ort in Leipzig. Wir klären, was Sie brauchen und was sinnvoll ist." },
-  { n: "02", title: "Festes Angebot", text: "Sie erhalten ein verständliches Angebot mit klarem Preis – keine Stundenfallen, keine Überraschungen." },
-  { n: "03", title: "Inhalte & Entwurf", text: "Ich übernehme Struktur, Texte und Bilder. Sie sehen früh einen ersten Designentwurf." },
-  { n: "04", title: "Umsetzung", text: "Schnelle, saubere Umsetzung. Sie geben Feedback, ich baue ein. Direkt und unkompliziert." },
-  { n: "05", title: "Online & Betreuung", text: "Veröffentlichung, Einweisung und auf Wunsch laufende Wartung & Pflege." },
-];
+const RESULT_FACTORS = [
+  {
+    icon: BadgeCheck,
+    title: "Vertrauen in Sekunden",
+    text: "Klare Headlines, echte Bilder und ein professioneller erster Eindruck helfen Besuchern sofort einzuordnen, ob Sie der richtige Anbieter sind.",
+  },
+  {
+    icon: Gauge,
+    title: "Schnell auf dem Handy",
+    text: "Jede Website wird mit Performance im Blick gebaut. Zielwert: Lighthouse Performance 95+.",
+  },
+  {
+    icon: Search,
+    title: "Lokal auffindbar",
+    text: "30+ lokale Suchbegriffe, saubere Meta-Daten und lokale Inhalte legen die Grundlage fuer bessere Sichtbarkeit.",
+  },
+  {
+    icon: MessageSquareQuote,
+    title: "Ein klarer naechster Schritt",
+    text: "Besucher sollen nicht raetseln. Jede Seite fuehrt ruhig zum Erstgespraech oder zur Angebotsanfrage.",
+  },
+] as const;
+
+const OFFER_ITEMS = [
+  "Struktur, Design und Umsetzung",
+  "Texte auf Wunsch inklusive",
+  "Mobile Optimierung",
+  "SEO-Grundlagen fuer lokale Suche",
+  "Meta-Titel und Beschreibungen fuer alle Seiten",
+  "Veroeffentlichung und Einweisung inklusive",
+] as const;
+
+const COMPARISON = [
+  {
+    option: "Baukasten",
+    problem:
+      "Schnell gestartet, aber oft generisch, begrenzt und ohne klare lokale Strategie.",
+  },
+  {
+    option: "Alte Website behalten",
+    problem:
+      "Kostet Vertrauen, wirkt auf dem Handy schlecht und fuehrt Besucher selten zur Anfrage.",
+  },
+  {
+    option: "Grosse Agentur",
+    problem:
+      "Professionell, aber fuer kleine Betriebe oft zu teuer, zu langsam und zu unpersoenlich.",
+  },
+  {
+    option: "Gustav",
+    problem:
+      "Direkt, lokal, bezahlbar: eine klare Website mit persoenlichem Ansprechpartner statt Ticketsystem.",
+  },
+] as const;
+
+const PROCESS = [
+  ["01", "Erstgespraech", "15 Minuten, kostenlos und ohne Verpflichtung."],
+  [
+    "02",
+    "Festpreisangebot",
+    "Keine Stundenabrechnung, keine versteckten Kosten.",
+  ],
+  ["03", "Erste Vorschau", "Nach 7 Tagen sehen Sie eine private Vorschau."],
+  [
+    "04",
+    "Feedback & Launch",
+    "Eine Feedbackrunde, Veroeffentlichung und Einweisung inklusive.",
+  ],
+] as const;
 
 function Index() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(65%_55%_at_0%_100%,oklch(0.93_0.01_82),transparent_70%)]" />
-        <div className="pointer-events-none absolute right-0 top-0 -z-10 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,oklch(0.93_0.009_82),transparent_70%)] opacity-60" />
-
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,oklch(0.976_0.007_80)_0%,oklch(0.948_0.01_82)_52%,oklch(0.976_0.007_80)_100%)]" />
         <div className="mx-auto max-w-6xl px-5 pb-20 pt-16 md:px-8 md:pb-28 md:pt-24">
-          <Eyebrow>Webdesign aus Leipzig · Persönlich betreut</Eyebrow>
-
+          <Eyebrow>Webdesign aus Leipzig</Eyebrow>
           <div className="mt-8 grid items-center gap-14 lg:grid-cols-12">
             <div className="lg:col-span-6">
-              <h1 className="font-serif text-[clamp(2.6rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
-                Professionelle Websites für{" "}
-                <em className="font-serif not-italic text-primary">kleine Unternehmen</em>{" "}
-                in Leipzig
-              </h1>
-              <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-foreground/70">
-                Moderne Websites, Landingpages und Relaunches – schnell umgesetzt,
-                verständlich erklärt, preiswert realisiert. Persönlicher
-                Ansprechpartner statt anonymer Agentur.
-              </p>
-              <CtaRow />
-
-              {/* Trust row */}
-              <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-                {[
-                  { icon: Wallet, label: "ab 790 €" },
-                  { icon: Clock3, label: "Schnelle Umsetzung" },
-                  { icon: ShieldCheck, label: "Persönlicher Kontakt" },
-                ].map(({ icon: Icon, label }) => (
-                  <span key={label} className="flex items-center gap-2 text-sm text-foreground/60">
-                    <Icon size={15} className="text-primary" />
-                    {label}
-                  </span>
-                ))}
+              <div className="flex flex-wrap gap-2">
+                <Badge
+                  variant="outline"
+                  className="border-primary/20 bg-card/70 text-primary"
+                >
+                  Erste Vorschau nach 7 Tagen
+                </Badge>
+                <Badge
+                  variant="outline"
+                  className="border-border bg-card/70 text-foreground/70"
+                >
+                  Festpreis nach Erstgespraech
+                </Badge>
               </div>
+              <h1 className="mt-6 font-serif text-[clamp(2.55rem,6vw,4.7rem)] leading-[1.04] text-foreground">
+                Websites, die lokale Kunden verstehen und Anfragen leichter
+                machen.
+              </h1>
+              <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/72">
+                Professionelle Websites fuer Handwerker, Restaurants und lokale
+                Dienstleister: schnell umgesetzt, klar erklaert und bezahlbar
+                kalkuliert.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  className="rounded-full bg-foreground px-6 py-3 text-background hover:bg-foreground/90"
+                >
+                  <Link to="/kontakt">
+                    Kostenloses Erstgespraech
+                    <ArrowRight size={15} />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="rounded-full bg-card px-6 py-3"
+                >
+                  <Link to="/preise">Preise ansehen</Link>
+                </Button>
+              </div>
+              <TrustPointList className="mt-8" />
             </div>
 
             <div className="lg:col-span-6">
               <div className="relative">
-                <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-[var(--brand-stone)]" />
+                <div className="absolute -inset-3 -z-10 rounded-2xl bg-[var(--brand-stone)]" />
                 <img
                   src="/images/gb-webdesign-leipzig-cafe.webp"
-                  alt="Webdesigner arbeitet in einem Café in Leipzig – Laptop mit Website auf dem Tisch"
+                  alt="Webdesigner aus Leipzig arbeitet an einer Website auf einem Laptop"
                   width={1280}
                   height={960}
                   fetchPriority="high"
                   loading="eager"
-                  className="w-full rounded-[1.5rem] object-cover shadow-[0_40px_80px_-30px_rgba(24,32,38,0.25)]"
+                  className="aspect-[4/3] w-full rounded-xl object-cover shadow-[0_40px_80px_-35px_rgba(24,32,38,0.35)]"
                 />
-                <div className="absolute -bottom-5 -left-4 hidden rounded-xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur-sm md:block">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Aktuell</p>
-                  <p className="mt-0.5 font-serif text-sm text-foreground">Freie Kapazität für 2 Projekte</p>
+                <div className="absolute -bottom-5 left-5 right-5 rounded-xl border border-border bg-card/95 px-5 py-4 shadow-lg backdrop-blur-sm md:left-auto md:right-5 md:w-[260px]">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Direkter Kontakt
+                  </p>
+                  <p className="mt-1 text-sm leading-snug text-foreground/75">
+                    Sie sprechen direkt mit Gustav, ohne Ticketsystem und ohne
+                    Weiterleitung.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+
+          <TrustMetricGrid className="mt-16" />
         </div>
       </section>
 
-      {/* ── PROBLEM ──────────────────────────────────────────────── */}
       <Section className="bg-foreground text-background">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
@@ -165,25 +249,27 @@ function Index() {
               Das Problem
             </span>
             <h2 className="mt-5 font-serif text-3xl text-background md:text-4xl">
-              Eine veraltete Website kostet Sie jeden Monat Kunden.
+              Eine unklare Website kostet Vertrauen, bevor jemand anfragt.
             </h2>
           </div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-background/70 md:col-span-7">
+          <div className="space-y-5 text-background/70 md:col-span-7">
             <p>
-              Viele kleine Unternehmen in Leipzig haben eine Website, die seit Jahren
-              nicht mehr angefasst wurde. Sie wirkt altbacken, lädt langsam, sieht
-              auf dem Handy schlecht aus – und Anfragen bleiben aus.
+              Besucher lesen nicht alles. Sie scannen, ob Ihr Unternehmen
+              serioes, erreichbar und passend wirkt. Wenn die Website langsam,
+              alt oder unklar ist, suchen sie weiter.
             </p>
-            <div className="grid gap-3 pt-2 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2">
               {[
-                "Schlecht auffindbar bei Google",
-                "Auf dem Handy unbrauchbar",
-                "Wirkt unprofessionell",
+                "Wirkt nicht professionell",
+                "Auf dem Handy schwer nutzbar",
+                "Bei Google schlecht sichtbar",
                 "Kein klarer Weg zur Anfrage",
-              ].map((t) => (
-                <div key={t} className="flex items-center gap-3 rounded-xl border border-background/10 bg-background/5 px-4 py-3 text-sm text-background/80">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-gold)]" />
-                  {t}
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-background/10 bg-background/5 px-4 py-3 text-sm text-background/82"
+                >
+                  {item}
                 </div>
               ))}
             </div>
@@ -191,296 +277,323 @@ function Index() {
         </div>
       </Section>
 
-      {/* ── LÖSUNG ───────────────────────────────────────────────── */}
       <Section>
-        <div className="grid items-center gap-14 md:grid-cols-12">
+        <div className="grid items-center gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <img
               src="/images/gb-webdesign-zielgruppen-collage.webp"
-              alt="Vier Zielgruppen: Handwerker, Restaurantmitarbeiterin, Friseurin und Reinigungsmann – jeweils mit moderner Website"
+              alt="Lokale Zielgruppen wie Handwerk, Gastronomie und Dienstleistung mit moderner Website"
               width={1024}
               height={768}
               loading="lazy"
-              className="w-full rounded-2xl object-cover"
+              className="w-full rounded-xl object-cover"
             />
           </div>
           <div className="md:col-span-7">
             <Eyebrow>Die Lösung</Eyebrow>
             <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-              Eine Website, die für Sie arbeitet –{" "}
-              <em className="italic text-primary">ohne dass Sie sich darum kümmern müssen.</em>
+              Sie führen Ihr Geschäft. Ich kümmere mich um Website, Texte und
+              Technik.
             </h2>
-            <p className="mt-5 text-[15px] leading-relaxed text-foreground/70">
-              Ich übernehme alles: Struktur, Design, Texte, Bilder, SEO-Grundlagen und
-              die technische Umsetzung. Sie liefern, was nur Sie wissen – ich kümmere
-              mich um den Rest.
+            <p className="mt-5 leading-relaxed text-foreground/70">
+              Sie liefern die Informationen, die nur Sie kennen. Daraus entsteht
+              eine klare Website mit guter Struktur, echten Texten, sauberer
+              Technik und einem einfachen Weg zur Anfrage.
             </p>
-            <ul className="mt-7 space-y-3">
-              {[
-                "Komplette Umsetzung aus einer Hand",
-                "Persönlicher Ansprechpartner in Leipzig",
-                "Texte und Bilder, die zu Ihnen passen",
-                "Faire Preise, transparent kommuniziert",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-3 text-sm text-foreground/80">
-                  <CheckCircle2 size={17} className="shrink-0 text-primary" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      {/* ── LEISTUNGEN ───────────────────────────────────────────── */}
-      <Section className="bg-secondary/50">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <Eyebrow>Leistungen</Eyebrow>
-            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-              Alles, was Ihre Firma<br className="hidden md:block" /> wirklich braucht.
-            </h2>
-          </div>
-          <Link to="/leistungen" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground">
-            Alle Leistungen <ArrowRight size={15} />
-          </Link>
-        </div>
-
-        <div className="mt-10 grid gap-px rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-          {LEISTUNGEN.map(({ icon: Icon, title, text }, i) => (
-            <div
-              key={title}
-              className={`group bg-card p-7 transition-colors hover:bg-secondary/60 ${
-                i === 0 ? "rounded-tl-2xl" : ""
-              } ${i === 2 ? "rounded-tr-2xl" : ""} ${
-                i === 3 ? "rounded-bl-2xl" : ""
-              } ${i === 5 ? "rounded-br-2xl" : ""}`}
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary transition-colors group-hover:bg-card">
-                <Icon size={18} />
-              </span>
-              <h3 className="mt-4 font-serif text-lg text-foreground">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-foreground/65">{text}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* ── REFERENZEN ───────────────────────────────────────────── */}
-      <Section>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <Eyebrow>Projekte</Eyebrow>
-            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-              Echte Projekte –<br className="hidden md:block" /> und Beispiele, was möglich ist.
-            </h2>
-          </div>
-          <Link to="/referenzen" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground">
-            Alle Projekte <ArrowRight size={15} />
-          </Link>
-        </div>
-
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {/* geyerliner.de */}
-          <a
-            href="https://geyerliner.de"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(24,32,38,0.2)]"
-          >
-            <div className="overflow-hidden">
-              <img
-                src="/images/gb-webdesign-referenz-geyerliner.webp"
-                alt="geyerliner.de – responsives Design für ein lokales Unternehmen in Leipzig"
-                width={900}
-                height={500}
-                loading="lazy"
-                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-            </div>
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Kundenprojekt</p>
-              <h3 className="mt-2 font-serif text-lg text-foreground">geyerliner.de</h3>
-              <p className="mt-1.5 text-sm text-foreground/60">Lokale Unternehmenswebsite – klar, modern, gut auffindbar.</p>
-              <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
-                Ansehen <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </span>
-            </div>
-          </a>
-
-          {/* Salon Bernstein */}
-          <a
-            href="https://salon-bernstein.pages.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(24,32,38,0.2)]"
-          >
-            <div className="flex aspect-video items-center justify-center bg-[linear-gradient(135deg,oklch(0.93_0.01_82),oklch(0.88_0.04_85))]">
-              <span className="font-serif text-xl text-foreground/25">Salon Bernstein</span>
-            </div>
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
-              <h3 className="mt-2 font-serif text-lg text-foreground">Salon Bernstein</h3>
-              <p className="mt-1.5 text-sm text-foreground/60">Demo-Website für einen Friseursalon – mobil, modern, mit Buchung.</p>
-              <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
-                Demo ansehen <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </span>
-            </div>
-          </a>
-
-          {/* Goldener Stier */}
-          <a
-            href="https://goldener-stier.pages.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(24,32,38,0.2)]"
-          >
-            <div className="flex aspect-video items-center justify-center bg-[linear-gradient(135deg,oklch(0.76_0.08_60),oklch(0.88_0.06_75))]">
-              <span className="font-serif text-xl text-foreground/25">Goldener Stier</span>
-            </div>
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Orientierungsbeispiel</p>
-              <h3 className="mt-2 font-serif text-lg text-foreground">Goldener Stier</h3>
-              <p className="mt-1.5 text-sm text-foreground/60">Demo-Website für ein Restaurant – Speisekarte, Atmosphäre, Öffnungszeiten.</p>
-              <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
-                Demo ansehen <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </span>
-            </div>
-          </a>
-        </div>
-      </Section>
-
-      {/* ── ABLAUF ───────────────────────────────────────────────── */}
-      <Section className="bg-foreground text-background">
-        <div className="grid gap-14 md:grid-cols-12 md:items-start">
-          <div className="md:col-span-4">
-            <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background/50">
-              <span className="h-px w-6 bg-[var(--brand-gold)]" />
-              Ablauf
-            </span>
-            <h2 className="mt-5 font-serif text-3xl text-background md:text-4xl">
-              In fünf Schritten zur neuen Website.
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-background/60">
-              Klar strukturiert, ohne unnötige Meetings. Sie wissen jederzeit, wo Ihr Projekt steht.
-            </p>
-            <Link
-              to="/ablauf"
-              className="mt-7 inline-flex cursor-pointer items-center gap-2 rounded-full border border-background/20 px-5 py-2.5 text-sm font-medium text-background/70 transition-all duration-200 hover:border-background/40 hover:text-background"
-            >
-              Ablauf im Detail <ArrowRight size={14} />
-            </Link>
-          </div>
-          <ol className="space-y-3 md:col-span-8">
-            {STEPS.map((s) => (
-              <li
-                key={s.n}
-                className="flex items-start gap-5 rounded-xl border border-background/8 bg-background/[0.04] px-6 py-5"
-              >
-                <span className="mt-0.5 shrink-0 font-serif text-2xl leading-none text-[var(--brand-gold)]">{s.n}</span>
-                <div>
-                  <p className="font-medium text-background">{s.title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-background/60">{s.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Section>
-
-      {/* ── PREIS ────────────────────────────────────────────────── */}
-      <Section>
-        <div className="grid items-center gap-10 md:grid-cols-12">
-          <div className="md:col-span-6">
-            <Eyebrow>Preisorientierung</Eyebrow>
-            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-              Websites ab 790 €.
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground/70">
-              Keine starren Pakete, keine versteckten Kosten. Der genaue Preis hängt vom Umfang ab.
-              Nach einem kurzen, kostenlosen Erstgespräch erhalten Sie ein klares, schriftliches Angebot.
-            </p>
-            <div className="mt-8 space-y-3">
-              {[
-                ["Einseitige Website", "ab 790 €"],
-                ["Mehrseitige Website", "ab 1.390 €"],
-                ["Website-Relaunch", "ab 1.590 €"],
-                ["Hosting & Wartung", "ab 30 €/Monat"],
-              ].map(([k, v]) => (
-                <div key={k} className="flex items-center justify-between rounded-xl border border-border bg-card px-5 py-3.5 text-sm">
-                  <span className="text-foreground/75">{k}</span>
-                  <span className="font-semibold text-foreground">{v}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-3 text-xs text-muted-foreground">Richtwerte. Konkretes Angebot nach Erstgespräch. Gemäß § 19 UStG keine Umsatzsteuer.</p>
-            <Link to="/preise" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
-              Alle Preise im Detail <ArrowRight size={14} />
-            </Link>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl md:col-span-6">
-            <img
-              src="/images/gb-webdesign-arbeitsfoto.webp"
-              alt="Gustav Burmeister – Webdesigner aus Leipzig bei der Arbeit"
-              width={800}
-              height={1000}
-              loading="lazy"
-              className="w-full object-cover"
+            <TrustPointList
+              className="mt-7"
+              items={[
+                "One-Pager typischerweise in 1 Woche",
+                "Mehrseitige Websites meist in 2-4 Wochen",
+                "Eine Feedbackrunde inklusive",
+                "Veroeffentlichung und Einweisung inklusive",
+              ]}
             />
           </div>
         </div>
       </Section>
 
-      {/* ── ZIELGRUPPE ───────────────────────────────────────────── */}
-      <Section className="bg-secondary/40">
-        <Eyebrow>Für wen</Eyebrow>
-        <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-          Gemacht für lokale Unternehmen.
+      <Section className="bg-secondary/45">
+        <Eyebrow>Warum das wirkt</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Vier Dinge machen aus Besuchern echte Anfragen.
         </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {[
-            { icon: Wrench, t: "Handwerksbetriebe", d: "Damit potenzielle Kunden Sie online finden und direkt anfragen können." },
-            { icon: Utensils, t: "Restaurants & Cafés", d: "Speisekarte, Öffnungszeiten und Reservierung – klar und mobil optimiert." },
-            { icon: Briefcase, t: "Lokale Dienstleister", d: "Vom Steuerberater bis zur Physiopraxis – seriös, verständlich, vertrauenswürdig." },
-          ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="rounded-2xl bg-card p-7 border border-border">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary">
-                <Icon size={18} />
-              </span>
-              <h3 className="mt-5 font-serif text-xl text-foreground">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-foreground/65">{d}</p>
+        <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2">
+          {RESULT_FACTORS.map(({ icon: Icon, title, text }) => (
+            <div key={title} className="bg-card p-7">
+              <Icon size={22} className="text-primary" />
+              <h3 className="mt-5 font-serif text-xl text-foreground">
+                {title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                {text}
+              </p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ── KONTAKT CTA ──────────────────────────────────────────── */}
       <Section>
-        <div className="relative overflow-hidden rounded-3xl bg-primary px-10 py-16 text-primary-foreground md:px-16">
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/5" />
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-white/5" />
-          <div className="relative grid gap-8 md:grid-cols-12 md:items-center">
-            <div className="md:col-span-8">
-              <h2 className="font-serif text-3xl md:text-4xl">
-                15 Minuten – unverbindlich und kostenlos.
-              </h2>
-              <p className="mt-4 text-primary-foreground/75">
-                Sie sagen mir, was Sie vorhaben. Ich sage Ihnen ehrlich, ob und wie ich
-                helfen kann – und was es ungefähr kostet.
-              </p>
-            </div>
-            <div className="md:col-span-4 md:justify-self-end">
-              <Link
-                to="/kontakt"
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-background px-6 py-3.5 text-sm font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
-              >
-                Erstgespräch anfragen <ArrowRight size={15} />
+        <div className="grid gap-12 md:grid-cols-12 md:items-start">
+          <div className="md:col-span-5">
+            <Eyebrow>Kernangebot</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Website oder Relaunch für lokale Unternehmen.
+            </h2>
+            <p className="mt-4 leading-relaxed text-foreground/70">
+              Kein Sammelsurium aus Einzelleistungen. Das Kernprodukt ist eine
+              professionelle Website, die Vertrauen schafft, gefunden wird und
+              Besucher zur Anfrage führt.
+            </p>
+            <Button asChild variant="outline" className="mt-7 rounded-full">
+              <Link to="/leistungen">
+                Leistungen ansehen
+                <ArrowRight size={15} />
               </Link>
+            </Button>
+          </div>
+          <div className="md:col-span-7">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {OFFER_ITEMS.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm text-foreground/75"
+                >
+                  <CheckCircle2
+                    size={17}
+                    className="mt-0.5 shrink-0 text-primary"
+                  />
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </Section>
+
+      <Section className="bg-secondary/45">
+        <Eyebrow>Einordnung</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Warum nicht einfach Baukasten, Agentur oder die alte Website behalten?
+        </h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {COMPARISON.map(({ option, problem }) => (
+            <div
+              key={option}
+              className="rounded-xl border border-border bg-card p-6"
+            >
+              <h3 className="font-serif text-xl text-foreground">{option}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                {problem}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Projekte</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Echte Arbeit und ehrliche Beispiele.
+            </h2>
+          </div>
+          <Link
+            to="/referenzen"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+          >
+            Referenzen ansehen <ArrowRight size={15} />
+          </Link>
+        </div>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {[
+            {
+              label: "Kundenprojekt",
+              title: "geyerliner.de",
+              href: "https://geyerliner.de",
+              image: "/images/gb-webdesign-referenz-geyerliner.webp",
+              text: "Live-Projekt fuer ein lokales Unternehmen.",
+            },
+            {
+              label: "Orientierungsbeispiel",
+              title: "Salon Bernstein",
+              href: "https://salon-bernstein.pages.dev/",
+              image: "/images/gb-webdesign-website-mockup.webp",
+              text: "Demo fuer einen Friseursalon mit Buchungsfokus.",
+            },
+            {
+              label: "Orientierungsbeispiel",
+              title: "Goldener Stier",
+              href: "https://goldener-stier.pages.dev/",
+              image: "/images/gb-webdesign-pc-vor-laden.webp",
+              text: "Demo fuer Gastronomie mit Speisekarte und Reservierung.",
+            },
+          ].map((project) => (
+            <a
+              key={project.title}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <img
+                src={project.image}
+                alt={`${project.title} als Website-Referenz`}
+                width={900}
+                height={500}
+                loading="lazy"
+                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="flex flex-1 flex-col p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  {project.label}
+                </p>
+                <h3 className="mt-2 font-serif text-xl text-foreground">
+                  {project.title}
+                </h3>
+                <p className="mt-2 text-sm text-foreground/65">
+                  {project.text}
+                </p>
+                <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-primary">
+                  Ansehen <ArrowUpRight size={14} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Section>
+
+      <Section className="bg-secondary/45">
+        <div className="grid gap-10 md:grid-cols-12 md:items-center">
+          <div className="md:col-span-6">
+            <Eyebrow>Preisorientierung</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Bezahlbar, aber nicht beliebig.
+            </h2>
+            <p className="mt-4 leading-relaxed text-foreground/70">
+              Preise filtern. Deshalb gibt es klare Startpreise, aber kein
+              blindes Paket von der Stange. Nach dem Erstgespraech erhalten Sie
+              ein Festpreisangebot.
+            </p>
+          </div>
+          <div className="md:col-span-6">
+            <div className="space-y-3">
+              {[
+                ["One-Pager", "ab 790 EUR"],
+                ["Mehrseitige Website", "ab 1.390 EUR"],
+                ["Website-Relaunch", "ab 1.590 EUR"],
+                ["Hosting & Wartung", "ab 30 EUR/Monat"],
+              ].map(([name, price]) => (
+                <div
+                  key={name}
+                  className="flex items-center justify-between rounded-xl border border-border bg-card px-5 py-4 text-sm"
+                >
+                  <span className="text-foreground/70">{name}</span>
+                  <span className="font-semibold text-foreground">{price}</span>
+                </div>
+              ))}
+            </div>
+            <Button
+              asChild
+              className="mt-5 rounded-full bg-foreground text-background hover:bg-foreground/90"
+            >
+              <Link to="/preise">
+                Preise im Detail
+                <ArrowRight size={15} />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <Eyebrow>Ablauf</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Ein einfacher Prozess mit klaren Ergebnissen.
+        </h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-4">
+          {PROCESS.map(([number, title, text]) => (
+            <div
+              key={number}
+              className="rounded-xl border border-border bg-card p-6"
+            >
+              <p className="font-serif text-3xl leading-none text-[var(--brand-gold)]">
+                {number}
+              </p>
+              <h3 className="mt-5 font-serif text-xl text-foreground">
+                {title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                {text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section className="bg-secondary/45">
+        <div className="grid items-center gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <img
+              src="/images/gb-webdesign-arbeitsfoto.webp"
+              alt="Gustav Burmeister, Webdesigner aus Leipzig"
+              width={800}
+              height={1000}
+              loading="lazy"
+              className="w-full rounded-xl object-cover"
+            />
+          </div>
+          <div className="md:col-span-7">
+            <Eyebrow>Über Gustav</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Persönlicher Webdesigner statt anonymer Agentur.
+            </h2>
+            <p className="mt-5 leading-relaxed text-foreground/70">
+              Ich arbeite mit wenigen lokalen Unternehmen gleichzeitig. Sie
+              bekommen direkten Kontakt, klare Empfehlungen und eine Website,
+              die ohne Fachsprache erklaert wird.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {[
+                "15 Websites umgesetzt",
+                "30 lokale Unternehmen unterstützt",
+                "Kein Ticketsystem",
+              ].map((item) => (
+                <Badge
+                  key={item}
+                  variant="outline"
+                  className="border-border bg-card text-foreground/70"
+                >
+                  {item}
+                </Badge>
+              ))}
+            </div>
+            <Button
+              asChild
+              variant="outline"
+              className="mt-7 rounded-full bg-card"
+            >
+              <Link to="/ueber-mich">
+                Mehr über mich
+                <ArrowRight size={15} />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <Eyebrow>Häufige Fragen</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl text-foreground md:text-4xl">
+          Kurz beantwortet, bevor wir sprechen.
+        </h2>
+        <div className="mt-10 max-w-3xl">
+          <FaqAccordion items={HOME_FAQ} />
+        </div>
+      </Section>
+
+      <FinalCta />
     </>
   );
 }
