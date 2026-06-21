@@ -202,10 +202,9 @@ function DatenschutzPage() {
             6. Cookies und lokaler Speicher
           </h2>
           <p>
-            Diese Website setzt ausschließlich einen technisch notwendigen
-            Eintrag im lokalen Speicher (localStorage) des Browsers, um Ihre
-            Cookie-Einstellung zu speichern. Es werden keine Tracking-, Analyse-
-            oder Marketing-Cookies verwendet.
+            Diese Website verwendet keine Tracking-, Analyse- oder
+            Marketing-Cookies und speichert keine Cookie-Einstellung im lokalen
+            Speicher des Browsers.
           </p>
           <p className="mt-3">
             <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
