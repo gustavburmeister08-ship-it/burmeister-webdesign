@@ -1,5 +1,6 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/Section";
+import { EmailContact, EmailText } from "@/components/site/EmailContact";
 import { breadcrumbJsonLd, socialMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/datenschutz")({
@@ -67,12 +68,12 @@ function DatenschutzPage() {
             Deutschland
             <br />
             E-Mail:{" "}
-            <a
-              href="mailto:gustav.burmeister08@gmail.com"
-              className="underline underline-offset-2"
+            <EmailContact
+              icon={false}
+              className="inline underline underline-offset-2"
             >
-              gustav.burmeister08@gmail.com
-            </a>
+              <EmailText />
+            </EmailContact>
             <br />
             Telefon:{" "}
             <a
@@ -263,12 +264,12 @@ function DatenschutzPage() {
           </ul>
           <p className="mt-3">
             Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{" "}
-            <a
-              href="mailto:gustav.burmeister08@gmail.com"
-              className="underline underline-offset-2"
+            <EmailContact
+              icon={false}
+              className="inline underline underline-offset-2"
             >
-              gustav.burmeister08@gmail.com
-            </a>
+              <EmailText />
+            </EmailContact>
           </p>
         </div>
 
@@ -293,12 +294,14 @@ function DatenschutzPage() {
             Telefon: +49 351 493-5401
             <br />
             E-Mail:{" "}
-            <a
-              href="mailto:saechsdsb@slt.sachsen.de"
-              className="underline underline-offset-2"
+            <EmailContact
+              user="saechsdsb"
+              domain="slt.sachsen.de"
+              icon={false}
+              className="inline underline underline-offset-2"
             >
-              saechsdsb@slt.sachsen.de
-            </a>
+              <EmailText user="saechsdsb" domain="slt.sachsen.de" />
+            </EmailContact>
             <br />
             Website:{" "}
             <a

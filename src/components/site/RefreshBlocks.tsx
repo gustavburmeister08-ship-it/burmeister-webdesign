@@ -3,12 +3,6 @@ import type { ReactNode } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Section, Eyebrow } from "@/components/site/Section";
 
 export const TRUST_METRICS = [
@@ -82,22 +76,28 @@ export function TrustPointList({
 
 export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="rounded-xl border border-border bg-card px-5"
-    >
+    <div className="rounded-xl border border-border bg-card px-5">
       {items.map((item, index) => (
-        <AccordionItem key={item.question} value={`item-${index}`}>
-          <AccordionTrigger className="py-5 text-left text-base text-foreground hover:no-underline">
+        <details
+          key={item.question}
+          className="group border-b border-border last:border-b-0"
+          open={index === 0}
+        >
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-base text-foreground marker:hidden">
             {item.question}
-          </AccordionTrigger>
-          <AccordionContent className="pb-5 text-sm leading-relaxed text-foreground/70">
+            <span
+              aria-hidden="true"
+              className="text-xl leading-none text-muted-foreground transition-transform duration-200 group-open:rotate-45"
+            >
+              +
+            </span>
+          </summary>
+          <div className="pb-5 text-sm leading-relaxed text-foreground/70">
             {item.answer}
-          </AccordionContent>
-        </AccordionItem>
+          </div>
+        </details>
       ))}
-    </Accordion>
+    </div>
   );
 }
 

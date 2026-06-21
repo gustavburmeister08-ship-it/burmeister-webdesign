@@ -155,7 +155,7 @@ export function ContactForm() {
             type="email"
             required
             className={inputCls}
-            placeholder="name@firma.de"
+            placeholder="name(at)firma.de"
           />
           {clientErrors.email && <p className={errCls}>{clientErrors.email}</p>}
           <ValidationError

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
+import { EmailContact } from "@/components/site/EmailContact";
 import { CONTACT } from "@/lib/contact";
 
 const NAV_LINKS = [
@@ -63,12 +64,9 @@ export function Footer() {
               >
                 <Phone size={13} /> {CONTACT.phoneDisplay}
               </a>
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="inline-flex items-center gap-2 rounded-full border border-background/15 bg-background/8 px-4 py-2 text-xs text-background/75 transition-colors hover:border-background/30 hover:text-background"
-              >
-                <Mail size={13} /> E-Mail
-              </a>
+              <EmailContact className="inline-flex items-center gap-2 rounded-full border border-background/15 bg-background/8 px-4 py-2 text-xs text-background/75 transition-colors hover:border-background/30 hover:text-background">
+                E-Mail
+              </EmailContact>
             </div>
           </div>
 

@@ -10,6 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { ContactForm } from "@/components/site/ContactForm";
+import { EmailContact, EmailText } from "@/components/site/EmailContact";
 import { CONTACT } from "@/lib/contact";
 import { breadcrumbJsonLd, socialMeta } from "@/lib/seo";
 
@@ -53,7 +54,6 @@ export const Route = createFileRoute("/kontakt")({
             "@id": "https://burmeister-webdesign.com/#business",
             name: "Gustav Burmeister Webdesign Leipzig",
             telephone: "+493418605648",
-            email: "gustav.burmeister08@gmail.com",
             areaServed: { "@type": "City", name: "Leipzig" },
             address: {
               "@type": "PostalAddress",
@@ -183,32 +183,33 @@ function KontaktPage() {
               </div>
             </a>
 
-            {[
-              {
-                icon: Phone,
-                title: "Anrufen",
-                text: CONTACT.phoneDisplay,
-                href: CONTACT.phoneHref,
-              },
-              {
-                icon: Mail,
-                title: "E-Mail schreiben",
-                text: CONTACT.email,
-                href: `mailto:${CONTACT.email}`,
-              },
-            ].map(({ icon: Icon, title, text, href }) => (
-              <a
-                key={title}
-                href={href}
-                className="flex items-start gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:bg-secondary"
-              >
-                <Icon size={20} className="mt-0.5 shrink-0 text-primary" />
-                <div>
-                  <p className="font-serif text-lg text-foreground">{title}</p>
-                  <p className="mt-0.5 text-sm text-foreground/65">{text}</p>
-                </div>
-              </a>
-            ))}
+            <a
+              href={CONTACT.phoneHref}
+              className="flex items-start gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:bg-secondary"
+            >
+              <Phone size={20} className="mt-0.5 shrink-0 text-primary" />
+              <div>
+                <p className="font-serif text-lg text-foreground">Anrufen</p>
+                <p className="mt-0.5 text-sm text-foreground/65">
+                  {CONTACT.phoneDisplay}
+                </p>
+              </div>
+            </a>
+
+            <EmailContact
+              icon={false}
+              className="flex w-full items-start gap-4 rounded-xl border border-border bg-card p-5 text-left transition-colors hover:bg-secondary"
+            >
+              <Mail size={20} className="mt-0.5 shrink-0 text-primary" />
+              <div>
+                <p className="font-serif text-lg text-foreground">
+                  E-Mail schreiben
+                </p>
+                <p className="mt-0.5 text-sm text-foreground/65">
+                  <EmailText />
+                </p>
+              </div>
+            </EmailContact>
 
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-xl border border-dashed border-border p-4 text-sm text-foreground/65">

@@ -156,7 +156,6 @@ export const Route = createRootRouteWithContext()({
           name: "Gustav Burmeister Webdesign Leipzig",
           url: "https://burmeister-webdesign.com",
           logo: "https://burmeister-webdesign.com/images/gb-webdesign-logo.webp",
-          email: "gustav.burmeister08@gmail.com",
           telephone: "+493418605648",
           founder: { "@type": "Person", name: "Gustav Burmeister" },
           address: {
@@ -183,7 +182,6 @@ export const Route = createRootRouteWithContext()({
           image:
             "https://burmeister-webdesign.com/images/gb-webdesign-leipzig.webp",
           telephone: "+493418605648",
-          email: "gustav.burmeister08@gmail.com",
           founder: { "@type": "Person", name: "Gustav Burmeister" },
           parentOrganization: {
             "@id": "https://burmeister-webdesign.com/#organization",

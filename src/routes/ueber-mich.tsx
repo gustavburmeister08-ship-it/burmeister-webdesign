@@ -49,7 +49,6 @@ export const Route = createFileRoute("/ueber-mich")({
           url: "https://burmeister-webdesign.com/ueber-mich",
           image:
             "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp",
-          email: "gustav.burmeister08@gmail.com",
           telephone: "+493418605648",
           address: {
             "@type": "PostalAddress",

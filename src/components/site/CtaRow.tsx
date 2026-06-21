@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, MessageCircle, Mail, ArrowRight } from "lucide-react";
+import { Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { EmailContact } from "@/components/site/EmailContact";
 import { CONTACT } from "@/lib/contact";
 
 export function CtaRow({ compact = false }: { compact?: boolean }) {
@@ -30,12 +31,9 @@ export function CtaRow({ compact = false }: { compact?: boolean }) {
       >
         <Phone size={15} /> {CONTACT.phoneDisplay}
       </a>
-      <a
-        href={`mailto:${CONTACT.email}`}
-        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground/25 hover:bg-secondary hover:shadow-sm"
-      >
-        <Mail size={15} /> E-Mail
-      </a>
+      <EmailContact className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground/25 hover:bg-secondary hover:shadow-sm">
+        E-Mail
+      </EmailContact>
     </div>
   );
 }

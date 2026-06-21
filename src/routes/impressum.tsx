@@ -1,5 +1,6 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/Section";
+import { EmailContact, EmailText } from "@/components/site/EmailContact";
 import { breadcrumbJsonLd, socialMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/impressum")({
@@ -69,12 +70,12 @@ function ImpressumPage() {
             </a>
             <br />
             E-Mail:{" "}
-            <a
-              href="mailto:gustav.burmeister08@gmail.com"
-              className="underline underline-offset-2"
+            <EmailContact
+              icon={false}
+              className="inline underline underline-offset-2"
             >
-              gustav.burmeister08@gmail.com
-            </a>
+              <EmailText />
+            </EmailContact>
           </p>
         </div>
 
