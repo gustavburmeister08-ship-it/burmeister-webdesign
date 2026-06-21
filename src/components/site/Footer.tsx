@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { to: "/preise", label: "Preise" },
   { to: "/ablauf", label: "Ablauf" },
   { to: "/referenzen", label: "Referenzen" },
-  { to: "/ueber-mich", label: "Ueber mich" },
+  { to: "/ueber-mich", label: "Über mich" },
   { to: "/kontakt", label: "Kontakt" },
 ];
 
@@ -41,9 +41,9 @@ export function Footer() {
               className="h-10 w-auto"
             />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-background/78">
-              Premium wirkende Websites fuer lokale Unternehmen, die schnell
-              starten wollen: Festpreis nach Erstgespraech, persoenliche
-              Betreuung und erste Vorschau nach 7 Tagen.
+              Premium wirkende Websites für lokale Unternehmen, die schnell
+              starten wollen: Festpreis nach Erstgespräch, persönliche Betreuung
+              und erste Vorschau nach 7 Tagen.
             </p>
             <p className="mt-3 text-xs text-background/68">
               Webdesigner Leipzig · Websites ab 790 EUR · Lighthouse 95+ · SEO
@@ -98,7 +98,7 @@ export function Footer() {
             </p>
             <div className="mt-4 space-y-2.5 text-sm text-background/65">
               <p>Servicegebiet: Leipzig und Umgebung</p>
-              <p>Adresse: An der Maerchenwiese 40, 04277 Leipzig</p>
+              <p>Adresse: An der Märchenwiese 40, 04277 Leipzig</p>
               <p>Erreichbar: Mo-Fr, 9-18 Uhr</p>
             </div>
             <div className="mt-8 rounded-lg border border-background/10 bg-background/5 p-4">
@@ -112,7 +112,7 @@ export function Footer() {
                 to="/kontakt"
                 className="mt-3 inline-block text-xs font-medium text-background/75 underline underline-offset-2 hover:text-background"
               >
-                Erstgespraech anfragen →
+                Erstgespräch anfragen →
               </Link>
             </div>
           </div>
@@ -171,7 +171,7 @@ export function Footer() {
             vorbehalten.
           </p>
           <p className="text-xs text-background/62">
-            Gemaess § 19 UStG keine Umsatzsteuer.
+            Gemäß § 19 UStG keine Umsatzsteuer.
           </p>
         </div>
       </div>

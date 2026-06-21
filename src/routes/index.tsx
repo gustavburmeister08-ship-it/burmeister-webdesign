@@ -32,12 +32,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Webdesigner aus Leipzig fuer kleine Unternehmen: Websites ab 790 EUR, erste Vorschau nach 7 Tagen, Festpreis nach Erstgespraech und Performance 95+.",
+          "Webdesigner aus Leipzig für kleine Unternehmen: Websites ab 790 EUR, erste Vorschau nach 7 Tagen, Festpreis nach Erstgespräch und Performance 95+.",
       },
       ...socialMeta({
         title: "Webdesign Leipzig - Website ab 790 EUR",
         description:
-          "Websites fuer lokale Unternehmen in Leipzig: persoenlich, schnell, bezahlbar und ohne Technikstress.",
+          "Websites für lokale Unternehmen in Leipzig: persönlich, schnell, bezahlbar und ohne Technikstress.",
         path: "/",
         image:
           "https://burmeister-webdesign.com/images/gb-webdesign-leipzig-cafe.webp",
@@ -70,7 +70,7 @@ const HOME_FAQ: FaqItem[] = [
   {
     question: "Was kostet eine Website in Leipzig?",
     answer:
-      "Einfache One-Pager starten bei 790 EUR. Mehrseitige Websites beginnen bei 1.390 EUR, Relaunches ab 1.590 EUR. Nach dem kostenlosen Erstgespraech erhalten Sie ein klares Festpreisangebot.",
+      "Einfache One-Pager starten bei 790 EUR. Mehrseitige Websites beginnen bei 1.390 EUR, Relaunches ab 1.590 EUR. Nach dem kostenlosen Erstgespräch erhalten Sie ein klares Festpreisangebot.",
   },
   {
     question: "Wie schnell sehe ich einen ersten Entwurf?",
@@ -80,12 +80,12 @@ const HOME_FAQ: FaqItem[] = [
   {
     question: "Muss ich Texte und Technik selbst vorbereiten?",
     answer:
-      "Nein. Sie liefern die Informationen zu Ihrem Unternehmen. Struktur, Texte, Design, Bildaufbereitung und technische Umsetzung uebernehme ich.",
+      "Nein. Sie liefern die Informationen zu Ihrem Unternehmen. Struktur, Texte, Design, Bildaufbereitung und technische Umsetzung übernehme ich.",
   },
   {
     question: "Was passiert nach dem Launch?",
     answer:
-      "Veroeffentlichung und Einweisung sind inklusive. Optional uebernehme ich Hosting, Wartung, Backups, Updates und kleine Aenderungen.",
+      "Veröffentlichung und Einweisung sind inklusive. Optional übernehme ich Hosting, Wartung, Backups, Updates und kleine Änderungen.",
   },
 ];
 
@@ -103,12 +103,12 @@ const RESULT_FACTORS = [
   {
     icon: Search,
     title: "Lokal auffindbar",
-    text: "30+ lokale Suchbegriffe, saubere Meta-Daten und lokale Inhalte legen die Grundlage fuer bessere Sichtbarkeit.",
+    text: "30+ lokale Suchbegriffe, saubere Meta-Daten und lokale Inhalte legen die Grundlage für bessere Sichtbarkeit.",
   },
   {
     icon: MessageSquareQuote,
-    title: "Ein klarer naechster Schritt",
-    text: "Besucher sollen nicht raetseln. Jede Seite fuehrt ruhig zum Erstgespraech oder zur Angebotsanfrage.",
+    title: "Ein klarer nächster Schritt",
+    text: "Besucher sollen nicht rätseln. Jede Seite führt ruhig zum Erstgespräch oder zur Angebotsanfrage.",
   },
 ] as const;
 
@@ -116,9 +116,9 @@ const OFFER_ITEMS = [
   "Struktur, Design und Umsetzung",
   "Texte auf Wunsch inklusive",
   "Mobile Optimierung",
-  "SEO-Grundlagen fuer lokale Suche",
-  "Meta-Titel und Beschreibungen fuer alle Seiten",
-  "Veroeffentlichung und Einweisung inklusive",
+  "SEO-Grundlagen für lokale Suche",
+  "Meta-Titel und Beschreibungen für alle Seiten",
+  "Veröffentlichung und Einweisung inklusive",
 ] as const;
 
 const COMPARISON = [
@@ -130,22 +130,22 @@ const COMPARISON = [
   {
     option: "Alte Website behalten",
     problem:
-      "Kostet Vertrauen, wirkt auf dem Handy schlecht und fuehrt Besucher selten zur Anfrage.",
+      "Kostet Vertrauen, wirkt auf dem Handy schlecht und führt Besucher selten zur Anfrage.",
   },
   {
     option: "Grosse Agentur",
     problem:
-      "Professionell, aber fuer kleine Betriebe oft zu teuer, zu langsam und zu unpersoenlich.",
+      "Professionell, aber für kleine Betriebe oft zu teuer, zu langsam und zu unpersönlich.",
   },
   {
     option: "Gustav",
     problem:
-      "Direkt, lokal, bezahlbar: eine klare Website mit persoenlichem Ansprechpartner statt Ticketsystem.",
+      "Direkt, lokal, bezahlbar: eine klare Website mit persönlichem Ansprechpartner statt Ticketsystem.",
   },
 ] as const;
 
 const PROCESS = [
-  ["01", "Erstgespraech", "15 Minuten, kostenlos und ohne Verpflichtung."],
+  ["01", "Erstgespräch", "15 Minuten, kostenlos und ohne Verpflichtung."],
   [
     "02",
     "Festpreisangebot",
@@ -155,7 +155,7 @@ const PROCESS = [
   [
     "04",
     "Feedback & Launch",
-    "Eine Feedbackrunde, Veroeffentlichung und Einweisung inklusive.",
+    "Eine Feedbackrunde, Veröffentlichung und Einweisung inklusive.",
   ],
 ] as const;
 
@@ -179,7 +179,7 @@ function Index() {
                   variant="outline"
                   className="border-border bg-card/70 text-foreground/70"
                 >
-                  Festpreis nach Erstgespraech
+                  Festpreis nach Erstgespräch
                 </Badge>
               </div>
               <h1 className="mt-6 font-serif text-[clamp(2.55rem,6vw,4.7rem)] leading-[1.04] text-foreground">
@@ -187,8 +187,8 @@ function Index() {
                 machen.
               </h1>
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/72">
-                Professionelle Websites fuer Handwerker, Restaurants und lokale
-                Dienstleister: schnell umgesetzt, klar erklaert und bezahlbar
+                Professionelle Websites für Handwerker, Restaurants und lokale
+                Dienstleister: schnell umgesetzt, klar erklärt und bezahlbar
                 kalkuliert.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -197,7 +197,7 @@ function Index() {
                   className="rounded-full bg-foreground px-6 py-3 text-background hover:bg-foreground/90"
                 >
                   <Link to="/kontakt">
-                    Kostenloses Erstgespraech
+                    Kostenloses Erstgespräch
                     <ArrowRight size={15} />
                   </Link>
                 </Button>
@@ -257,7 +257,7 @@ function Index() {
           <div className="space-y-5 text-background/70 md:col-span-7">
             <p>
               Besucher lesen nicht alles. Sie scannen, ob Ihr Unternehmen
-              serioes, erreichbar und passend wirkt. Wenn die Website langsam,
+              seriös, erreichbar und passend wirkt. Wenn die Website langsam,
               alt oder unklar ist, suchen sie weiter.
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -310,7 +310,7 @@ function Index() {
                 "One-Pager typischerweise in 1 Woche",
                 "Mehrseitige Websites meist in 2-4 Wochen",
                 "Eine Feedbackrunde inklusive",
-                "Veroeffentlichung und Einweisung inklusive",
+                "Veröffentlichung und Einweisung inklusive",
               ]}
             />
           </div>
@@ -410,28 +410,35 @@ function Index() {
             Referenzen ansehen <ArrowRight size={15} />
           </Link>
         </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               label: "Kundenprojekt",
               title: "geyerliner.de",
               href: "https://geyerliner.de",
-              image: "/images/gb-webdesign-referenz-geyerliner.webp",
-              text: "Live-Projekt fuer ein lokales Unternehmen.",
+              image: "/images/references/geyerliner-home.webp",
+              text: "Live-Projekt für ein lokales Unternehmen.",
+            },
+            {
+              label: "Kundenprojekt",
+              title: "holistiq-sea.de",
+              href: "https://holistiq-sea.de",
+              image: "/images/references/holistiq-sea-home.webp",
+              text: "Ruhige Startseite mit klarem Einstieg und Vertrauensaufbau.",
             },
             {
               label: "Orientierungsbeispiel",
               title: "Salon Bernstein",
               href: "https://salon-bernstein.pages.dev/",
-              image: "/images/gb-webdesign-website-mockup.webp",
-              text: "Demo fuer einen Friseursalon mit Buchungsfokus.",
+              image: "/images/references/salon-bernstein-home.webp",
+              text: "Demo für einen Friseursalon mit Buchungsfokus.",
             },
             {
               label: "Orientierungsbeispiel",
               title: "Goldener Stier",
               href: "https://goldener-stier.pages.dev/",
-              image: "/images/gb-webdesign-pc-vor-laden.webp",
-              text: "Demo fuer Gastronomie mit Speisekarte und Reservierung.",
+              image: "/images/references/goldener-stier-home.webp",
+              text: "Demo für Gastronomie mit Speisekarte und Reservierung.",
             },
           ].map((project) => (
             <a
@@ -477,7 +484,7 @@ function Index() {
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/70">
               Preise filtern. Deshalb gibt es klare Startpreise, aber kein
-              blindes Paket von der Stange. Nach dem Erstgespraech erhalten Sie
+              blindes Paket von der Stange. Nach dem Erstgespräch erhalten Sie
               ein Festpreisangebot.
             </p>
           </div>
@@ -556,7 +563,7 @@ function Index() {
             <p className="mt-5 leading-relaxed text-foreground/70">
               Ich arbeite mit wenigen lokalen Unternehmen gleichzeitig. Sie
               bekommen direkten Kontakt, klare Empfehlungen und eine Website,
-              die ohne Fachsprache erklaert wird.
+              die ohne Fachsprache erklärt wird.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               {[

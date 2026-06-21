@@ -17,12 +17,12 @@ export const Route = createFileRoute("/ueber-mich")({
       {
         name: "description",
         content:
-          "Gustav Burmeister ist Webdesigner aus Leipzig fuer lokale Unternehmen: direkter Kontakt, klare Preise, 15 Websites und 30 Unternehmen unterstuetzt.",
+          "Gustav Burmeister ist Webdesigner aus Leipzig für lokale Unternehmen: direkter Kontakt, klare Preise, 15 Websites und 30 Unternehmen unterstützt.",
       },
       ...socialMeta({
         title: "Gustav Burmeister - Webdesigner aus Leipzig",
         description:
-          "Persoenlicher Webdesigner fuer kleine Unternehmen in Leipzig: direkter Kontakt, klare Preise und schnelle Umsetzung.",
+          "Persönlicher Webdesigner für kleine Unternehmen in Leipzig: direkter Kontakt, klare Preise und schnelle Umsetzung.",
         path: "/ueber-mich",
         image:
           "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp",
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/ueber-mich")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify(breadcrumbJsonLd("/ueber-mich", "Ueber mich")),
+        children: JSON.stringify(breadcrumbJsonLd("/ueber-mich", "Über mich")),
       },
       {
         type: "application/ld+json",
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/ueber-mich")({
           name: "Gustav Burmeister",
           jobTitle: "Webdesigner",
           description:
-            "Freiberuflicher Webdesigner aus Leipzig, spezialisiert auf moderne, bezahlbare Websites fuer kleine lokale Unternehmen.",
+            "Freiberuflicher Webdesigner aus Leipzig, spezialisiert auf moderne, bezahlbare Websites für kleine lokale Unternehmen.",
           url: "https://burmeister-webdesign.com/ueber-mich",
           image:
             "https://burmeister-webdesign.com/images/gb-webdesign-arbeitsfoto.webp",
@@ -115,22 +115,22 @@ function UeberMichPage() {
             </h2>
             <div className="mt-5 space-y-4 leading-relaxed text-foreground/72">
               <p>
-                Viele lokale Unternehmen haben keine Zeit, sich durch
-                Baukaesten, Plugins, SEO-Fachbegriffe oder Agenturprozesse zu
-                arbeiten. Genau dort setze ich an.
+                Viele lokale Unternehmen haben keine Zeit, sich durch Baukästen,
+                Plugins, SEO-Fachbegriffe oder Agenturprozesse zu arbeiten.
+                Genau dort setze ich an.
               </p>
               <p>
-                Sie sagen mir, was Sie anbieten. Ich kuemmere mich um Struktur,
-                Texte, Design, Technik und den Launch. Direkt, verstaendlich und
-                mit einem klaren Festpreis nach dem Erstgespraech.
+                Sie sagen mir, was Sie anbieten. Ich kümmere mich um Struktur,
+                Texte, Design, Technik und den Launch. Direkt, verständlich und
+                mit einem klaren Festpreis nach dem Erstgespräch.
               </p>
             </div>
             <ul className="mt-7 grid gap-3 sm:grid-cols-2">
               {[
                 "15 Websites umgesetzt",
-                "30 lokale Unternehmen unterstuetzt",
+                "30 lokale Unternehmen unterstützt",
                 "Erste Vorschau nach 7 Tagen",
-                "Veroeffentlichung und Einweisung inklusive",
+                "Veröffentlichung und Einweisung inklusive",
               ].map((item) => (
                 <li
                   key={item}
@@ -164,14 +164,14 @@ function UeberMichPage() {
             {[
               [
                 "Mehr Vertrauen",
-                "Ein professioneller erster Eindruck fuer Besucher, die Ihr Unternehmen noch nicht kennen.",
+                "Ein professioneller erster Eindruck für Besucher, die Ihr Unternehmen noch nicht kennen.",
               ],
               [
                 "Weniger Technikstress",
-                "Sie muessen keine Plattform, Plugins oder Fachbegriffe verwalten.",
+                "Sie müssen keine Plattform, Plugins oder Fachbegriffe verwalten.",
               ],
               [
-                "Bessere Anfragefuehrung",
+                "Bessere Anfrageführung",
                 "Besucher verstehen schneller, was Sie anbieten und wie sie Kontakt aufnehmen.",
               ],
               [
@@ -198,13 +198,13 @@ function UeberMichPage() {
           <div className="md:col-span-8">
             <Eyebrow>Standpunkt</Eyebrow>
             <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-              Bezahlbar heisst nicht billig. Es heisst passend fuer kleine
+              Bezahlbar heißt nicht billig. Es heißt passend für kleine
               Unternehmen.
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/70">
-              Ich baue nicht fuer Designpreise, sondern fuer Betriebe, die
-              online serioes wirken, gefunden werden und einfacher Anfragen
-              bekommen wollen.
+              Ich baue nicht für Designpreise, sondern für Betriebe, die online
+              seriös wirken, gefunden werden und einfacher Anfragen bekommen
+              wollen.
             </p>
           </div>
           <div className="md:col-span-4 md:justify-self-end">
@@ -220,7 +220,7 @@ function UeberMichPage() {
 
       <FinalCta
         title="Sie möchten direkt mit mir sprechen?"
-        text="Schreiben Sie kurz, was Sie vorhaben. Ich melde mich innerhalb von 24 Stunden persoenlich zurueck."
+        text="Schreiben Sie kurz, was Sie vorhaben. Ich melde mich innerhalb von 24 Stunden persönlich zurück."
         button="Kontakt aufnehmen"
       />
     </>

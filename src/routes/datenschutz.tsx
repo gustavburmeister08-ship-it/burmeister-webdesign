@@ -15,7 +15,7 @@ export const Route = createFileRoute("/datenschutz")({
       ...socialMeta({
         title: "Datenschutz - Gustav Burmeister Webdesign Leipzig",
         description:
-          "Datenschutzhinweise von Gustav Burmeister Webdesign Leipzig gemaess DSGVO.",
+          "Datenschutzhinweise von Gustav Burmeister Webdesign Leipzig gemäß DSGVO.",
         path: "/datenschutz",
       }),
     ],

@@ -15,12 +15,12 @@ export const Route = createFileRoute("/ablauf")({
       {
         name: "description",
         content:
-          "So entsteht Ihre Website: kostenloses Erstgespraech, Festpreisangebot, erste Vorschau nach 7 Tagen, Feedbackrunde, Veroeffentlichung und Einweisung.",
+          "So entsteht Ihre Website: kostenloses Erstgespräch, Festpreisangebot, erste Vorschau nach 7 Tagen, Feedbackrunde, Veröffentlichung und Einweisung.",
       },
       ...socialMeta({
         title: "Website-Ablauf Leipzig - erste Vorschau nach 7 Tagen",
         description:
-          "Ein klarer Prozess ohne Technikstress: Erstgespraech, Angebot, Vorschau, Feedback, Launch und Einweisung.",
+          "Ein klarer Prozess ohne Technikstress: Erstgespräch, Angebot, Vorschau, Feedback, Launch und Einweisung.",
         path: "/ablauf",
         image:
           "https://burmeister-webdesign.com/images/gb-webdesign-prozess.webp",
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/ablauf")({
           serviceJsonLd({
             name: "Website erstellen lassen in Leipzig",
             description:
-              "Klarer Website-Prozess vom kostenlosen Erstgespraech bis zur Veroeffentlichung inklusive Einweisung.",
+              "Klarer Website-Prozess vom kostenlosen Erstgespräch bis zur Veröffentlichung inklusive Einweisung.",
             path: "/ablauf",
           }),
         ),
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/ablauf")({
           "@type": "HowTo",
           name: "So entsteht Ihre Website in Leipzig",
           description:
-            "Von Erstgespraech bis Launch: Website-Erstellung mit Festpreis, erster Vorschau nach 7 Tagen und Einweisung.",
+            "Von Erstgespräch bis Launch: Website-Erstellung mit Festpreis, erster Vorschau nach 7 Tagen und Einweisung.",
           step: STEPS.map((step, index) => ({
             "@type": "HowToStep",
             position: index + 1,
@@ -242,7 +242,7 @@ function AblaufPage() {
 
       <FinalCta
         title="Bereit für Schritt 1?"
-        text="Das Erstgespraech kostet nichts. Sie bekommen eine ehrliche Einschaetzung und wissen danach, ob und wie wir Ihr Projekt angehen."
+        text="Das Erstgespräch kostet nichts. Sie bekommen eine ehrliche Einschätzung und wissen danach, ob und wie wir Ihr Projekt angehen."
       />
     </>
   );

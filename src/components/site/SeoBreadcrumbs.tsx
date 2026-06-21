@@ -6,7 +6,7 @@ const LABELS: Record<string, string> = {
   "/preise": "Preise",
   "/ablauf": "Ablauf",
   "/referenzen": "Referenzen",
-  "/ueber-mich": "Ueber mich",
+  "/ueber-mich": "Über mich",
   "/kontakt": "Kontakt",
   "/impressum": "Impressum",
   "/datenschutz": "Datenschutz",

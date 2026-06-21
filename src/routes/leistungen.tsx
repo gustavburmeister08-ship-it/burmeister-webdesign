@@ -28,38 +28,38 @@ const LEISTUNGEN_FAQ: FaqItem[] = [
   {
     question: "Was ist bei einer Website immer enthalten?",
     answer:
-      "Struktur, Design, Texte, Bildaufbereitung, mobile Optimierung, SEO-Grundlagen sowie Meta-Titel und Beschreibungen fuer alle Seiten.",
+      "Struktur, Design, Texte, Bildaufbereitung, mobile Optimierung, SEO-Grundlagen sowie Meta-Titel und Beschreibungen für alle Seiten.",
   },
   {
     question: "Muss ich selbst Texte schreiben?",
     answer:
-      "Nein. Sie liefern die Informationen zu Ihrem Unternehmen, ich formuliere daraus klare, verstaendliche Website-Texte.",
+      "Nein. Sie liefern die Informationen zu Ihrem Unternehmen, ich formuliere daraus klare, verständliche Website-Texte.",
   },
   {
     question: "Ist lokale SEO inklusive?",
     answer:
-      "Ja. Ich recherchiere 30+ lokale Suchbegriffe und setze die SEO-Grundlagen fuer Ihre Seiten um. Erweiterungen wie Google Business Profil sind optional moeglich.",
+      "Ja. Ich recherchiere 30+ lokale Suchbegriffe und setze die SEO-Grundlagen für Ihre Seiten um. Erweiterungen wie Google Business Profil sind optional möglich.",
   },
   {
     question: "Bieten Sie auch Hosting und Wartung an?",
     answer:
-      "Ja. Hosting und Wartung sind optional ab 30 EUR pro Monat moeglich, inklusive Backups, Updates und kleiner Aenderungen.",
+      "Ja. Hosting und Wartung sind optional ab 30 EUR pro Monat möglich, inklusive Backups, Updates und kleiner Änderungen.",
   },
 ];
 
 export const Route = createFileRoute("/leistungen")({
   head: () => ({
     meta: [
-      { title: "Leistungen - Webdesign Leipzig fuer lokale Unternehmen" },
+      { title: "Leistungen - Webdesign Leipzig für lokale Unternehmen" },
       {
         name: "description",
         content:
-          "Webdesign-Leistungen in Leipzig: Website-Erstellung, Relaunch, Texte, lokale SEO, Google Business Profil, Hosting und Wartung fuer kleine Unternehmen.",
+          "Webdesign-Leistungen in Leipzig: Website-Erstellung, Relaunch, Texte, lokale SEO, Google Business Profil, Hosting und Wartung für kleine Unternehmen.",
       },
       ...socialMeta({
         title: "Webdesign-Leistungen Leipzig - alles aus einer Hand",
         description:
-          "Website, Relaunch, Texte, SEO-Grundlagen und Wartung fuer lokale Unternehmen in Leipzig.",
+          "Website, Relaunch, Texte, SEO-Grundlagen und Wartung für lokale Unternehmen in Leipzig.",
         path: "/leistungen",
         image:
           "https://burmeister-webdesign.com/images/gb-webdesign-website-mockup.webp",
@@ -77,9 +77,9 @@ export const Route = createFileRoute("/leistungen")({
         type: "application/ld+json",
         children: JSON.stringify(
           serviceJsonLd({
-            name: "Webdesign-Leistungen fuer lokale Unternehmen in Leipzig",
+            name: "Webdesign-Leistungen für lokale Unternehmen in Leipzig",
             description:
-              "Website-Erstellung, Relaunch, Texte, lokale SEO, Google Business Profil, Hosting und Wartung fuer kleine Unternehmen.",
+              "Website-Erstellung, Relaunch, Texte, lokale SEO, Google Business Profil, Hosting und Wartung für kleine Unternehmen.",
             path: "/leistungen",
           }),
         ),
@@ -131,7 +131,7 @@ const INCLUDED = [
   {
     icon: PenLine,
     title: "Texte inklusive",
-    text: "Sie liefern die Infos, ich formuliere verstaendlich und anfrageorientiert.",
+    text: "Sie liefern die Infos, ich formuliere verständlich und anfrageorientiert.",
   },
   {
     icon: Smartphone,
@@ -159,17 +159,17 @@ const ADDONS = [
   {
     icon: ServerCog,
     title: "Hosting & Wartung",
-    text: "Backups, Updates, kleine Aenderungen und laufende Pflege ab 30 EUR/Monat.",
+    text: "Backups, Updates, kleine Änderungen und laufende Pflege ab 30 EUR/Monat.",
   },
   {
     icon: MapPin,
     title: "Google Business Profil",
-    text: "Einrichtung mit passenden Kategorien, Bildern und Beschreibung fuer Google Maps.",
+    text: "Einrichtung mit passenden Kategorien, Bildern und Beschreibung für Google Maps.",
   },
   {
     icon: FileText,
     title: "Landingpages",
-    text: "Fokussierte Seiten fuer Aktionen, einzelne Leistungen oder Google-Anzeigen.",
+    text: "Fokussierte Seiten für Aktionen, einzelne Leistungen oder Google-Anzeigen.",
   },
 ] as const;
 
@@ -178,8 +178,8 @@ function LeistungenPage() {
     <>
       <PageIntro
         eyebrow="Leistungen"
-        title="Eine Website fuer lokale Unternehmen - mit allem, was wirklich wichtig ist."
-        text="Das Kernangebot ist klar: Website oder Relaunch fuer kleine Unternehmen in Leipzig. Texte, Struktur, Design, Technik und SEO-Grundlagen kommen aus einer Hand."
+        title="Eine Website für lokale Unternehmen - mit allem, was wirklich wichtig ist."
+        text="Das Kernangebot ist klar: Website oder Relaunch für kleine Unternehmen in Leipzig. Texte, Struktur, Design, Technik und SEO-Grundlagen kommen aus einer Hand."
       >
         <div className="mt-8 flex flex-wrap gap-2">
           {[
@@ -271,7 +271,7 @@ function LeistungenPage() {
               Damit Kunden Sie in Leipzig finden.
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/70">
-              Lokale SEO heisst nicht, einfach ein paar Keywords einzubauen. Ich
+              Lokale SEO heißt nicht, einfach ein paar Keywords einzubauen. Ich
               recherchiere Suchbegriffe, die zu Ihrer Branche und Region passen,
               und strukturiere Ihre Inhalte so, dass Kunden schneller verstehen,
               warum sie bei Ihnen richtig sind.
@@ -279,7 +279,7 @@ function LeistungenPage() {
             <ul className="mt-7 space-y-3">
               {[
                 "30+ lokale Suchbegriffe recherchiert",
-                "Meta-Titel und Beschreibungen fuer alle Seiten",
+                "Meta-Titel und Beschreibungen für alle Seiten",
                 "Google Business Profil optional mit Kategorien und Bildern",
               ].map((item) => (
                 <li
@@ -298,7 +298,7 @@ function LeistungenPage() {
           <div className="md:col-span-6">
             <img
               src="/images/gb-webdesign-lokale-seo-leipzig.webp"
-              alt="Lokale SEO und Google Maps Sichtbarkeit fuer Unternehmen in Leipzig"
+              alt="Lokale SEO und Google Maps Sichtbarkeit für Unternehmen in Leipzig"
               width={900}
               height={600}
               loading="lazy"
@@ -320,7 +320,7 @@ function LeistungenPage() {
 
       <FinalCta
         title="Nicht sicher, welche Leistung Sie brauchen?"
-        text="Das klaeren wir im kostenlosen Erstgespraech. Ich sage Ihnen ehrlich, was sinnvoll ist und was Sie sich sparen koennen."
+        text="Das klären wir im kostenlosen Erstgespräch. Ich sage Ihnen ehrlich, was sinnvoll ist und was Sie sich sparen können."
       />
     </>
   );

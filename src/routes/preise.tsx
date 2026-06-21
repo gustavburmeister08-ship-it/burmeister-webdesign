@@ -15,7 +15,7 @@ const PREISE_FAQ: FaqItem[] = [
   {
     question: "Sind die Preise Festpreise?",
     answer:
-      "Nach dem kostenlosen Erstgespraech erhalten Sie ein klares Festpreisangebot. Es gibt keine Abrechnung nach Stunden und keine versteckten Kosten.",
+      "Nach dem kostenlosen Erstgespräch erhalten Sie ein klares Festpreisangebot. Es gibt keine Abrechnung nach Stunden und keine versteckten Kosten.",
   },
   {
     question: "Wann muss ich bezahlen?",
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/preise")({
       ...socialMeta({
         title: "Webdesign-Preise Leipzig - Website ab 790 EUR",
         description:
-          "Klare Startpreise, Festpreis nach Erstgespraech, keine Stundenabrechnung und keine versteckten Kosten.",
+          "Klare Startpreise, Festpreis nach Erstgespräch, keine Stundenabrechnung und keine versteckten Kosten.",
         path: "/preise",
         image:
           "https://burmeister-webdesign.com/images/gb-webdesign-preise-karten.webp",
@@ -247,9 +247,9 @@ function PreisePage() {
               Hosting & Wartung ab 30 EUR/Monat
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65">
-              Backups, Updates, kleine Aenderungen und laufende Pflege. So
-              bleibt die Website nach dem Launch betreut, statt einfach nur
-              uebergeben zu werden.
+              Backups, Updates, kleine Änderungen und laufende Pflege. So bleibt
+              die Website nach dem Launch betreut, statt einfach nur übergeben
+              zu werden.
             </p>
           </div>
           <Button

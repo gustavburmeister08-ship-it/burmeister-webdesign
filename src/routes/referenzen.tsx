@@ -15,15 +15,15 @@ export const Route = createFileRoute("/referenzen")({
       {
         name: "description",
         content:
-          "Webdesign-Referenzen aus Leipzig: echtes Kundenprojekt geyerliner.de, ehrliche Demo-Beispiele und Vorher-Nachher-Eindruck fuer lokale Websites in Leipzig.",
+          "Webdesign-Referenzen aus Leipzig: echte Kundenprojekte wie geyerliner.de und holistiq-sea.de sowie ehrliche Demo-Beispiele für lokale Websites.",
       },
       ...socialMeta({
         title: "Webdesign-Referenzen Leipzig",
         description:
-          "Echte Projekte und ehrliche Orientierungsbeispiele fuer lokale Unternehmen.",
+          "Echte Kundenprojekte und ehrliche Orientierungsbeispiele für lokale Unternehmen.",
         path: "/referenzen",
         image:
-          "https://burmeister-webdesign.com/images/gb-webdesign-referenz-geyerliner.webp",
+          "https://burmeister-webdesign.com/images/references/geyerliner-home.webp",
       }),
     ],
     links: [
@@ -59,27 +59,36 @@ const PROJECTS = [
     title: "geyerliner.de",
     type: "Kundenprojekt · Live",
     href: "https://geyerliner.de",
-    image: "/images/gb-webdesign-referenz-geyerliner.webp",
-    alt: "geyerliner.de als responsive Website auf mehreren Geraeten",
-    text: "Lokale Unternehmenswebsite mit klarer Struktur, modernem Auftritt und direkter Anfragefuehrung.",
+    image: "/images/references/geyerliner-home.webp",
+    alt: "Startseite von geyerliner.de als Webdesign-Referenz",
+    text: "Lokale Unternehmenswebsite mit klarer Struktur, modernem Auftritt und direkter Anfrageführung.",
+    real: true,
+  },
+  {
+    title: "holistiq-sea.de",
+    type: "Kundenprojekt · Live",
+    href: "https://holistiq-sea.de",
+    image: "/images/references/holistiq-sea-home.webp",
+    alt: "Startseite von holistiq-sea.de als Webdesign-Referenz",
+    text: "Startseite für ein lokales Angebot mit ruhiger Positionierung, klarem Einstieg und vertrauensbildendem Auftritt.",
     real: true,
   },
   {
     title: "Salon Bernstein",
     type: "Orientierungsbeispiel · Friseur",
     href: "https://salon-bernstein.pages.dev/",
-    image: "/images/gb-webdesign-website-mockup.webp",
-    alt: "Demo-Website fuer einen Friseursalon als Website-Mockup",
-    text: "Demo fuer einen lokalen Friseursalon mit Leistungen, Atmosphaere und Buchungsfokus.",
+    image: "/images/references/salon-bernstein-home.webp",
+    alt: "Startseite der Demo-Website Salon Bernstein",
+    text: "Demo für einen lokalen Friseursalon mit Leistungen, Atmosphäre und Buchungsfokus.",
     real: false,
   },
   {
     title: "Goldener Stier",
     type: "Orientierungsbeispiel · Restaurant",
     href: "https://goldener-stier.pages.dev/",
-    image: "/images/gb-webdesign-pc-vor-laden.webp",
-    alt: "Demo-Website fuer ein Restaurant auf einem Bildschirm",
-    text: "Demo fuer Gastronomie mit Speisekarte, Oeffnungszeiten und Reservierung.",
+    image: "/images/references/goldener-stier-home.webp",
+    alt: "Startseite der Demo-Website Goldener Stier",
+    text: "Demo für Gastronomie mit Speisekarte, Öffnungszeiten und Reservierung.",
     real: false,
   },
 ] as const;
@@ -90,7 +99,7 @@ function ReferenzenPage() {
       <PageIntro
         eyebrow="Referenzen"
         title="Echte Arbeit zuerst. Demos bleiben ehrlich gekennzeichnet."
-        text="Referenzen sollen Vertrauen schaffen, nicht blenden. Echte Live-Projekte stehen vorne, Demo-Websites zeigen transparent, was fuer verschiedene Branchen moeglich ist."
+        text="Referenzen sollen Vertrauen schaffen, nicht blenden. Echte Live-Projekte stehen vorne, Demo-Websites zeigen transparent, was für verschiedene Branchen möglich ist."
       >
         <div className="mt-8 flex flex-wrap gap-2">
           {[
@@ -110,7 +119,7 @@ function ReferenzenPage() {
       </PageIntro>
 
       <Section className="pt-0">
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {PROJECTS.map((project) => (
             <a
               key={project.title}
@@ -118,9 +127,7 @@ function ReferenzenPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={`group flex flex-col overflow-hidden rounded-xl border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                project.real
-                  ? "border-primary/35 md:col-span-2"
-                  : "border-border"
+                project.real ? "border-primary/35" : "border-border"
               }`}
             >
               <img
@@ -158,10 +165,10 @@ function ReferenzenPage() {
           <div className="md:col-span-5">
             <Eyebrow>Vorher / Nachher</Eyebrow>
             <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
-              Ein Relaunch veraendert nicht nur Optik, sondern Vertrauen.
+              Ein Relaunch verändert nicht nur Optik, sondern Vertrauen.
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/70">
-              Fuer lokale Unternehmen zaehlt der erste Eindruck. Ein klarer,
+              Für lokale Unternehmen zählt der erste Eindruck. Ein klarer,
               mobiler und schneller Auftritt macht es Besuchern leichter,
               Vertrauen zu fassen und anzufragen.
             </p>
@@ -183,10 +190,10 @@ function ReferenzenPage() {
         <div className="rounded-xl border border-dashed border-border bg-card p-8 md:flex md:items-center md:justify-between md:gap-8">
           <div>
             <h2 className="font-serif text-2xl text-foreground">
-              Ihr Projekt kann der naechste echte Case werden.
+              Ihr Projekt kann der nächste echte Case werden.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65">
-              Aktuell werden weitere Case-Details ergaenzt. Bis dahin bleiben
+              Aktuell werden weitere Case-Details ergänzt. Bis dahin bleiben
               Demo-Beispiele klar als solche markiert.
             </p>
           </div>

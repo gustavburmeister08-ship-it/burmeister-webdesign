@@ -17,17 +17,17 @@ export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
       {
-        title: "Kontakt - Webdesign Leipzig | kostenloses Erstgespraech",
+        title: "Kontakt - Webdesign Leipzig | kostenloses Erstgespräch",
       },
       {
         name: "description",
         content:
-          "Kostenloses Erstgespraech fuer Ihre Website in Leipzig: Antwort innerhalb von 24 Stunden, Festpreis nach Erstgespraech, direkter Kontakt mit Gustav.",
+          "Kostenloses Erstgespräch für Ihre Website in Leipzig: Antwort innerhalb von 24 Stunden, Festpreis nach Erstgespräch, direkter Kontakt mit Gustav.",
       },
       ...socialMeta({
-        title: "Kostenloses Erstgespraech - Webdesign Leipzig",
+        title: "Kostenloses Erstgespräch - Webdesign Leipzig",
         description:
-          "Website anfragen: persoenlich, unverbindlich, Antwort innerhalb von 24 Stunden.",
+          "Website anfragen: persönlich, unverbindlich, Antwort innerhalb von 24 Stunden.",
         path: "/kontakt",
         image:
           "https://burmeister-webdesign.com/images/gb-webdesign-kontakt-hero.webp",
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/kontakt")({
             areaServed: { "@type": "City", name: "Leipzig" },
             address: {
               "@type": "PostalAddress",
-              streetAddress: "An der Maerchenwiese 40",
+              streetAddress: "An der Märchenwiese 40",
               postalCode: "04277",
               addressLocality: "Leipzig",
               addressRegion: "Sachsen",
@@ -123,7 +123,7 @@ function KontaktPage() {
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Je konkreter Ihre Nachricht, desto schneller kann ich
-                einschaetzen, was sinnvoll ist.
+                einschätzen, was sinnvoll ist.
               </p>
               <div className="mt-6">
                 <ContactForm />
@@ -134,7 +134,7 @@ function KontaktPage() {
           <aside className="space-y-4 md:col-span-5">
             <img
               src="/images/gb-webdesign-kontakt-hero.webp"
-              alt="Gustav Burmeister als persoenlicher Ansprechpartner fuer Webdesign in Leipzig"
+              alt="Gustav Burmeister als persönlicher Ansprechpartner für Webdesign in Leipzig"
               width={800}
               height={500}
               loading="lazy"
@@ -150,7 +150,7 @@ function KontaktPage() {
                   ["1", "Ich antworte innerhalb von 24 Stunden."],
                   [
                     "2",
-                    "Wir klaeren Ihr Vorhaben in einem kurzen Erstgespraech.",
+                    "Wir klären Ihr Vorhaben in einem kurzen Erstgespräch.",
                   ],
                   [
                     "3",
@@ -214,7 +214,7 @@ function KontaktPage() {
               <div className="rounded-xl border border-dashed border-border p-4 text-sm text-foreground/65">
                 <MapPin size={16} className="text-primary" />
                 <p className="mt-2 font-medium text-foreground">
-                  An der Maerchenwiese 40
+                  An der Märchenwiese 40
                 </p>
                 <p className="mt-0.5 text-xs">
                   04277 Leipzig · Vor-Ort-Termine auf Anfrage
@@ -233,14 +233,14 @@ function KontaktPage() {
 
             <div className="flex items-start gap-3 rounded-xl border border-border bg-secondary/50 p-4 text-sm text-foreground/70">
               <ShieldCheck size={17} className="mt-0.5 shrink-0 text-primary" />
-              Zahlung erst nach Zusage. Das Erstgespraech bleibt kostenlos und
+              Zahlung erst nach Zusage. Das Erstgespräch bleibt kostenlos und
               unverbindlich.
             </div>
 
             <div className="overflow-hidden rounded-xl border border-border bg-card">
               <iframe
                 title="Karte: Gustav Burmeister Webdesign in Leipzig"
-                src="https://www.google.com/maps?q=An%20der%20Maerchenwiese%2040%2C%2004277%20Leipzig&output=embed"
+                src="https://www.google.com/maps?q=An%20der%20M%C3%A4rchenwiese%2040%2C%2004277%20Leipzig&output=embed"
                 width="600"
                 height="360"
                 loading="lazy"
@@ -250,7 +250,7 @@ function KontaktPage() {
               <div className="p-4 text-sm text-foreground/70">
                 <p className="font-medium text-foreground">Servicegebiet</p>
                 <p className="mt-1">
-                  Webdesign fuer Leipzig, Umgebung und lokale Unternehmen in
+                  Webdesign für Leipzig, Umgebung und lokale Unternehmen in
                   Sachsen. Termine vor Ort nach Absprache.
                 </p>
               </div>
