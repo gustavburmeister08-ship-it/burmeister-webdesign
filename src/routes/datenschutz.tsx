@@ -45,7 +45,7 @@ function DatenschutzPage() {
         Datenschutzerklärung
       </h1>
       <p className="mt-4 max-w-3xl text-foreground/70">
-        Stand: Juni 2025 · Gültig für burmeister-webdesign.com
+        Stand: Juni 2026 · Gültig für burmeister-webdesign.com
       </p>
 
       <div className="mt-10 max-w-3xl space-y-10 text-[15px] leading-relaxed text-foreground/85">
@@ -199,29 +199,66 @@ function DatenschutzPage() {
         {/* 6 */}
         <div>
           <h2 className="mb-3 font-serif text-xl text-foreground">
-            6. Cookies und lokaler Speicher
+            6. Meta Pixel und Meta Conversions API
           </h2>
           <p>
-            Diese Website verwendet keine Tracking-, Analyse- oder
-            Marketing-Cookies und speichert keine Cookie-Einstellung im lokalen
-            Speicher des Browsers.
+            Diese Website kann Meta Pixel und die Meta Conversions API des
+            Anbieters Meta Platforms Ireland Limited, Merrion Road, Dublin 4,
+            D04 X2K5, Irland, einsetzen, um die Wirksamkeit von Werbeanzeigen zu
+            messen und Kontaktanfragen besser zuzuordnen.
           </p>
           <p className="mt-3">
-            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
-            (berechtigtes Interesse am technischen Betrieb).
+            Dabei können technische Informationen wie aufgerufene URL, Zeitpunkt
+            des Ereignisses, Browser-Kennung, Klickkennung,
+            Browser-Informationen, Geräteinformationen sowie Interaktionen wie
+            Seitenaufrufe, Kontaktklicks und abgesendete Kontaktformulare an
+            Meta übermittelt werden. Angaben aus Kontaktformularen wie
+            E-Mail-Adresse, Telefonnummer, Vorname oder Nachname werden vor der
+            Übermittlung nach den Vorgaben von Meta gehasht.
+          </p>
+          <p className="mt-3">
+            Meta kann diese Informationen mit Ihrem Facebook- oder
+            Instagram-Konto verknüpfen, sofern Sie bei Meta angemeldet sind oder
+            Meta Sie wiedererkennen kann. Die Verarbeitung kann auch eine
+            Übermittlung in die USA umfassen. Meta ist nach eigenen Angaben
+            unter dem EU-U.S. Data Privacy Framework zertifiziert.
+          </p>
+          <p className="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO
+            (Einwilligung), soweit eine Einwilligung erforderlich ist. Soweit
+            technisch notwendige Verarbeitungsvorgänge betroffen sind, kann Art.
+            6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Messung und
+            Optimierung von Werbemaßnahmen) einschlägig sein.
+          </p>
+          <p className="mt-3">
+            Datenschutzinformationen von Meta:{" "}
+            <a
+              href="https://www.facebook.com/privacy/policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+            >
+              facebook.com/privacy/policy
+            </a>
           </p>
         </div>
 
         {/* 7 */}
         <div>
           <h2 className="mb-3 font-serif text-xl text-foreground">
-            7. Keine Weitergabe an Dritte – kein Tracking
+            7. Cookies und lokaler Speicher
           </h2>
           <p>
-            Diese Website verwendet kein Google Analytics, kein Meta Pixel, kein
-            LinkedIn Insight Tag und keine sonstigen Tracking- oder
-            Analysedienste. Es findet keine Profilerstellung und keine
-            Weitergabe von Nutzerdaten zu Werbezwecken statt.
+            Für den technischen Betrieb werden keine eigenen
+            Marketing-Cookie-Einstellungen im lokalen Speicher gespeichert.
+            Durch den Einsatz von Meta Pixel können jedoch Cookies oder
+            vergleichbare Technologien von Meta gesetzt oder ausgelesen werden,
+            insbesondere zur Wiedererkennung von Browsern und zur Zuordnung von
+            Werbeklicks.
+          </p>
+          <p className="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO
+            (Einwilligung), soweit eine Einwilligung erforderlich ist.
           </p>
         </div>
 
@@ -321,7 +358,7 @@ function DatenschutzPage() {
           </h2>
           <p>
             Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Juni
-            2025. Durch die Weiterentwicklung dieser Website oder aufgrund
+            2026. Durch die Weiterentwicklung dieser Website oder aufgrund
             geänderter gesetzlicher oder behördlicher Vorgaben kann es notwendig
             werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle
             Version ist stets unter burmeister-webdesign.com/datenschutz

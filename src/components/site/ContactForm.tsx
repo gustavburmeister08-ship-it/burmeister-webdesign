@@ -1,6 +1,7 @@
-﻿import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { z } from "zod";
+import { trackLeadFromForm } from "@/lib/meta-events";
 
 const FORMSPREE_ID = "xgobveqq";
 
@@ -50,6 +51,14 @@ const BUDGETS = [
 export function ContactForm() {
   const [state, handleFormspreeSubmit] = useForm(FORMSPREE_ID);
   const [clientErrors, setClientErrors] = useState<Errors>({});
+  const [pendingLeadFormData, setPendingLeadFormData] =
+    useState<FormData | null>(null);
+
+  useEffect(() => {
+    if (!state.succeeded || !pendingLeadFormData) return;
+    trackLeadFromForm(pendingLeadFormData);
+    setPendingLeadFormData(null);
+  }, [pendingLeadFormData, state.succeeded]);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     // 1. Client-seitige Zod-Validierung
@@ -80,6 +89,7 @@ export function ContactForm() {
 
     // 2. Zod OK → an Formspree senden (handleFormspreeSubmit ruft intern preventDefault)
     setClientErrors({});
+    setPendingLeadFormData(fd);
     handleFormspreeSubmit(e);
   };
 

@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { MetaTracking } from "@/components/site/MetaTracking";
 import { SeoBreadcrumbs } from "@/components/site/SeoBreadcrumbs";
 
 function NotFoundComponent() {
@@ -303,6 +304,17 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        {import.meta.env.VITE_META_PIXEL_ID ? (
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=${import.meta.env.VITE_META_PIXEL_ID}&ev=PageView&noscript=1`}
+              alt=""
+            />
+          </noscript>
+        ) : null}
         {children}
         <Scripts />
       </body>
@@ -321,6 +333,7 @@ function RootComponent() {
       </a>
       <Header />
       <SeoBreadcrumbs />
+      <MetaTracking />
       <main id="main-content" className="flex-1">
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />

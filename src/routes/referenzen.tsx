@@ -15,7 +15,7 @@ export const Route = createFileRoute("/referenzen")({
       {
         name: "description",
         content:
-          "Webdesign-Referenzen aus Leipzig: echte Kundenprojekte wie geyerliner.de und holistiq-sea.de sowie ehrliche Demo-Beispiele für lokale Websites.",
+          "Webdesign-Referenzen aus Leipzig: echte Kundenprojekte wie geyerliner.de, holistiq-sea.de und Feuchtewehr sowie ehrliche Demo-Beispiele für lokale Websites.",
       },
       ...socialMeta({
         title: "Webdesign-Referenzen Leipzig",
@@ -74,6 +74,24 @@ const PROJECTS = [
     real: true,
   },
   {
+    title: "Feuchtewehr",
+    type: "Kundenprojekt · Live",
+    href: "https://feuchtewehr.pages.dev/",
+    image: "/images/references/feuchtewehr-home.webp",
+    alt: "Startseite der Feuchtewehr-Website als Webdesign-Referenz",
+    text: "Projektseite für Wasserschaden-Management mit Soforthilfe-Fokus, Leistungsstruktur und klaren Kontaktwegen.",
+    real: true,
+  },
+  {
+    title: "Handwerker Modellseite",
+    type: "Modellseite · Sanitär & Heizung",
+    href: "https://sanitaertechnik-leipzig.pages.dev/",
+    image: "/images/references/handwerker-modellseite-home.webp",
+    alt: "Startseite der Sanitärtechnik-Leipzig Modellseite",
+    text: "Demo für einen lokalen Handwerksbetrieb mit Notdienst, Vertrauenssignalen und direkter Anfrageführung.",
+    real: false,
+  },
+  {
     title: "Salon Bernstein",
     type: "Orientierungsbeispiel · Friseur",
     href: "https://salon-bernstein.pages.dev/",
@@ -119,7 +137,7 @@ function ReferenzenPage() {
       </PageIntro>
 
       <Section className="pt-0">
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project) => (
             <a
               key={project.title}

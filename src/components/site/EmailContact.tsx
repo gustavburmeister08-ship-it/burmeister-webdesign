@@ -28,6 +28,7 @@ export function EmailContact({
     <button
       type="button"
       className={className}
+      data-meta-contact="email"
       onClick={() => openMail(user, domain)}
       {...props}
     >
