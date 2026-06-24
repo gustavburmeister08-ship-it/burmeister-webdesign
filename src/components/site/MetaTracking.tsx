@@ -2,11 +2,9 @@ import { useEffect, useRef } from "react";
 import { useLocation } from "@tanstack/react-router";
 
 import {
-  initMetaPixel,
   isMetaPixelConfigured,
   shouldTrackViewContent,
   trackMetaEvent,
-  trackMetaPageView,
 } from "@/lib/meta-events";
 
 function isContactTarget(target: EventTarget | null) {
@@ -22,21 +20,10 @@ function isContactTarget(target: EventTarget | null) {
 
 export function MetaTracking() {
   const location = useLocation();
-  const lastPageViewPath = useRef<string | null>(null);
   const lastViewContentPath = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!isMetaPixelConfigured()) return;
-    initMetaPixel();
-  }, []);
-
-  useEffect(() => {
     const path = location.pathname;
-
-    if (lastPageViewPath.current !== path) {
-      lastPageViewPath.current = path;
-      trackMetaPageView();
-    }
 
     if (!shouldTrackViewContent(path) || lastViewContentPath.current === path) {
       return;

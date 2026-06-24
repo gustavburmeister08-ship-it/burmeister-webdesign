@@ -29,8 +29,6 @@ type MetaPixelQueue = ((...args: unknown[]) => void) & {
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
 const VIEW_CONTENT_PATHS = new Set(["/kontakt", "/leistungen", "/preise"]);
 
-let pixelInitialized = false;
-
 function getCookie(name: string) {
   if (typeof document === "undefined") return undefined;
   const cookie = document.cookie
@@ -61,39 +59,6 @@ function splitName(name: string) {
 
 export function isMetaPixelConfigured() {
   return Boolean(PIXEL_ID);
-}
-
-export function initMetaPixel() {
-  if (!PIXEL_ID || pixelInitialized || typeof window === "undefined") return;
-
-  const fbq: MetaPixelQueue =
-    window.fbq ??
-    Object.assign(
-      function metaPixelQueue(...args: unknown[]) {
-        if (fbq.callMethod) {
-          fbq.callMethod(...args);
-          return;
-        }
-        fbq.queue.push(args);
-      },
-      { queue: [] },
-    );
-
-  if (!window.fbq) {
-    window.fbq = fbq;
-    window._fbq = fbq;
-    fbq.push = fbq;
-    fbq.loaded = true;
-    fbq.version = "2.0";
-
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "https://connect.facebook.net/en_US/fbevents.js";
-    document.head.appendChild(script);
-  }
-
-  window.fbq("init", PIXEL_ID);
-  pixelInitialized = true;
 }
 
 async function sendServerEvent(
@@ -132,17 +97,10 @@ export function trackMetaEvent(eventName: MetaEventName, leadData?: LeadData) {
   const eventId = createEventId(eventName);
 
   if (PIXEL_ID && typeof window !== "undefined") {
-    initMetaPixel();
     window.fbq?.("track", eventName, {}, { eventID: eventId });
   }
 
   void sendServerEvent(eventName, eventId, leadData);
-}
-
-export function trackMetaPageView() {
-  if (!PIXEL_ID || typeof window === "undefined") return;
-  initMetaPixel();
-  window.fbq?.("track", "PageView");
 }
 
 export function trackLeadFromForm(formData: FormData) {
