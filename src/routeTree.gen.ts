@@ -19,6 +19,7 @@ import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AblaufRouteImport } from './routes/ablauf'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiMetaCrmRouteImport } from './routes/api/meta-crm'
 
 const UeberMichRoute = UeberMichRouteImport.update({
   id: '/ueber-mich',
@@ -70,6 +71,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiMetaCrmRoute = ApiMetaCrmRouteImport.update({
+  id: '/api/meta-crm',
+  path: '/api/meta-crm',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/referenzen': typeof ReferenzenRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
+  '/api/meta-crm': typeof ApiMetaCrmRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/referenzen': typeof ReferenzenRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
+  '/api/meta-crm': typeof ApiMetaCrmRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/referenzen': typeof ReferenzenRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
+  '/api/meta-crm': typeof ApiMetaCrmRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/referenzen'
     | '/sitemap.xml'
     | '/ueber-mich'
+    | '/api/meta-crm'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/referenzen'
     | '/sitemap.xml'
     | '/ueber-mich'
+    | '/api/meta-crm'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/referenzen'
     | '/sitemap.xml'
     | '/ueber-mich'
+    | '/api/meta-crm'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +170,7 @@ export interface RootRouteChildren {
   ReferenzenRoute: typeof ReferenzenRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UeberMichRoute: typeof UeberMichRoute
+  ApiMetaCrmRoute: typeof ApiMetaCrmRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/meta-crm': {
+      id: '/api/meta-crm'
+      path: '/api/meta-crm'
+      fullPath: '/api/meta-crm'
+      preLoaderRoute: typeof ApiMetaCrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReferenzenRoute: ReferenzenRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UeberMichRoute: UeberMichRoute,
+  ApiMetaCrmRoute: ApiMetaCrmRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -18,14 +18,27 @@ export type MetaCapiEventInput = {
   customData?: Record<string, string | number | boolean>;
 };
 
+export type MetaCrmEventInput = {
+  eventName: string;
+  eventTime?: number;
+  leadEventSource?: string;
+  email?: string;
+  phone?: string;
+  firstName?: string;
+  lastName?: string;
+  fbc?: string;
+  leadId?: string | number;
+};
+
 type MetaUserData = {
-  client_user_agent: string;
+  client_user_agent?: string;
   fbp?: string;
   fbc?: string;
   em?: string[];
   ph?: string[];
   fn?: string[];
   ln?: string[];
+  lead_id?: string | number;
 };
 
 function normalizeEmail(value: string) {
@@ -46,6 +59,8 @@ function getMetaConfig() {
     pixelId: process.env.META_PIXEL_ID,
     apiVersion: process.env.META_CAPI_API_VERSION ?? DEFAULT_API_VERSION,
     testEventCode: process.env.META_TEST_EVENT_CODE,
+    crmLeadEventSource:
+      process.env.META_CRM_LEAD_EVENT_SOURCE ?? "Burmeister Webdesign CRM",
   };
 }
 
@@ -107,6 +122,59 @@ export async function sendMetaCapiEvent(input: MetaCapiEventInput) {
     ],
     ...(config.testEventCode ? { test_event_code: config.testEventCode } : {}),
   };
+
+  return postMetaEvents(body, config);
+}
+
+export async function sendMetaCrmEvent(input: MetaCrmEventInput) {
+  const config = getMetaConfig();
+
+  if (!config.accessToken || !config.pixelId) {
+    return { configured: false, sent: false };
+  }
+
+  const [email, phone, firstName, lastName] = await Promise.all([
+    hashIfPresent(input.email, normalizeEmail),
+    hashIfPresent(input.phone, normalizePhone),
+    hashIfPresent(input.firstName, normalizeText),
+    hashIfPresent(input.lastName, normalizeText),
+  ]);
+
+  const userData: MetaUserData = {
+    ...(input.fbc ? { fbc: input.fbc } : {}),
+    ...(input.leadId ? { lead_id: input.leadId } : {}),
+    ...(email ? { em: [email] } : {}),
+    ...(phone ? { ph: [phone] } : {}),
+    ...(firstName ? { fn: [firstName] } : {}),
+    ...(lastName ? { ln: [lastName] } : {}),
+  };
+
+  const body = {
+    data: [
+      {
+        event_name: input.eventName,
+        event_time: input.eventTime ?? Math.floor(Date.now() / 1000),
+        action_source: "system_generated",
+        user_data: userData,
+        custom_data: {
+          event_source: "crm",
+          lead_event_source: input.leadEventSource ?? config.crmLeadEventSource,
+        },
+      },
+    ],
+    ...(config.testEventCode ? { test_event_code: config.testEventCode } : {}),
+  };
+
+  return postMetaEvents(body, config);
+}
+
+async function postMetaEvents(
+  body: unknown,
+  config: ReturnType<typeof getMetaConfig>,
+) {
+  if (!config.accessToken || !config.pixelId) {
+    return { configured: false, sent: false };
+  }
 
   const url = new URL(
     `https://graph.facebook.com/${config.apiVersion}/${config.pixelId}/events`,
