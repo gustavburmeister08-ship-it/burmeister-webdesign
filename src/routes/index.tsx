@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -23,9 +24,30 @@ import {
   TrustPointList,
   type FaqItem,
 } from "@/components/site/RefreshBlocks";
+import { ContactForm } from "@/components/site/ContactForm";
 import { breadcrumbJsonLd, socialMeta } from "@/lib/seo";
+import { trackAdLandingViewContent } from "@/lib/meta-events";
+
+// Meta/Facebook-Ads-Landingpage-Varianten: ?ad=<id> aktiviert einen alternativen
+// Hero auf der ansonsten unveränderten Startseite, ohne eigene Route/Navigation.
+const AD_VARIANTS = {
+  lokal790: {
+    headline: "Websites für lokale Unternehmen ab 790 €",
+    subheadline:
+      "Für Handwerker, Restaurants, Friseure, Cafés und kleine Betriebe in Leipzig. Persönlich erstellt von Gustav Burmeister – modern, mobil optimiert und klar auf Anfragen ausgelegt.",
+    cta: "Kostenloses Erstgespräch anfragen",
+  },
+} as const;
+
+type AdVariantId = keyof typeof AD_VARIANTS;
+
+function isAdVariantId(value: unknown): value is AdVariantId {
+  return typeof value === "string" && value in AD_VARIANTS;
+}
 
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>) =>
+    isAdVariantId(search.ad) ? { ad: search.ad } : {},
   head: () => ({
     meta: [
       { title: "Webdesign Leipzig - Website erstellen lassen ab 790 EUR" },
@@ -160,6 +182,15 @@ const PROCESS = [
 ] as const;
 
 function Index() {
+  const { ad } = Route.useSearch();
+  const adVariant = ad ? AD_VARIANTS[ad] : undefined;
+
+  useEffect(() => {
+    if (ad) {
+      trackAdLandingViewContent(ad);
+    }
+  }, [ad]);
+
   return (
     <>
       <section className="relative overflow-hidden">
@@ -182,33 +213,57 @@ function Index() {
                   Festpreis nach Erstgespräch
                 </Badge>
               </div>
-              <h1 className="mt-6 font-serif text-[clamp(2.55rem,6vw,4.7rem)] leading-[1.04] text-foreground">
-                Websites, die lokale Kunden verstehen und Anfragen leichter
-                machen.
-              </h1>
-              <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/72">
-                Professionelle Websites für Handwerker, Restaurants und lokale
-                Dienstleister: schnell umgesetzt, klar erklärt und bezahlbar
-                kalkuliert.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button
-                  asChild
-                  className="rounded-full bg-foreground px-6 py-3 text-background hover:bg-foreground/90"
-                >
-                  <Link to="/kontakt">
-                    Kostenloses Erstgespräch
-                    <ArrowRight size={15} />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="rounded-full bg-card px-6 py-3"
-                >
-                  <Link to="/preise">Preise ansehen</Link>
-                </Button>
-              </div>
+              {adVariant ? (
+                <>
+                  <h1 className="mt-6 font-serif text-[clamp(2.55rem,6vw,4.7rem)] leading-[1.04] text-foreground">
+                    {adVariant.headline}
+                  </h1>
+                  <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/72">
+                    {adVariant.subheadline}
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Button
+                      asChild
+                      className="rounded-full bg-foreground px-6 py-3 text-background hover:bg-foreground/90"
+                    >
+                      <a href="#kontakt-formular">
+                        {adVariant.cta}
+                        <ArrowRight size={15} />
+                      </a>
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h1 className="mt-6 font-serif text-[clamp(2.55rem,6vw,4.7rem)] leading-[1.04] text-foreground">
+                    Websites, die lokale Kunden verstehen und Anfragen leichter
+                    machen.
+                  </h1>
+                  <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/72">
+                    Professionelle Websites für Handwerker, Restaurants und
+                    lokale Dienstleister: schnell umgesetzt, klar erklärt und
+                    bezahlbar kalkuliert.
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Button
+                      asChild
+                      className="rounded-full bg-foreground px-6 py-3 text-background hover:bg-foreground/90"
+                    >
+                      <Link to="/kontakt">
+                        Kostenloses Erstgespräch
+                        <ArrowRight size={15} />
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="rounded-full bg-card px-6 py-3"
+                    >
+                      <Link to="/preise">Preise ansehen</Link>
+                    </Button>
+                  </div>
+                </>
+              )}
               <TrustPointList className="mt-8" />
             </div>
 
@@ -242,6 +297,24 @@ function Index() {
           <TrustMetricGrid className="mt-16" />
         </div>
       </section>
+
+      {adVariant ? (
+        <Section id="kontakt-formular" className="bg-secondary/45">
+          <div className="mx-auto max-w-2xl">
+            <Eyebrow>Kostenloses Erstgespräch</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+              Jetzt unverbindlich anfragen.
+            </h2>
+            <p className="mt-4 text-foreground/70">
+              Schreiben Sie kurz, was Sie vorhaben. Ich melde mich innerhalb von
+              24 Stunden persönlich zurück.
+            </p>
+            <div className="mt-8 rounded-xl border border-border bg-card p-7 md:p-9">
+              <ContactForm />
+            </div>
+          </div>
+        </Section>
+      ) : null}
 
       <Section className="bg-foreground text-background">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">

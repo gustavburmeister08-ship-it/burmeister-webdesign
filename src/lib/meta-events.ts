@@ -9,6 +9,7 @@ type LeadData = {
   lastName?: string;
   service?: string;
   budget?: string;
+  contentName?: string;
 };
 
 declare global {
@@ -85,6 +86,9 @@ async function sendServerEvent(
           page_path: window.location.pathname,
           ...(leadData?.service ? { service: leadData.service } : {}),
           ...(leadData?.budget ? { budget: leadData.budget } : {}),
+          ...(leadData?.contentName
+            ? { content_name: leadData.contentName }
+            : {}),
         },
       },
     });
@@ -97,10 +101,19 @@ export function trackMetaEvent(eventName: MetaEventName, leadData?: LeadData) {
   const eventId = createEventId(eventName);
 
   if (PIXEL_ID && typeof window !== "undefined") {
-    window.fbq?.("track", eventName, {}, { eventID: eventId });
+    const pixelParams = leadData?.contentName
+      ? { content_name: leadData.contentName }
+      : {};
+    window.fbq?.("track", eventName, pixelParams, { eventID: eventId });
   }
 
   void sendServerEvent(eventName, eventId, leadData);
+}
+
+export function trackAdLandingViewContent(adId: string) {
+  trackMetaEvent("ViewContent", {
+    contentName: `Meta Ad Landingpage ${adId}`,
+  });
 }
 
 export function trackLeadFromForm(formData: FormData) {
