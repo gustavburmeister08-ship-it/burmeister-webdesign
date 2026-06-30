@@ -190,3 +190,93 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Ratgeber-Artikel: Fließtext-Typografie und Hinweisboxen für HTML-Content
+   aus dem Ratgeber-Bot (dangerouslySetInnerHTML). */
+.ratgeber-prose {
+  color: oklch(0.19 0.014 228 / 0.85);
+  line-height: 1.75;
+}
+
+.ratgeber-prose p {
+  margin-bottom: 1.1rem;
+}
+
+.ratgeber-prose ul,
+.ratgeber-prose ol {
+  margin: 1rem 0 1.25rem 1.25rem;
+}
+
+.ratgeber-prose ul {
+  list-style: disc;
+}
+
+.ratgeber-prose ol {
+  list-style: decimal;
+}
+
+.ratgeber-prose li {
+  margin-bottom: 0.5rem;
+}
+
+.ratgeber-prose strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.ratgeber-prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ratgeber-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.9rem;
+}
+
+.ratgeber-prose th,
+.ratgeber-prose td {
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+}
+
+.ratgeber-prose th {
+  background-color: var(--secondary);
+  font-weight: 600;
+}
+
+.tip-box,
+.warning-box {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border-left: 4px solid;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tip-box {
+  background-color: oklch(0.44 0.084 170 / 0.07);
+  border-color: var(--brand-green);
+}
+
+.tip-box::before {
+  content: "Tipp: ";
+  font-weight: 600;
+  color: var(--brand-green);
+}
+
+.warning-box {
+  background-color: oklch(0.577 0.245 27.325 / 0.08);
+  border-color: var(--destructive);
+}
+
+.warning-box::before {
+  content: "Achtung: ";
+  font-weight: 600;
+  color: var(--destructive);
+}

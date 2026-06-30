@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "check:meta": "node scripts/check-meta.mjs",
-    "check:meta:live": "node scripts/check-meta.mjs https://burmeister-webdesign.com"
+    "check:meta:live": "node scripts/check-meta.mjs https://burmeister-webdesign.com",
+    "import:ratgeber": "node scripts/import-ratgeber-article.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -84,6 +85,7 @@
     "globals": "^15.15.0",
     "nitro": "3.0.260603-beta",
     "prettier": "^3.7.3",
+    "sharp": "^0.35.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1"

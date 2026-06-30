@@ -24,6 +24,10 @@ const ENTRIES = [
   { path: "/referenzen", changefreq: "monthly", priority: "0.7" },
   { path: "/ablauf",     changefreq: "monthly", priority: "0.7" },
   { path: "/ueber-mich", changefreq: "yearly",  priority: "0.6" },
+  { path: "/ratgeber",   changefreq: "weekly",  priority: "0.7" },
+    { path: "/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen", changefreq: "monthly", priority: "0.6" },
+  // Pro Ratgeber-Artikel ergänzt scripts/import-ratgeber-article.mjs hier
+  // automatisch einen weiteren Eintrag (changefreq: monthly, priority: 0.6).
 ];
 
 const urls = ENTRIES.map(e => [

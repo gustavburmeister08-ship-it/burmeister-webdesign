@@ -24,6 +24,10 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/referenzen",  changefreq: "monthly", priority: "0.7", lastmod: TODAY },
           { path: "/ablauf",      changefreq: "monthly", priority: "0.7", lastmod: TODAY },
           { path: "/ueber-mich",  changefreq: "yearly",  priority: "0.6", lastmod: TODAY },
+          { path: "/ratgeber",    changefreq: "weekly",  priority: "0.7", lastmod: TODAY },
+          { path: "/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen", changefreq: "monthly", priority: "0.6", lastmod: TODAY },
+          // Pro Ratgeber-Artikel ergänzt scripts/import-ratgeber-article.mjs
+          // hier automatisch einen weiteren Eintrag.
         ];
 
         const urls = entries.map((e) =>

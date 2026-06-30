@@ -19,6 +19,8 @@ import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AblaufRouteImport } from './routes/ablauf'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RatgeberIndexRouteImport } from './routes/ratgeber/index'
+import { Route as RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport } from './routes/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
 import { Route as ApiMetaCrmRouteImport } from './routes/api/meta-crm'
 
 const UeberMichRoute = UeberMichRouteImport.update({
@@ -71,6 +73,17 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RatgeberIndexRoute = RatgeberIndexRouteImport.update({
+  id: '/ratgeber/',
+  path: '/ratgeber/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute =
+  RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport.update({
+    id: '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen',
+    path: '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiMetaCrmRoute = ApiMetaCrmRouteImport.update({
   id: '/api/meta-crm',
   path: '/api/meta-crm',
@@ -89,6 +102,8 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
   '/api/meta-crm': typeof ApiMetaCrmRoute
+  '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/ratgeber/': typeof RatgeberIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +117,8 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
   '/api/meta-crm': typeof ApiMetaCrmRoute
+  '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/ratgeber': typeof RatgeberIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +133,8 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
   '/api/meta-crm': typeof ApiMetaCrmRoute
+  '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/ratgeber/': typeof RatgeberIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +150,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ueber-mich'
     | '/api/meta-crm'
+    | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/ratgeber/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +165,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ueber-mich'
     | '/api/meta-crm'
+    | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/ratgeber'
   id:
     | '__root__'
     | '/'
@@ -157,6 +180,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ueber-mich'
     | '/api/meta-crm'
+    | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/ratgeber/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +196,8 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UeberMichRoute: typeof UeberMichRoute
   ApiMetaCrmRoute: typeof ApiMetaCrmRoute
+  RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute: typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  RatgeberIndexRoute: typeof RatgeberIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -245,6 +272,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ratgeber/': {
+      id: '/ratgeber/'
+      path: '/ratgeber'
+      fullPath: '/ratgeber/'
+      preLoaderRoute: typeof RatgeberIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': {
+      id: '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+      path: '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+      fullPath: '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+      preLoaderRoute: typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/meta-crm': {
       id: '/api/meta-crm'
       path: '/api/meta-crm'
@@ -267,6 +308,9 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UeberMichRoute: UeberMichRoute,
   ApiMetaCrmRoute: ApiMetaCrmRoute,
+  RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute:
+    RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute,
+  RatgeberIndexRoute: RatgeberIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
