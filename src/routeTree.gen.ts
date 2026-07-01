@@ -19,8 +19,14 @@ import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AblaufRouteImport } from './routes/ablauf'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as RatgeberIndexRouteImport } from './routes/ratgeber/index'
 import { Route as EnIndexRouteImport } from './routes/en/index'
+import { Route as ToolsWebsiteKostenrechnerRouteImport } from './routes/tools/website-kostenrechner'
+import { Route as ToolsSeoCheckRouteImport } from './routes/tools/seo-check'
+import { Route as ToolsLocalSeoCheckRouteImport } from './routes/tools/local-seo-check'
+import { Route as ToolsGoogleBewertungslinkGeneratorRouteImport } from './routes/tools/google-bewertungslink-generator'
+import { Route as ToolsDatenschutzCheckRouteImport } from './routes/tools/datenschutz-check'
 import { Route as RatgeberWebsiteRelaunchKostenLeipzigRouteImport } from './routes/ratgeber/website-relaunch-kosten-leipzig'
 import { Route as RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRouteImport } from './routes/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
 import { Route as RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport } from './routes/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
@@ -87,6 +93,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RatgeberIndexRoute = RatgeberIndexRouteImport.update({
   id: '/ratgeber/',
   path: '/ratgeber/',
@@ -95,6 +106,33 @@ const RatgeberIndexRoute = RatgeberIndexRouteImport.update({
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/en/',
   path: '/en/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsWebsiteKostenrechnerRoute =
+  ToolsWebsiteKostenrechnerRouteImport.update({
+    id: '/tools/website-kostenrechner',
+    path: '/tools/website-kostenrechner',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsSeoCheckRoute = ToolsSeoCheckRouteImport.update({
+  id: '/tools/seo-check',
+  path: '/tools/seo-check',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsLocalSeoCheckRoute = ToolsLocalSeoCheckRouteImport.update({
+  id: '/tools/local-seo-check',
+  path: '/tools/local-seo-check',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsGoogleBewertungslinkGeneratorRoute =
+  ToolsGoogleBewertungslinkGeneratorRouteImport.update({
+    id: '/tools/google-bewertungslink-generator',
+    path: '/tools/google-bewertungslink-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsDatenschutzCheckRoute = ToolsDatenschutzCheckRouteImport.update({
+  id: '/tools/datenschutz-check',
+  path: '/tools/datenschutz-check',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RatgeberWebsiteRelaunchKostenLeipzigRoute =
@@ -201,8 +239,14 @@ export interface FileRoutesByFullPath {
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/tools/datenschutz-check': typeof ToolsDatenschutzCheckRoute
+  '/tools/google-bewertungslink-generator': typeof ToolsGoogleBewertungslinkGeneratorRoute
+  '/tools/local-seo-check': typeof ToolsLocalSeoCheckRoute
+  '/tools/seo-check': typeof ToolsSeoCheckRoute
+  '/tools/website-kostenrechner': typeof ToolsWebsiteKostenrechnerRoute
   '/en/': typeof EnIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
+  '/tools/': typeof ToolsIndexRoute
   '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/en/ratgeber/website-relaunch-kosten-leipzig': typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
   '/en/ratgeber/': typeof EnRatgeberIndexRoute
@@ -230,8 +274,14 @@ export interface FileRoutesByTo {
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/tools/datenschutz-check': typeof ToolsDatenschutzCheckRoute
+  '/tools/google-bewertungslink-generator': typeof ToolsGoogleBewertungslinkGeneratorRoute
+  '/tools/local-seo-check': typeof ToolsLocalSeoCheckRoute
+  '/tools/seo-check': typeof ToolsSeoCheckRoute
+  '/tools/website-kostenrechner': typeof ToolsWebsiteKostenrechnerRoute
   '/en': typeof EnIndexRoute
   '/ratgeber': typeof RatgeberIndexRoute
+  '/tools': typeof ToolsIndexRoute
   '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/en/ratgeber/website-relaunch-kosten-leipzig': typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
   '/en/ratgeber': typeof EnRatgeberIndexRoute
@@ -260,8 +310,14 @@ export interface FileRoutesById {
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/tools/datenschutz-check': typeof ToolsDatenschutzCheckRoute
+  '/tools/google-bewertungslink-generator': typeof ToolsGoogleBewertungslinkGeneratorRoute
+  '/tools/local-seo-check': typeof ToolsLocalSeoCheckRoute
+  '/tools/seo-check': typeof ToolsSeoCheckRoute
+  '/tools/website-kostenrechner': typeof ToolsWebsiteKostenrechnerRoute
   '/en/': typeof EnIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
+  '/tools/': typeof ToolsIndexRoute
   '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/en/ratgeber/website-relaunch-kosten-leipzig': typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
   '/en/ratgeber/': typeof EnRatgeberIndexRoute
@@ -291,8 +347,14 @@ export interface FileRouteTypes {
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
+    | '/tools/datenschutz-check'
+    | '/tools/google-bewertungslink-generator'
+    | '/tools/local-seo-check'
+    | '/tools/seo-check'
+    | '/tools/website-kostenrechner'
     | '/en/'
     | '/ratgeber/'
+    | '/tools/'
     | '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/en/ratgeber/website-relaunch-kosten-leipzig'
     | '/en/ratgeber/'
@@ -320,8 +382,14 @@ export interface FileRouteTypes {
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
+    | '/tools/datenschutz-check'
+    | '/tools/google-bewertungslink-generator'
+    | '/tools/local-seo-check'
+    | '/tools/seo-check'
+    | '/tools/website-kostenrechner'
     | '/en'
     | '/ratgeber'
+    | '/tools'
     | '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/en/ratgeber/website-relaunch-kosten-leipzig'
     | '/en/ratgeber'
@@ -349,8 +417,14 @@ export interface FileRouteTypes {
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
+    | '/tools/datenschutz-check'
+    | '/tools/google-bewertungslink-generator'
+    | '/tools/local-seo-check'
+    | '/tools/seo-check'
+    | '/tools/website-kostenrechner'
     | '/en/'
     | '/ratgeber/'
+    | '/tools/'
     | '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/en/ratgeber/website-relaunch-kosten-leipzig'
     | '/en/ratgeber/'
@@ -379,8 +453,14 @@ export interface RootRouteChildren {
   RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute: typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute: typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   RatgeberWebsiteRelaunchKostenLeipzigRoute: typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  ToolsDatenschutzCheckRoute: typeof ToolsDatenschutzCheckRoute
+  ToolsGoogleBewertungslinkGeneratorRoute: typeof ToolsGoogleBewertungslinkGeneratorRoute
+  ToolsLocalSeoCheckRoute: typeof ToolsLocalSeoCheckRoute
+  ToolsSeoCheckRoute: typeof ToolsSeoCheckRoute
+  ToolsWebsiteKostenrechnerRoute: typeof ToolsWebsiteKostenrechnerRoute
   EnIndexRoute: typeof EnIndexRoute
   RatgeberIndexRoute: typeof RatgeberIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
   EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute: typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   EnRatgeberWebsiteRelaunchKostenLeipzigRoute: typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
   EnRatgeberIndexRoute: typeof EnRatgeberIndexRoute
@@ -458,6 +538,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ratgeber/': {
       id: '/ratgeber/'
       path: '/ratgeber'
@@ -470,6 +557,41 @@ declare module '@tanstack/react-router' {
       path: '/en'
       fullPath: '/en/'
       preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/website-kostenrechner': {
+      id: '/tools/website-kostenrechner'
+      path: '/tools/website-kostenrechner'
+      fullPath: '/tools/website-kostenrechner'
+      preLoaderRoute: typeof ToolsWebsiteKostenrechnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/seo-check': {
+      id: '/tools/seo-check'
+      path: '/tools/seo-check'
+      fullPath: '/tools/seo-check'
+      preLoaderRoute: typeof ToolsSeoCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/local-seo-check': {
+      id: '/tools/local-seo-check'
+      path: '/tools/local-seo-check'
+      fullPath: '/tools/local-seo-check'
+      preLoaderRoute: typeof ToolsLocalSeoCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/google-bewertungslink-generator': {
+      id: '/tools/google-bewertungslink-generator'
+      path: '/tools/google-bewertungslink-generator'
+      fullPath: '/tools/google-bewertungslink-generator'
+      preLoaderRoute: typeof ToolsGoogleBewertungslinkGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/datenschutz-check': {
+      id: '/tools/datenschutz-check'
+      path: '/tools/datenschutz-check'
+      fullPath: '/tools/datenschutz-check'
+      preLoaderRoute: typeof ToolsDatenschutzCheckRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ratgeber/website-relaunch-kosten-leipzig': {
@@ -606,8 +728,15 @@ const rootRouteChildren: RootRouteChildren = {
     RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute,
   RatgeberWebsiteRelaunchKostenLeipzigRoute:
     RatgeberWebsiteRelaunchKostenLeipzigRoute,
+  ToolsDatenschutzCheckRoute: ToolsDatenschutzCheckRoute,
+  ToolsGoogleBewertungslinkGeneratorRoute:
+    ToolsGoogleBewertungslinkGeneratorRoute,
+  ToolsLocalSeoCheckRoute: ToolsLocalSeoCheckRoute,
+  ToolsSeoCheckRoute: ToolsSeoCheckRoute,
+  ToolsWebsiteKostenrechnerRoute: ToolsWebsiteKostenrechnerRoute,
   EnIndexRoute: EnIndexRoute,
   RatgeberIndexRoute: RatgeberIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
   EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute:
     EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute,
   EnRatgeberWebsiteRelaunchKostenLeipzigRoute:

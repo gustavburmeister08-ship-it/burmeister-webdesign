@@ -25,6 +25,12 @@ const DE_ENTRIES = [
   { path: "/ablauf",     changefreq: "monthly", priority: "0.7" },
   { path: "/ueber-mich", changefreq: "yearly",  priority: "0.6" },
   { path: "/ratgeber",   changefreq: "weekly",  priority: "0.7" },
+  { path: "/tools", changefreq: "monthly", priority: "0.8", deOnly: true },
+  { path: "/tools/website-kostenrechner", changefreq: "monthly", priority: "0.8", deOnly: true },
+  { path: "/tools/seo-check", changefreq: "monthly", priority: "0.8", deOnly: true },
+  { path: "/tools/google-bewertungslink-generator", changefreq: "monthly", priority: "0.8", deOnly: true },
+  { path: "/tools/local-seo-check", changefreq: "monthly", priority: "0.8", deOnly: true },
+  { path: "/tools/datenschutz-check", changefreq: "monthly", priority: "0.8", deOnly: true },
     { path: "/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen", changefreq: "monthly", priority: "0.6" },
     { path: "/ratgeber/website-relaunch-kosten-leipzig", changefreq: "monthly", priority: "0.6" },
     { path: "/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen", changefreq: "monthly", priority: "0.6" },
@@ -34,7 +40,7 @@ const DE_ENTRIES = [
 
 // Jede deutsche Seite hat unter /en/* ein englisches Gegenstück (gleiche
 // Priorität/Changefreq, "/" wird zu "/en").
-const ENTRIES = DE_ENTRIES.flatMap((e) => [
+const ENTRIES = DE_ENTRIES.flatMap((e) => e.deOnly ? [e] : [
   e,
   { ...e, path: e.path === "/" ? "/en" : `/en${e.path}` },
 ]);

@@ -48,7 +48,7 @@ export function Footer() {
     { to: "/ratgeber", label: t.nav.ratgeber },
     { to: "/ueber-mich", label: t.nav.ueberMich },
     { to: "/kontakt", label: t.nav.kontakt },
-  ];
+  ] as const;
 
   return (
     <footer className="border-t border-background/10 bg-foreground text-background">

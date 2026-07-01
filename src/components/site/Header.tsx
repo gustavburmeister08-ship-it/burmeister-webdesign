@@ -16,6 +16,7 @@ export function Header() {
     { to: "/ablauf", label: t.nav.ablauf },
     { to: "/referenzen", label: t.nav.referenzen },
     { to: "/ratgeber", label: t.nav.ratgeber },
+    ...(locale === "de" ? [{ to: "/tools", label: "Tools" } as const] : []),
     { to: "/ueber-mich", label: t.nav.ueberMich },
     { to: "/kontakt", label: t.nav.kontakt },
   ] as const;
