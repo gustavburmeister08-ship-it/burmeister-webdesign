@@ -2,53 +2,145 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { z } from "zod";
 import { trackLeadFromForm } from "@/lib/meta-events";
+import { LocalizedLink } from "@/components/site/LocalizedLink";
+import { useLocale, type Locale } from "@/lib/i18n/locale";
 
 const FORMSPREE_ID = "xgobveqq";
 
-const schema = z.object({
-  name: z.string().trim().min(2, "Bitte geben Sie Ihren Namen an.").max(100),
-  firma: z.string().trim().max(120).optional().or(z.literal("")),
-  email: z
-    .string()
-    .trim()
-    .email("Bitte geben Sie eine gültige E-Mail an.")
-    .max(200),
-  telefon: z.string().trim().max(40).optional().or(z.literal("")),
-  website: z.string().trim().max(200).optional().or(z.literal("")),
-  budget: z.string().max(60).optional().or(z.literal("")),
-  leistung: z.string().max(80).optional().or(z.literal("")),
-  nachricht: z
-    .string()
-    .trim()
-    .min(10, "Bitte beschreiben Sie Ihr Anliegen kurz.")
-    .max(2000),
-  datenschutz: z.literal(true, {
-    errorMap: () => ({
-      message: "Bitte stimmen Sie der Datenverarbeitung zu.",
+const COPY: Record<
+  Locale,
+  {
+    nameLabel: string;
+    namePlaceholder: string;
+    nameError: string;
+    firmaLabel: string;
+    optional: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    emailError: string;
+    telefonLabel: string;
+    websiteLabel: string;
+    websitePlaceholder: string;
+    leistungLabel: string;
+    pleaseChoose: string;
+    leistungen: readonly string[];
+    budgetLabel: string;
+    budgets: readonly string[];
+    nachrichtLabel: string;
+    nachrichtPlaceholder: string;
+    nachrichtError: string;
+    datenschutzText: string;
+    datenschutzLink: string;
+    datenschutzError: string;
+    submitting: string;
+    submit: string;
+    successTitle: string;
+    successText: string;
+  }
+> = {
+  de: {
+    nameLabel: "Name*",
+    namePlaceholder: "Ihr Name",
+    nameError: "Bitte geben Sie Ihren Namen an.",
+    firmaLabel: "Firma",
+    optional: "Optional",
+    emailLabel: "E-Mail*",
+    emailPlaceholder: "name(at)firma.de",
+    emailError: "Bitte geben Sie eine gültige E-Mail an.",
+    telefonLabel: "Telefonnummer",
+    websiteLabel: "Bestehende Website",
+    websitePlaceholder: "z. B. https://ihre-firma.de",
+    leistungLabel: "Gewünschte Leistung",
+    pleaseChoose: "Bitte wählen",
+    leistungen: [
+      "Neue Website",
+      "Website-Relaunch",
+      "One-Pager",
+      "Mehrseitige Website",
+      "Google Business Profil",
+      "Hosting & Wartung",
+      "Beratung / noch unklar",
+    ],
+    budgetLabel: "Budget",
+    budgets: ["ab 790 €", "1.390 – 1.590 €", "2.000 – 4.000 €", "Noch unklar"],
+    nachrichtLabel: "Nachricht*",
+    nachrichtPlaceholder:
+      "Beschreiben Sie kurz Ihr Vorhaben, Ihre Branche und was Ihre Website leisten soll.",
+    nachrichtError: "Bitte beschreiben Sie Ihr Anliegen kurz.",
+    datenschutzText:
+      "Ich bin damit einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verarbeitet werden (siehe",
+    datenschutzLink: "Datenschutz",
+    datenschutzError: "Bitte stimmen Sie der Datenverarbeitung zu.",
+    submitting: "Wird gesendet …",
+    submit: "Anfrage senden",
+    successTitle: "Vielen Dank für Ihre Nachricht.",
+    successText:
+      "Ich melde mich innerhalb eines Werktags persönlich bei Ihnen zurück – meist schon am selben Tag.",
+  },
+  en: {
+    nameLabel: "Name*",
+    namePlaceholder: "Your name",
+    nameError: "Please enter your name.",
+    firmaLabel: "Company",
+    optional: "Optional",
+    emailLabel: "Email*",
+    emailPlaceholder: "name(at)company.com",
+    emailError: "Please enter a valid email address.",
+    telefonLabel: "Phone number",
+    websiteLabel: "Existing website",
+    websitePlaceholder: "e.g. https://your-company.com",
+    leistungLabel: "Desired service",
+    pleaseChoose: "Please choose",
+    leistungen: [
+      "New website",
+      "Website relaunch",
+      "One-pager",
+      "Multi-page website",
+      "Google Business Profile",
+      "Hosting & maintenance",
+      "Consultation / not sure yet",
+    ],
+    budgetLabel: "Budget",
+    budgets: ["from €790", "€1,390 – €1,590", "€2,000 – €4,000", "Not sure yet"],
+    nachrichtLabel: "Message*",
+    nachrichtPlaceholder:
+      "Briefly describe your project, your industry and what your website should achieve.",
+    nachrichtError: "Please briefly describe your request.",
+    datenschutzText:
+      "I agree that my details will be processed to answer my inquiry (see",
+    datenschutzLink: "Privacy Policy",
+    datenschutzError: "Please agree to the data processing.",
+    submitting: "Sending …",
+    submit: "Send inquiry",
+    successTitle: "Thank you for your message.",
+    successText:
+      "I'll get back to you personally within one business day – usually the same day.",
+  },
+};
+
+function buildSchema(t: (typeof COPY)["de"]) {
+  return z.object({
+    name: z.string().trim().min(2, t.nameError).max(100),
+    firma: z.string().trim().max(120).optional().or(z.literal("")),
+    email: z.string().trim().email(t.emailError).max(200),
+    telefon: z.string().trim().max(40).optional().or(z.literal("")),
+    website: z.string().trim().max(200).optional().or(z.literal("")),
+    budget: z.string().max(60).optional().or(z.literal("")),
+    leistung: z.string().max(80).optional().or(z.literal("")),
+    nachricht: z.string().trim().min(10, t.nachrichtError).max(2000),
+    datenschutz: z.literal(true, {
+      errorMap: () => ({ message: t.datenschutzError }),
     }),
-  }),
-});
+  });
+}
 
-type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
-
-const LEISTUNGEN = [
-  "Neue Website",
-  "Website-Relaunch",
-  "One-Pager",
-  "Mehrseitige Website",
-  "Google Business Profil",
-  "Hosting & Wartung",
-  "Beratung / noch unklar",
-];
-
-const BUDGETS = [
-  "ab 790 €",
-  "1.390 – 1.590 €",
-  "2.000 – 4.000 €",
-  "Noch unklar",
-];
+type Errors = Partial<Record<string, string>>;
 
 export function ContactForm() {
+  const locale = useLocale();
+  const t = COPY[locale];
+  const schema = buildSchema(t);
+
   const [state, handleFormspreeSubmit] = useForm(FORMSPREE_ID);
   const [clientErrors, setClientErrors] = useState<Errors>({});
   const [pendingLeadFormData, setPendingLeadFormData] =
@@ -80,7 +172,7 @@ export function ContactForm() {
       e.preventDefault();
       const fieldErrors: Errors = {};
       for (const issue of parsed.error.issues) {
-        const k = issue.path[0] as keyof Errors;
+        const k = issue.path[0] as string;
         if (k && !fieldErrors[k]) fieldErrors[k] = issue.message;
       }
       setClientErrors(fieldErrors);
@@ -98,12 +190,9 @@ export function ContactForm() {
     return (
       <div className="rounded-2xl border border-border bg-card p-8 text-center">
         <h3 className="font-serif text-2xl text-foreground">
-          Vielen Dank für Ihre Nachricht.
+          {t.successTitle}
         </h3>
-        <p className="mt-3 text-foreground/75">
-          Ich melde mich innerhalb eines Werktags persönlich bei Ihnen zurück –
-          meist schon am selben Tag.
-        </p>
+        <p className="mt-3 text-foreground/75">{t.successText}</p>
       </div>
     );
   }
@@ -126,14 +215,14 @@ export function ContactForm() {
       <div className="grid gap-5 md:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelCls}>
-            Name*
+            {t.nameLabel}
           </label>
           <input
             id="name"
             name="name"
             required
             className={inputCls}
-            placeholder="Ihr Name"
+            placeholder={t.namePlaceholder}
           />
           {clientErrors.name && <p className={errCls}>{clientErrors.name}</p>}
           <ValidationError
@@ -145,19 +234,19 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="firma" className={labelCls}>
-            Firma
+            {t.firmaLabel}
           </label>
           <input
             id="firma"
             name="firma"
             className={inputCls}
-            placeholder="Optional"
+            placeholder={t.optional}
           />
         </div>
 
         <div>
           <label htmlFor="email" className={labelCls}>
-            E-Mail*
+            {t.emailLabel}
           </label>
           <input
             id="email"
@@ -165,7 +254,7 @@ export function ContactForm() {
             type="email"
             required
             className={inputCls}
-            placeholder="name(at)firma.de"
+            placeholder={t.emailPlaceholder}
           />
           {clientErrors.email && <p className={errCls}>{clientErrors.email}</p>}
           <ValidationError
@@ -177,31 +266,31 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="telefon" className={labelCls}>
-            Telefonnummer
+            {t.telefonLabel}
           </label>
           <input
             id="telefon"
             name="telefon"
             className={inputCls}
-            placeholder="Optional"
+            placeholder={t.optional}
           />
         </div>
 
         <div className="md:col-span-2">
           <label htmlFor="website" className={labelCls}>
-            Bestehende Website
+            {t.websiteLabel}
           </label>
           <input
             id="website"
             name="website"
             className={inputCls}
-            placeholder="z. B. https://ihre-firma.de"
+            placeholder={t.websitePlaceholder}
           />
         </div>
 
         <div>
           <label htmlFor="leistung" className={labelCls}>
-            Gewünschte Leistung
+            {t.leistungLabel}
           </label>
           <select
             id="leistung"
@@ -209,8 +298,8 @@ export function ContactForm() {
             className={inputCls}
             defaultValue=""
           >
-            <option value="">Bitte wählen</option>
-            {LEISTUNGEN.map((l) => (
+            <option value="">{t.pleaseChoose}</option>
+            {t.leistungen.map((l) => (
               <option key={l}>{l}</option>
             ))}
           </select>
@@ -218,7 +307,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="budget" className={labelCls}>
-            Budget
+            {t.budgetLabel}
           </label>
           <select
             id="budget"
@@ -226,8 +315,8 @@ export function ContactForm() {
             className={inputCls}
             defaultValue=""
           >
-            <option value="">Bitte wählen</option>
-            {BUDGETS.map((l) => (
+            <option value="">{t.pleaseChoose}</option>
+            {t.budgets.map((l) => (
               <option key={l}>{l}</option>
             ))}
           </select>
@@ -236,7 +325,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="nachricht" className={labelCls}>
-          Nachricht*
+          {t.nachrichtLabel}
         </label>
         <textarea
           id="nachricht"
@@ -244,7 +333,7 @@ export function ContactForm() {
           required
           rows={6}
           className={inputCls}
-          placeholder="Beschreiben Sie kurz Ihr Vorhaben, Ihre Branche und was Ihre Website leisten soll."
+          placeholder={t.nachrichtPlaceholder}
         />
         {clientErrors.nachricht && (
           <p className={errCls}>{clientErrors.nachricht}</p>
@@ -263,11 +352,10 @@ export function ContactForm() {
           className="mt-1 h-4 w-4 rounded border-border"
         />
         <span>
-          Ich bin damit einverstanden, dass meine Angaben zur Beantwortung
-          meiner Anfrage verarbeitet werden (siehe{" "}
-          <a href="/datenschutz" className="underline">
-            Datenschutz
-          </a>
+          {t.datenschutzText}{" "}
+          <LocalizedLink to="/datenschutz" className="underline">
+            {t.datenschutzLink}
+          </LocalizedLink>
           ).
         </span>
       </label>
@@ -284,7 +372,7 @@ export function ContactForm() {
           disabled={state.submitting}
           className="inline-flex items-center justify-center rounded-full bg-foreground px-7 py-3.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {state.submitting ? "Wird gesendet …" : "Anfrage senden"}
+          {state.submitting ? t.submitting : t.submit}
         </button>
       </div>
     </form>

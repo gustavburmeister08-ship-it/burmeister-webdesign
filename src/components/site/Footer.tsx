@@ -1,34 +1,55 @@
-import { Link } from "@tanstack/react-router";
 import { MessageCircle, Phone } from "lucide-react";
 import { EmailContact } from "@/components/site/EmailContact";
+import { LocalizedLink } from "@/components/site/LocalizedLink";
 import { CONTACT } from "@/lib/contact";
+import { useLocale } from "@/lib/i18n/locale";
+import { ui } from "@/lib/i18n/ui";
 
-const NAV_LINKS = [
-  { to: "/leistungen", label: "Leistungen" },
-  { to: "/preise", label: "Preise" },
-  { to: "/ablauf", label: "Ablauf" },
-  { to: "/referenzen", label: "Referenzen" },
-  { to: "/ratgeber", label: "Ratgeber" },
-  { to: "/ueber-mich", label: "Über mich" },
-  { to: "/kontakt", label: "Kontakt" },
-];
-
-const AUTHORITY_LINKS = [
-  {
-    href: "https://developers.google.com/search/docs",
-    label: "Google Search Central",
-  },
-  {
-    href: "https://pagespeed.web.dev/",
-    label: "PageSpeed Insights",
-  },
-  {
-    href: "https://support.google.com/business/",
-    label: "Google Business Profil Hilfe",
-  },
-];
+const AUTHORITY_LINKS = {
+  de: [
+    {
+      href: "https://developers.google.com/search/docs",
+      label: "Google Search Central",
+    },
+    {
+      href: "https://pagespeed.web.dev/",
+      label: "PageSpeed Insights",
+    },
+    {
+      href: "https://support.google.com/business/",
+      label: "Google Business Profil Hilfe",
+    },
+  ],
+  en: [
+    {
+      href: "https://developers.google.com/search/docs",
+      label: "Google Search Central",
+    },
+    {
+      href: "https://pagespeed.web.dev/",
+      label: "PageSpeed Insights",
+    },
+    {
+      href: "https://support.google.com/business/",
+      label: "Google Business Profile Help",
+    },
+  ],
+} as const;
 
 export function Footer() {
+  const locale = useLocale();
+  const t = ui(locale);
+
+  const NAV_LINKS = [
+    { to: "/leistungen", label: t.nav.leistungen },
+    { to: "/preise", label: t.nav.preise },
+    { to: "/ablauf", label: t.nav.ablauf },
+    { to: "/referenzen", label: t.nav.referenzen },
+    { to: "/ratgeber", label: t.nav.ratgeber },
+    { to: "/ueber-mich", label: t.nav.ueberMich },
+    { to: "/kontakt", label: t.nav.kontakt },
+  ];
+
   return (
     <footer className="border-t border-background/10 bg-foreground text-background">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
@@ -43,14 +64,9 @@ export function Footer() {
               className="h-10 w-auto"
             />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-background/78">
-              Premium wirkende Websites für lokale Unternehmen, die schnell
-              starten wollen: Festpreis nach Erstgespräch, persönliche Betreuung
-              und erste Vorschau nach 7 Tagen.
+              {t.footer.tagline}
             </p>
-            <p className="mt-3 text-xs text-background/68">
-              Webdesigner Leipzig · Websites ab 790 EUR · Lighthouse 95+ · SEO
-              Grundlage inklusive
-            </p>
+            <p className="mt-3 text-xs text-background/68">{t.footer.stats}</p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
@@ -75,17 +91,17 @@ export function Footer() {
 
           <div className="md:col-span-3">
             <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
-              Seiten
+              {t.footer.pagesHeading}
             </p>
             <ul className="mt-4 space-y-2.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.to}>
-                  <Link
+                  <LocalizedLink
                     to={link.to}
                     className="text-sm text-background/65 transition-colors hover:text-background"
                   >
                     {link.label}
-                  </Link>
+                  </LocalizedLink>
                 </li>
               ))}
             </ul>
@@ -93,26 +109,26 @@ export function Footer() {
 
           <div className="md:col-span-3">
             <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
-              Vertrauen
+              {t.footer.trustHeading}
             </p>
             <div className="mt-4 space-y-2.5 text-sm text-background/65">
-              <p>Servicegebiet: Leipzig und Umgebung</p>
-              <p>Adresse: An der Märchenwiese 40, 04277 Leipzig</p>
-              <p>Erreichbar: Mo-Fr, 9-18 Uhr</p>
+              <p>{t.footer.serviceArea}</p>
+              <p>{t.footer.address}</p>
+              <p>{t.footer.hours}</p>
             </div>
             <div className="mt-8 rounded-lg border border-background/10 bg-background/5 p-4">
               <p className="text-xs font-medium text-background/75">
-                Direkter Kontakt mit Gustav
+                {t.footer.directContact}
               </p>
               <p className="mt-1 text-xs text-background/50">
-                Kein Ticketsystem. Antwort in der Regel innerhalb von 24 h.
+                {t.footer.directContactText}
               </p>
-              <Link
+              <LocalizedLink
                 to="/kontakt"
                 className="mt-3 inline-block text-xs font-medium text-background/75 underline underline-offset-2 hover:text-background"
               >
-                Erstgespräch anfragen →
-              </Link>
+                {t.footer.requestCta}
+              </LocalizedLink>
             </div>
           </div>
         </div>
@@ -120,10 +136,10 @@ export function Footer() {
         <div className="mt-12 grid gap-8 border-t border-background/10 pt-8 md:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
-              Fachliche Grundlagen
+              {t.footer.foundationsHeading}
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-              {AUTHORITY_LINKS.map((link) => (
+              {AUTHORITY_LINKS[locale].map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -139,24 +155,24 @@ export function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-background/70">
-              Rechtliches
+              {t.footer.legalHeading}
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
               <li>
-                <Link
+                <LocalizedLink
                   to="/impressum"
                   className="text-xs text-background/60 underline underline-offset-4 transition-colors hover:text-background"
                 >
-                  Impressum
-                </Link>
+                  {t.footer.impressum}
+                </LocalizedLink>
               </li>
               <li>
-                <Link
+                <LocalizedLink
                   to="/datenschutz"
                   className="text-xs text-background/60 underline underline-offset-4 transition-colors hover:text-background"
                 >
-                  Datenschutz
-                </Link>
+                  {t.footer.datenschutz}
+                </LocalizedLink>
               </li>
             </ul>
           </div>
@@ -166,12 +182,9 @@ export function Footer() {
       <div className="border-t border-background/8">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 md:px-8">
           <p className="text-xs text-background/68">
-            © {new Date().getFullYear()} {CONTACT.brand}. Alle Rechte
-            vorbehalten.
+            © {new Date().getFullYear()} {CONTACT.brand}. {t.footer.rightsReserved}
           </p>
-          <p className="text-xs text-background/62">
-            Gemäß § 19 UStG keine Umsatzsteuer.
-          </p>
+          <p className="text-xs text-background/62">{t.footer.vatNotice}</p>
         </div>
       </div>
     </footer>

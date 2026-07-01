@@ -20,9 +20,21 @@ import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AblaufRouteImport } from './routes/ablauf'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RatgeberIndexRouteImport } from './routes/ratgeber/index'
+import { Route as EnIndexRouteImport } from './routes/en/index'
 import { Route as RatgeberWebsiteRelaunchKostenLeipzigRouteImport } from './routes/ratgeber/website-relaunch-kosten-leipzig'
 import { Route as RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport } from './routes/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+import { Route as EnUeberMichRouteImport } from './routes/en/ueber-mich'
+import { Route as EnReferenzenRouteImport } from './routes/en/referenzen'
+import { Route as EnPreiseRouteImport } from './routes/en/preise'
+import { Route as EnLeistungenRouteImport } from './routes/en/leistungen'
+import { Route as EnKontaktRouteImport } from './routes/en/kontakt'
+import { Route as EnImpressumRouteImport } from './routes/en/impressum'
+import { Route as EnDatenschutzRouteImport } from './routes/en/datenschutz'
+import { Route as EnAblaufRouteImport } from './routes/en/ablauf'
 import { Route as ApiMetaCrmRouteImport } from './routes/api/meta-crm'
+import { Route as EnRatgeberIndexRouteImport } from './routes/en/ratgeber/index'
+import { Route as EnRatgeberWebsiteRelaunchKostenLeipzigRouteImport } from './routes/en/ratgeber/website-relaunch-kosten-leipzig'
+import { Route as EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport } from './routes/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
 
 const UeberMichRoute = UeberMichRouteImport.update({
   id: '/ueber-mich',
@@ -79,6 +91,11 @@ const RatgeberIndexRoute = RatgeberIndexRouteImport.update({
   path: '/ratgeber/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/en/',
+  path: '/en/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RatgeberWebsiteRelaunchKostenLeipzigRoute =
   RatgeberWebsiteRelaunchKostenLeipzigRouteImport.update({
     id: '/ratgeber/website-relaunch-kosten-leipzig',
@@ -91,11 +108,68 @@ const RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute =
     path: '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EnUeberMichRoute = EnUeberMichRouteImport.update({
+  id: '/en/ueber-mich',
+  path: '/en/ueber-mich',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnReferenzenRoute = EnReferenzenRouteImport.update({
+  id: '/en/referenzen',
+  path: '/en/referenzen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPreiseRoute = EnPreiseRouteImport.update({
+  id: '/en/preise',
+  path: '/en/preise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnLeistungenRoute = EnLeistungenRouteImport.update({
+  id: '/en/leistungen',
+  path: '/en/leistungen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnKontaktRoute = EnKontaktRouteImport.update({
+  id: '/en/kontakt',
+  path: '/en/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnImpressumRoute = EnImpressumRouteImport.update({
+  id: '/en/impressum',
+  path: '/en/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDatenschutzRoute = EnDatenschutzRouteImport.update({
+  id: '/en/datenschutz',
+  path: '/en/datenschutz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnAblaufRoute = EnAblaufRouteImport.update({
+  id: '/en/ablauf',
+  path: '/en/ablauf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiMetaCrmRoute = ApiMetaCrmRouteImport.update({
   id: '/api/meta-crm',
   path: '/api/meta-crm',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnRatgeberIndexRoute = EnRatgeberIndexRouteImport.update({
+  id: '/en/ratgeber/',
+  path: '/en/ratgeber/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnRatgeberWebsiteRelaunchKostenLeipzigRoute =
+  EnRatgeberWebsiteRelaunchKostenLeipzigRouteImport.update({
+    id: '/en/ratgeber/website-relaunch-kosten-leipzig',
+    path: '/en/ratgeber/website-relaunch-kosten-leipzig',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute =
+  EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport.update({
+    id: '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen',
+    path: '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -109,9 +183,21 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
   '/api/meta-crm': typeof ApiMetaCrmRoute
+  '/en/ablauf': typeof EnAblaufRoute
+  '/en/datenschutz': typeof EnDatenschutzRoute
+  '/en/impressum': typeof EnImpressumRoute
+  '/en/kontakt': typeof EnKontaktRoute
+  '/en/leistungen': typeof EnLeistungenRoute
+  '/en/preise': typeof EnPreiseRoute
+  '/en/referenzen': typeof EnReferenzenRoute
+  '/en/ueber-mich': typeof EnUeberMichRoute
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/en/': typeof EnIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
+  '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/en/ratgeber/website-relaunch-kosten-leipzig': typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/en/ratgeber/': typeof EnRatgeberIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -125,9 +211,21 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
   '/api/meta-crm': typeof ApiMetaCrmRoute
+  '/en/ablauf': typeof EnAblaufRoute
+  '/en/datenschutz': typeof EnDatenschutzRoute
+  '/en/impressum': typeof EnImpressumRoute
+  '/en/kontakt': typeof EnKontaktRoute
+  '/en/leistungen': typeof EnLeistungenRoute
+  '/en/preise': typeof EnPreiseRoute
+  '/en/referenzen': typeof EnReferenzenRoute
+  '/en/ueber-mich': typeof EnUeberMichRoute
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/en': typeof EnIndexRoute
   '/ratgeber': typeof RatgeberIndexRoute
+  '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/en/ratgeber/website-relaunch-kosten-leipzig': typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/en/ratgeber': typeof EnRatgeberIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -142,9 +240,21 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-mich': typeof UeberMichRoute
   '/api/meta-crm': typeof ApiMetaCrmRoute
+  '/en/ablauf': typeof EnAblaufRoute
+  '/en/datenschutz': typeof EnDatenschutzRoute
+  '/en/impressum': typeof EnImpressumRoute
+  '/en/kontakt': typeof EnKontaktRoute
+  '/en/leistungen': typeof EnLeistungenRoute
+  '/en/preise': typeof EnPreiseRoute
+  '/en/referenzen': typeof EnReferenzenRoute
+  '/en/ueber-mich': typeof EnUeberMichRoute
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/en/': typeof EnIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
+  '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/en/ratgeber/website-relaunch-kosten-leipzig': typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
+  '/en/ratgeber/': typeof EnRatgeberIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -160,9 +270,21 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ueber-mich'
     | '/api/meta-crm'
+    | '/en/ablauf'
+    | '/en/datenschutz'
+    | '/en/impressum'
+    | '/en/kontakt'
+    | '/en/leistungen'
+    | '/en/preise'
+    | '/en/referenzen'
+    | '/en/ueber-mich'
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
+    | '/en/'
     | '/ratgeber/'
+    | '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/en/ratgeber/website-relaunch-kosten-leipzig'
+    | '/en/ratgeber/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -176,9 +298,21 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ueber-mich'
     | '/api/meta-crm'
+    | '/en/ablauf'
+    | '/en/datenschutz'
+    | '/en/impressum'
+    | '/en/kontakt'
+    | '/en/leistungen'
+    | '/en/preise'
+    | '/en/referenzen'
+    | '/en/ueber-mich'
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
+    | '/en'
     | '/ratgeber'
+    | '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/en/ratgeber/website-relaunch-kosten-leipzig'
+    | '/en/ratgeber'
   id:
     | '__root__'
     | '/'
@@ -192,9 +326,21 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ueber-mich'
     | '/api/meta-crm'
+    | '/en/ablauf'
+    | '/en/datenschutz'
+    | '/en/impressum'
+    | '/en/kontakt'
+    | '/en/leistungen'
+    | '/en/preise'
+    | '/en/referenzen'
+    | '/en/ueber-mich'
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
+    | '/en/'
     | '/ratgeber/'
+    | '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/en/ratgeber/website-relaunch-kosten-leipzig'
+    | '/en/ratgeber/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -209,9 +355,21 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UeberMichRoute: typeof UeberMichRoute
   ApiMetaCrmRoute: typeof ApiMetaCrmRoute
+  EnAblaufRoute: typeof EnAblaufRoute
+  EnDatenschutzRoute: typeof EnDatenschutzRoute
+  EnImpressumRoute: typeof EnImpressumRoute
+  EnKontaktRoute: typeof EnKontaktRoute
+  EnLeistungenRoute: typeof EnLeistungenRoute
+  EnPreiseRoute: typeof EnPreiseRoute
+  EnReferenzenRoute: typeof EnReferenzenRoute
+  EnUeberMichRoute: typeof EnUeberMichRoute
   RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute: typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
   RatgeberWebsiteRelaunchKostenLeipzigRoute: typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
+  EnIndexRoute: typeof EnIndexRoute
   RatgeberIndexRoute: typeof RatgeberIndexRoute
+  EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute: typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  EnRatgeberWebsiteRelaunchKostenLeipzigRoute: typeof EnRatgeberWebsiteRelaunchKostenLeipzigRoute
+  EnRatgeberIndexRoute: typeof EnRatgeberIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -293,6 +451,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RatgeberIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/': {
+      id: '/en/'
+      path: '/en'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ratgeber/website-relaunch-kosten-leipzig': {
       id: '/ratgeber/website-relaunch-kosten-leipzig'
       path: '/ratgeber/website-relaunch-kosten-leipzig'
@@ -307,11 +472,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/ueber-mich': {
+      id: '/en/ueber-mich'
+      path: '/en/ueber-mich'
+      fullPath: '/en/ueber-mich'
+      preLoaderRoute: typeof EnUeberMichRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/referenzen': {
+      id: '/en/referenzen'
+      path: '/en/referenzen'
+      fullPath: '/en/referenzen'
+      preLoaderRoute: typeof EnReferenzenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/preise': {
+      id: '/en/preise'
+      path: '/en/preise'
+      fullPath: '/en/preise'
+      preLoaderRoute: typeof EnPreiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/leistungen': {
+      id: '/en/leistungen'
+      path: '/en/leistungen'
+      fullPath: '/en/leistungen'
+      preLoaderRoute: typeof EnLeistungenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/kontakt': {
+      id: '/en/kontakt'
+      path: '/en/kontakt'
+      fullPath: '/en/kontakt'
+      preLoaderRoute: typeof EnKontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/impressum': {
+      id: '/en/impressum'
+      path: '/en/impressum'
+      fullPath: '/en/impressum'
+      preLoaderRoute: typeof EnImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/datenschutz': {
+      id: '/en/datenschutz'
+      path: '/en/datenschutz'
+      fullPath: '/en/datenschutz'
+      preLoaderRoute: typeof EnDatenschutzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/ablauf': {
+      id: '/en/ablauf'
+      path: '/en/ablauf'
+      fullPath: '/en/ablauf'
+      preLoaderRoute: typeof EnAblaufRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/meta-crm': {
       id: '/api/meta-crm'
       path: '/api/meta-crm'
       fullPath: '/api/meta-crm'
       preLoaderRoute: typeof ApiMetaCrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/ratgeber/': {
+      id: '/en/ratgeber/'
+      path: '/en/ratgeber'
+      fullPath: '/en/ratgeber/'
+      preLoaderRoute: typeof EnRatgeberIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/ratgeber/website-relaunch-kosten-leipzig': {
+      id: '/en/ratgeber/website-relaunch-kosten-leipzig'
+      path: '/en/ratgeber/website-relaunch-kosten-leipzig'
+      fullPath: '/en/ratgeber/website-relaunch-kosten-leipzig'
+      preLoaderRoute: typeof EnRatgeberWebsiteRelaunchKostenLeipzigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': {
+      id: '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+      path: '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+      fullPath: '/en/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+      preLoaderRoute: typeof EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -329,11 +571,25 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UeberMichRoute: UeberMichRoute,
   ApiMetaCrmRoute: ApiMetaCrmRoute,
+  EnAblaufRoute: EnAblaufRoute,
+  EnDatenschutzRoute: EnDatenschutzRoute,
+  EnImpressumRoute: EnImpressumRoute,
+  EnKontaktRoute: EnKontaktRoute,
+  EnLeistungenRoute: EnLeistungenRoute,
+  EnPreiseRoute: EnPreiseRoute,
+  EnReferenzenRoute: EnReferenzenRoute,
+  EnUeberMichRoute: EnUeberMichRoute,
   RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute:
     RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute,
   RatgeberWebsiteRelaunchKostenLeipzigRoute:
     RatgeberWebsiteRelaunchKostenLeipzigRoute,
+  EnIndexRoute: EnIndexRoute,
   RatgeberIndexRoute: RatgeberIndexRoute,
+  EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute:
+    EnRatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute,
+  EnRatgeberWebsiteRelaunchKostenLeipzigRoute:
+    EnRatgeberWebsiteRelaunchKostenLeipzigRoute,
+  EnRatgeberIndexRoute: EnRatgeberIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

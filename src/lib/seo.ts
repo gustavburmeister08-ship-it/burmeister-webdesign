@@ -34,17 +34,34 @@ export function socialMeta({
   ];
 }
 
-export function breadcrumbJsonLd(path: string, label: string) {
+export function hreflangLinks(canonicalDePath: string) {
+  const dePath = canonicalDePath;
+  const enPath =
+    canonicalDePath === "/" ? "/en" : `/en${canonicalDePath}`;
+
+  return [
+    { rel: "alternate", hrefLang: "de", href: `${SITE_URL}${dePath}` },
+    { rel: "alternate", hrefLang: "en", href: `${SITE_URL}${enPath}` },
+    { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}${dePath}` },
+  ];
+}
+
+export function breadcrumbJsonLd(
+  path: string,
+  label: string,
+  locale: "de" | "en" = "de",
+) {
+  const homePath = locale === "en" ? "/en" : "/";
   const itemListElement = [
     {
       "@type": "ListItem",
       position: 1,
-      name: "Startseite",
-      item: `${SITE_URL}/`,
+      name: locale === "en" ? "Home" : "Startseite",
+      item: `${SITE_URL}${homePath}`,
     },
   ];
 
-  if (path !== "/") {
+  if (path !== homePath) {
     itemListElement.push({
       "@type": "ListItem",
       position: 2,

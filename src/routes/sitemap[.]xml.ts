@@ -16,7 +16,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries: SitemapEntry[] = [
+        const deEntries: SitemapEntry[] = [
           { path: "/",            changefreq: "monthly", priority: "1.0", lastmod: TODAY },
           { path: "/leistungen",  changefreq: "monthly", priority: "0.9", lastmod: TODAY },
           { path: "/preise",      changefreq: "monthly", priority: "0.9", lastmod: TODAY },
@@ -30,6 +30,12 @@ export const Route = createFileRoute("/sitemap.xml")({
           // Pro Ratgeber-Artikel ergänzt scripts/import-ratgeber-article.mjs
           // hier automatisch einen weiteren Eintrag.
         ];
+
+        // Jede deutsche Seite hat unter /en/* ein englisches Gegenstück.
+        const entries: SitemapEntry[] = deEntries.flatMap((e) => [
+          e,
+          { ...e, path: e.path === "/" ? "/en" : `/en${e.path}` },
+        ]);
 
         const urls = entries.map((e) =>
           [

@@ -16,7 +16,7 @@ const root      = resolve(__dirname, "..");
 const BASE_URL = "https://burmeister-webdesign.com";
 const TODAY    = new Date().toISOString().split("T")[0];
 
-const ENTRIES = [
+const DE_ENTRIES = [
   { path: "/",           changefreq: "monthly", priority: "1.0" },
   { path: "/leistungen", changefreq: "monthly", priority: "0.9" },
   { path: "/preise",     changefreq: "monthly", priority: "0.9" },
@@ -30,6 +30,13 @@ const ENTRIES = [
   // Pro Ratgeber-Artikel ergänzt scripts/import-ratgeber-article.mjs hier
   // automatisch einen weiteren Eintrag (changefreq: monthly, priority: 0.6).
 ];
+
+// Jede deutsche Seite hat unter /en/* ein englisches Gegenstück (gleiche
+// Priorität/Changefreq, "/" wird zu "/en").
+const ENTRIES = DE_ENTRIES.flatMap((e) => [
+  e,
+  { ...e, path: e.path === "/" ? "/en" : `/en${e.path}` },
+]);
 
 const urls = ENTRIES.map(e => [
   `  <url>`,

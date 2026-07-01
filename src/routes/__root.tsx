@@ -3,6 +3,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -14,25 +15,29 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { MetaTracking } from "@/components/site/MetaTracking";
 import { SeoBreadcrumbs } from "@/components/site/SeoBreadcrumbs";
+import { LocalizedLink } from "@/components/site/LocalizedLink";
+import { useLocale } from "@/lib/i18n/locale";
+import { ui } from "@/lib/i18n/ui";
 
 function NotFoundComponent() {
+  const locale = useLocale();
+  const t = ui(locale).notFound;
+
   return (
     <div className="flex min-h-[70vh] items-center justify-center px-4 py-24">
       <div className="max-w-md text-center">
         <h1 className="font-serif text-7xl text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">
-          Seite nicht gefunden
+          {t.title}
         </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Die aufgerufene Seite existiert nicht oder wurde verschoben.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t.text}</p>
         <div className="mt-6">
-          <Link
+          <LocalizedLink
             to="/"
             className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background"
           >
-            Zur Startseite
-          </Link>
+            {t.cta}
+          </LocalizedLink>
         </div>
       </div>
     </div>
@@ -42,6 +47,8 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const locale = useLocale();
+  const t = ui(locale).error;
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -50,12 +57,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          Seite konnte nicht geladen werden
+          {t.title}
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Es ist ein Fehler aufgetreten. Versuchen Sie es erneut oder gehen Sie
-          zur Startseite.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t.text}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -64,13 +68,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Erneut versuchen
+            {t.retry}
           </button>
           <a
-            href="/"
+            href={locale === "en" ? "/en" : "/"}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Zur Startseite
+            {t.cta}
           </a>
         </div>
       </div>
@@ -284,9 +288,10 @@ export const Route = createRootRouteWithContext()({
 
 function RootShell({ children }: { children: ReactNode }) {
   const metaPixelId = import.meta.env.VITE_META_PIXEL_ID;
+  const locale = useLocale();
 
   return (
-    <html lang="de">
+    <html lang={locale}>
       <head>
         {/* Favicon – hardcoded so they always appear before HeadContent */}
         <link
@@ -357,13 +362,15 @@ window.addEventListener('load',function(){
 }
 
 function RootComponent() {
+  const locale = useLocale();
+
   return (
     <div className="flex min-h-screen flex-col">
       <a
         href="#main-content"
         className="sr-only z-50 rounded-md bg-background px-4 py-2 text-sm font-medium text-foreground shadow focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
-        Zum Inhalt springen
+        {ui(locale).skipToContent}
       </a>
       <Header />
       <SeoBreadcrumbs />

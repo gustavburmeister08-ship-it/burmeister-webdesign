@@ -613,14 +613,18 @@ function updateRatgeberArticlesTs(content) {
     ? seoDescription.substring(0, 150).replace(/\s\S+$/, '') + '...'
     : seoDescription;
 
+  // Der Bot liefert nur deutschen Content. "en" wird vorerst mit dem
+  // deutschen Text befüllt (TODO-Markierung) - das englische Ratgeber-System
+  // ist bilingual (title/excerpt/category/readTime je Sprache), eine echte
+  // englische Übersetzung muss manuell nachgepflegt werden.
   const newEntry = `  {
     slug: ${JSON.stringify(slug)},
-    title: ${JSON.stringify(h1)},
-    excerpt: ${JSON.stringify(excerpt)},
-    category: ${JSON.stringify(category)},
+    title: { de: ${JSON.stringify(h1)}, en: ${JSON.stringify(h1)} }, // TODO: ins Englische übersetzen
+    excerpt: { de: ${JSON.stringify(excerpt)}, en: ${JSON.stringify(excerpt)} }, // TODO: ins Englische übersetzen
+    category: { de: ${JSON.stringify(category)}, en: ${JSON.stringify(category)} }, // TODO: ins Englische übersetzen
     image: ${JSON.stringify(heroImagePath)},
     date: ${JSON.stringify(articleDate)},
-    readTime: ${JSON.stringify(readTime)},
+    readTime: { de: ${JSON.stringify(readTime)}, en: ${JSON.stringify(readTime)} }, // TODO: ins Englische übersetzen
   },\n`;
 
   const marker = 'export const RATGEBER_ARTIKEL: RatgeberArtikel[] = [';

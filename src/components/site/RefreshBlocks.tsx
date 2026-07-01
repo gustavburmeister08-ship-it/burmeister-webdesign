@@ -1,23 +1,70 @@
-import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Section, Eyebrow } from "@/components/site/Section";
+import { LocalizedLink } from "@/components/site/LocalizedLink";
+import { useLocale, type Locale } from "@/lib/i18n/locale";
 
-export const TRUST_METRICS = [
-  { value: "7 Tage", label: "bis zur ersten Vorschau" },
-  { value: "15", label: "Websites umgesetzt" },
-  { value: "30", label: "lokale Unternehmen unterstützt" },
-  { value: "95+", label: "Lighthouse Performance als Ziel" },
-] as const;
+export const TRUST_METRICS: Record<
+  Locale,
+  readonly { value: string; label: string }[]
+> = {
+  de: [
+    { value: "7 Tage", label: "bis zur ersten Vorschau" },
+    { value: "15", label: "Websites umgesetzt" },
+    { value: "30", label: "lokale Unternehmen unterstützt" },
+    { value: "95+", label: "Lighthouse Performance als Ziel" },
+  ],
+  en: [
+    { value: "7 days", label: "until the first preview" },
+    { value: "15", label: "websites delivered" },
+    { value: "30", label: "local businesses supported" },
+    { value: "95+", label: "Lighthouse performance target" },
+  ],
+} as const;
 
-export const CORE_TRUST_POINTS = [
-  "Festpreis nach Erstgespräch",
-  "Antwort innerhalb von 24 Stunden",
-  "Direkter Kontakt mit Gustav",
-  "Keine versteckten Kosten",
-] as const;
+export const CORE_TRUST_POINTS: Record<Locale, readonly string[]> = {
+  de: [
+    "Festpreis nach Erstgespräch",
+    "Antwort innerhalb von 24 Stunden",
+    "Direkter Kontakt mit Gustav",
+    "Keine versteckten Kosten",
+  ],
+  en: [
+    "Fixed price after the initial consultation",
+    "Reply within 24 hours",
+    "Direct contact with Gustav",
+    "No hidden costs",
+  ],
+} as const;
+
+const FINAL_CTA_DEFAULTS: Record<
+  Locale,
+  { eyebrow: string; title: string; text: string; button: string; badges: readonly string[] }
+> = {
+  de: {
+    eyebrow: "Kostenloses Erstgespräch",
+    title: "Lassen Sie uns kurz prüfen, was für Ihre Website sinnvoll ist.",
+    text: "Sie schildern mir Ihr Vorhaben. Ich sage Ihnen ehrlich, was passt, was es ungefähr kostet und wie schnell es realistisch geht.",
+    button: "Erstgespräch anfragen",
+    badges: [
+      "Antwort innerhalb von 24 Stunden",
+      "Festpreis nach Erstgespräch",
+      "Keine Verpflichtung",
+    ],
+  },
+  en: {
+    eyebrow: "Free Consultation",
+    title: "Let's quickly check what makes sense for your website.",
+    text: "Tell me about your plans. I'll give you an honest answer on what fits, roughly what it costs and how quickly it can realistically happen.",
+    button: "Request a consultation",
+    badges: [
+      "Reply within 24 hours",
+      "Fixed price after the initial consultation",
+      "No obligation",
+    ],
+  },
+} as const;
 
 export type FaqItem = {
   question: string;
@@ -25,12 +72,14 @@ export type FaqItem = {
 };
 
 export function TrustMetricGrid({
-  items = TRUST_METRICS,
+  items,
   className = "",
 }: {
   items?: readonly { value: string; label: string }[];
   className?: string;
 }) {
+  const locale = useLocale();
+  items ??= TRUST_METRICS[locale];
   return (
     <dl
       className={`grid overflow-hidden rounded-xl border border-border bg-card shadow-sm sm:grid-cols-2 lg:grid-cols-4 ${className}`}
@@ -53,12 +102,14 @@ export function TrustMetricGrid({
 }
 
 export function TrustPointList({
-  items = CORE_TRUST_POINTS,
+  items,
   className = "",
 }: {
   items?: readonly string[];
   className?: string;
 }) {
+  const locale = useLocale();
+  items ??= CORE_TRUST_POINTS[locale];
   return (
     <ul className={`grid gap-3 sm:grid-cols-2 ${className}`}>
       {items.map((item) => (
@@ -102,16 +153,23 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
 }
 
 export function FinalCta({
-  eyebrow = "Kostenloses Erstgespräch",
-  title = "Lassen Sie uns kurz prüfen, was für Ihre Website sinnvoll ist.",
-  text = "Sie schildern mir Ihr Vorhaben. Ich sage Ihnen ehrlich, was passt, was es ungefähr kostet und wie schnell es realistisch geht.",
-  button = "Erstgespräch anfragen",
+  eyebrow,
+  title,
+  text,
+  button,
 }: {
   eyebrow?: string;
   title?: string;
   text?: string;
   button?: string;
 }) {
+  const locale = useLocale();
+  const defaults = FINAL_CTA_DEFAULTS[locale];
+  eyebrow ??= defaults.eyebrow;
+  title ??= defaults.title;
+  text ??= defaults.text;
+  button ??= defaults.button;
+
   return (
     <Section className="bg-foreground text-background">
       <div className="grid items-center gap-8 md:grid-cols-12">
@@ -125,11 +183,7 @@ export function FinalCta({
           </h2>
           <p className="mt-4 max-w-2xl text-background/70">{text}</p>
           <div className="mt-5 flex flex-wrap gap-2">
-            {[
-              "Antwort innerhalb von 24 Stunden",
-              "Festpreis nach Erstgespräch",
-              "Keine Verpflichtung",
-            ].map((item) => (
+            {defaults.badges.map((item) => (
               <Badge
                 key={item}
                 variant="outline"
@@ -145,10 +199,10 @@ export function FinalCta({
             asChild
             className="rounded-full bg-background px-6 py-3.5 text-sm font-medium text-foreground hover:bg-background/90"
           >
-            <Link to="/kontakt">
+            <LocalizedLink to="/kontakt">
               {button}
               <ArrowRight size={15} />
-            </Link>
+            </LocalizedLink>
           </Button>
         </div>
       </div>

@@ -1,23 +1,43 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
+import { LocalizedLink } from "@/components/site/LocalizedLink";
+import { useLocale, delocalizePath } from "@/lib/i18n/locale";
 
-const LABELS: Record<string, string> = {
-  "/": "Startseite",
-  "/leistungen": "Leistungen",
-  "/preise": "Preise",
-  "/ablauf": "Ablauf",
-  "/referenzen": "Referenzen",
-  "/ueber-mich": "Über mich",
-  "/kontakt": "Kontakt",
-  "/impressum": "Impressum",
-  "/datenschutz": "Datenschutz",
+const LABELS: Record<"de" | "en", Record<string, string>> = {
+  de: {
+    "/": "Startseite",
+    "/leistungen": "Leistungen",
+    "/preise": "Preise",
+    "/ablauf": "Ablauf",
+    "/referenzen": "Referenzen",
+    "/ueber-mich": "Über mich",
+    "/kontakt": "Kontakt",
+    "/impressum": "Impressum",
+    "/datenschutz": "Datenschutz",
+    "/ratgeber": "Ratgeber",
+  },
+  en: {
+    "/": "Home",
+    "/leistungen": "Services",
+    "/preise": "Pricing",
+    "/ablauf": "Process",
+    "/referenzen": "References",
+    "/ueber-mich": "About",
+    "/kontakt": "Contact",
+    "/impressum": "Legal Notice",
+    "/datenschutz": "Privacy Policy",
+    "/ratgeber": "Guides",
+  },
 };
 
 export function SeoBreadcrumbs() {
   const location = useLocation();
-  const pathname = location.pathname.replace(/\/$/, "") || "/";
-  const label = LABELS[pathname];
+  const locale = useLocale();
+  const canonicalPath = delocalizePath(location.pathname).replace(/\/$/, "") || "/";
+  const label = LABELS[locale][canonicalPath];
 
   if (!label) return null;
+
+  const homeLabel = LABELS[locale]["/"];
 
   return (
     <nav
@@ -26,17 +46,17 @@ export function SeoBreadcrumbs() {
     >
       <ol className="mx-auto flex max-w-6xl items-center gap-2 px-5 py-3 text-xs text-muted-foreground md:px-8">
         <li>
-          {pathname === "/" ? (
+          {canonicalPath === "/" ? (
             <span aria-current="page" className="text-foreground">
-              Startseite
+              {homeLabel}
             </span>
           ) : (
-            <Link to="/" className="hover:text-foreground hover:underline">
-              Startseite
-            </Link>
+            <LocalizedLink to="/" className="hover:text-foreground hover:underline">
+              {homeLabel}
+            </LocalizedLink>
           )}
         </li>
-        {pathname !== "/" && (
+        {canonicalPath !== "/" && (
           <>
             <li aria-hidden="true">/</li>
             <li>
