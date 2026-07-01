@@ -27,6 +27,7 @@ const DE_ENTRIES = [
   { path: "/ratgeber",   changefreq: "weekly",  priority: "0.7" },
     { path: "/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen", changefreq: "monthly", priority: "0.6" },
     { path: "/ratgeber/website-relaunch-kosten-leipzig", changefreq: "monthly", priority: "0.6" },
+    { path: "/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen", changefreq: "monthly", priority: "0.6" },
   // Pro Ratgeber-Artikel ergänzt scripts/import-ratgeber-article.mjs hier
   // automatisch einen weiteren Eintrag (changefreq: monthly, priority: 0.6).
 ];

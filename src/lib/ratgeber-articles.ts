@@ -14,6 +14,15 @@ export interface RatgeberArtikel {
 // Felder (en) müssen danach manuell nachgepflegt werden.
 export const RATGEBER_ARTIKEL: RatgeberArtikel[] = [
   {
+    slug: "website-fuer-handwerksbetrieb-erstellen-lassen",
+    title: { de: "Website für Handwerksbetrieb erstellen lassen: Das brauchen Sie vorher", en: "Website für Handwerksbetrieb erstellen lassen: Das brauchen Sie vorher" }, // TODO: ins Englische übersetzen
+    excerpt: { de: "Website für Handwerksbetrieb erstellen lassen: Was Sie vorher brauchen, was eine gute Handwerker-Website kostet und welche Fehler Betriebe in Leipzig ...", en: "Website für Handwerksbetrieb erstellen lassen: Was Sie vorher brauchen, was eine gute Handwerker-Website kostet und welche Fehler Betriebe in Leipzig ..." }, // TODO: ins Englische übersetzen
+    category: { de: "Website erstellen lassen", en: "Website erstellen lassen" }, // TODO: ins Englische übersetzen
+    image: "/images/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen/website-fuer-handwerksbetrieb-erstellen-lassen-hero.webp",
+    date: "2026-07-01",
+    readTime: { de: "8 Min.", en: "8 Min." }, // TODO: ins Englische übersetzen
+  },
+  {
     slug: "website-relaunch-kosten-leipzig",
     title: {
       de: "Website-Relaunch Kosten: Womit realistisch rechnen?",

@@ -22,6 +22,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as RatgeberIndexRouteImport } from './routes/ratgeber/index'
 import { Route as EnIndexRouteImport } from './routes/en/index'
 import { Route as RatgeberWebsiteRelaunchKostenLeipzigRouteImport } from './routes/ratgeber/website-relaunch-kosten-leipzig'
+import { Route as RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRouteImport } from './routes/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
 import { Route as RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRouteImport } from './routes/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
 import { Route as EnUeberMichRouteImport } from './routes/en/ueber-mich'
 import { Route as EnReferenzenRouteImport } from './routes/en/referenzen'
@@ -100,6 +101,12 @@ const RatgeberWebsiteRelaunchKostenLeipzigRoute =
   RatgeberWebsiteRelaunchKostenLeipzigRouteImport.update({
     id: '/ratgeber/website-relaunch-kosten-leipzig',
     path: '/ratgeber/website-relaunch-kosten-leipzig',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute =
+  RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRouteImport.update({
+    id: '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen',
+    path: '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen',
     getParentRoute: () => rootRouteImport,
   } as any)
 const RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute =
@@ -192,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/en/referenzen': typeof EnReferenzenRoute
   '/en/ueber-mich': typeof EnUeberMichRoute
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
   '/en/': typeof EnIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
@@ -220,6 +228,7 @@ export interface FileRoutesByTo {
   '/en/referenzen': typeof EnReferenzenRoute
   '/en/ueber-mich': typeof EnUeberMichRoute
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
   '/en': typeof EnIndexRoute
   '/ratgeber': typeof RatgeberIndexRoute
@@ -249,6 +258,7 @@ export interface FileRoutesById {
   '/en/referenzen': typeof EnReferenzenRoute
   '/en/ueber-mich': typeof EnUeberMichRoute
   '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   '/ratgeber/website-relaunch-kosten-leipzig': typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
   '/en/': typeof EnIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
@@ -279,6 +289,7 @@ export interface FileRouteTypes {
     | '/en/referenzen'
     | '/en/ueber-mich'
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
     | '/en/'
     | '/ratgeber/'
@@ -307,6 +318,7 @@ export interface FileRouteTypes {
     | '/en/referenzen'
     | '/en/ueber-mich'
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
     | '/en'
     | '/ratgeber'
@@ -335,6 +347,7 @@ export interface FileRouteTypes {
     | '/en/referenzen'
     | '/en/ueber-mich'
     | '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen'
+    | '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
     | '/ratgeber/website-relaunch-kosten-leipzig'
     | '/en/'
     | '/ratgeber/'
@@ -364,6 +377,7 @@ export interface RootRouteChildren {
   EnReferenzenRoute: typeof EnReferenzenRoute
   EnUeberMichRoute: typeof EnUeberMichRoute
   RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute: typeof RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute
+  RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute: typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute
   RatgeberWebsiteRelaunchKostenLeipzigRoute: typeof RatgeberWebsiteRelaunchKostenLeipzigRoute
   EnIndexRoute: typeof EnIndexRoute
   RatgeberIndexRoute: typeof RatgeberIndexRoute
@@ -463,6 +477,13 @@ declare module '@tanstack/react-router' {
       path: '/ratgeber/website-relaunch-kosten-leipzig'
       fullPath: '/ratgeber/website-relaunch-kosten-leipzig'
       preLoaderRoute: typeof RatgeberWebsiteRelaunchKostenLeipzigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen': {
+      id: '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
+      path: '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
+      fullPath: '/ratgeber/website-fuer-handwerksbetrieb-erstellen-lassen'
+      preLoaderRoute: typeof RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ratgeber/was-kostet-eine-website-fuer-mein-unternehmen': {
@@ -581,6 +602,8 @@ const rootRouteChildren: RootRouteChildren = {
   EnUeberMichRoute: EnUeberMichRoute,
   RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute:
     RatgeberWasKostetEineWebsiteFuerMeinUnternehmenRoute,
+  RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute:
+    RatgeberWebsiteFuerHandwerksbetriebErstellenLassenRoute,
   RatgeberWebsiteRelaunchKostenLeipzigRoute:
     RatgeberWebsiteRelaunchKostenLeipzigRoute,
   EnIndexRoute: EnIndexRoute,
